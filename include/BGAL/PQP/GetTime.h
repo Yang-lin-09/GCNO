@@ -36,16 +36,12 @@
 #ifdef WIN32
 
 #include <time.h>
-inline double GetTime()
-{
-  return (double)(clock());
-}
+inline double GetTime() { return (double)(clock()); }
 
 #else
 
 #include <sys/time.h>
-inline double GetTime()
-{
+inline double GetTime() {
   struct timeval thistime;
   gettimeofday(&thistime, 0);
   return (thistime.tv_sec + thistime.tv_usec * 1e-6);

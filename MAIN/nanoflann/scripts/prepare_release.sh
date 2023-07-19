@@ -56,7 +56,7 @@ else
 fi
 
 # Prepare a directory for building the debian package:
-# 
+#
 rm -fR $NANOFLANN_DEB_DIR
 mkdir $NANOFLANN_DEB_DIR
 
@@ -99,4 +99,3 @@ find nanoflann-${NANOFLANN_VERSION_STR} -name '*.txt' | xargs -I FIL todos FIL
 zip -r nanoflann-${NANOFLANN_VERSION_STR}.zip nanoflann-${NANOFLANN_VERSION_STR}
 
 exit 0
-

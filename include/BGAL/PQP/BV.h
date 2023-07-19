@@ -41,13 +41,12 @@
 #ifndef PQP_BV_H
 #define PQP_BV_H
 
-#include <math.h>
-#include "Tri.h"
 #include "PQP_Compile.h"
-//#include "..\..\PolygonalMesh.h"
+#include "Tri.h"
+#include <math.h>
+// #include "..\..\PolygonalMesh.h"
 
-struct BV
-{
+struct BV {
   PQP_REAL R[3][3]; // orientation of RSS & OBB
 
 #if PQP_BV_TYPE & RSS_TYPE
@@ -69,12 +68,11 @@ struct BV
   int Leaf() { return first_child < 0; }
   PQP_REAL GetSize();
   void FitToTris(PQP_REAL O[3][3], Tri *tris, int num_tris);
-  //  void     FitToTris(PQP_REAL O[3][3], PolygonalMesh *mesh, Tri *tris, int num_tris);
+  //  void     FitToTris(PQP_REAL O[3][3], PolygonalMesh *mesh, Tri *tris, int
+  //  num_tris);
 };
 
-inline PQP_REAL
-BV::GetSize()
-{
+inline PQP_REAL BV::GetSize() {
 #if PQP_BV_TYPE & RSS_TYPE
   return (sqrt(l[0] * l[0] + l[1] * l[1]) + 2 * r);
 #else

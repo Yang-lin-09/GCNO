@@ -57,11 +57,12 @@
 // be expected.
 
 PQP_REAL
-TriDist(PQP_REAL p[3], PQP_REAL q[3],
-        const PQP_REAL s[3][3], const PQP_REAL t[3][3]);
+TriDist(PQP_REAL p[3], PQP_REAL q[3], const PQP_REAL s[3][3],
+        const PQP_REAL t[3][3]);
 
 //------------------------------------------------------------------
 PQP_REAL
-PointTriDist(int *posFlag, PQP_REAL q[3], const PQP_REAL p[3], const PQP_REAL t[3][3]);
+PointTriDist(int *posFlag, PQP_REAL q[3], const PQP_REAL p[3],
+             const PQP_REAL t[3][3]);
 
 #endif

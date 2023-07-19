@@ -5,7 +5,7 @@ Copyright (c) Sergey Bochkanov (ALGLIB project).
 >>> SOURCE LICENSE >>>
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation (www.fsf.org); either version 2 of the 
+the Free Software Foundation (www.fsf.org); either version 2 of the
 License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -24,11 +24,11 @@ http://www.fsf.org/licensing/licenses
 
 // disable some irrelevant warnings
 #if (AE_COMPILER == AE_MSVC) && !defined(AE_ALL_WARNINGS)
-                                                                                                                        #pragma warning(disable:4100)
-#pragma warning(disable:4127)
-#pragma warning(disable:4611)
-#pragma warning(disable:4702)
-#pragma warning(disable:4996)
+#pragma warning(disable : 4100)
+#pragma warning(disable : 4127)
+#pragma warning(disable : 4611)
+#pragma warning(disable : 4702)
+#pragma warning(disable : 4996)
 #endif
 
 /////////////////////////////////////////////////////////////////////////
@@ -92,14 +92,15 @@ void fftc1d(complex_1d_array &a, const ae_int_t n, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fftc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -146,7 +147,8 @@ void fftc1d(complex_1d_array &a, const xparams _xparams) {
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fftc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
@@ -181,14 +183,15 @@ void fftc1dinv(complex_1d_array &a, const ae_int_t n, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fftc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                         &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -226,7 +229,8 @@ void fftc1dinv(complex_1d_array &a, const xparams _xparams) {
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fftc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                         &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
@@ -256,7 +260,8 @@ other FFT-related subroutines.
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1d(const real_1d_array &a, const ae_int_t n, complex_1d_array &f, const xparams _xparams) {
+void fftr1d(const real_1d_array &a, const ae_int_t n, complex_1d_array &f,
+            const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -264,15 +269,14 @@ void fftr1d(const real_1d_array &a, const ae_int_t n, complex_1d_array &f, const
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                      n,
+  alglib_impl::fftr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
                       const_cast<alglib_impl::ae_vector *>(f.c_ptr()),
                       &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -303,7 +307,8 @@ other FFT-related subroutines.
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-void fftr1d(const real_1d_array &a, complex_1d_array &f, const xparams _xparams) {
+void fftr1d(const real_1d_array &a, complex_1d_array &f,
+            const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   ae_int_t n;
@@ -315,8 +320,7 @@ void fftr1d(const real_1d_array &a, complex_1d_array &f, const xparams _xparams)
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                      n,
+  alglib_impl::fftr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
                       const_cast<alglib_impl::ae_vector *>(f.c_ptr()),
                       &_alglib_env_state);
 
@@ -360,7 +364,8 @@ not used) because array size is used to automatically determine FFT length
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1dinv(const complex_1d_array &f, const ae_int_t n, real_1d_array &a, const xparams _xparams) {
+void fftr1dinv(const complex_1d_array &f, const ae_int_t n, real_1d_array &a,
+               const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -368,15 +373,14 @@ void fftr1dinv(const complex_1d_array &f, const ae_int_t n, real_1d_array &a, co
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftr1dinv(const_cast<alglib_impl::ae_vector *>(f.c_ptr()),
-                         n,
+  alglib_impl::fftr1dinv(const_cast<alglib_impl::ae_vector *>(f.c_ptr()), n,
                          const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
                          &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -419,7 +423,8 @@ not used) because array size is used to automatically determine FFT length
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-void fftr1dinv(const complex_1d_array &f, real_1d_array &a, const xparams _xparams) {
+void fftr1dinv(const complex_1d_array &f, real_1d_array &a,
+               const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   ae_int_t n;
@@ -431,8 +436,7 @@ void fftr1dinv(const complex_1d_array &f, real_1d_array &a, const xparams _xpara
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fftr1dinv(const_cast<alglib_impl::ae_vector *>(f.c_ptr()),
-                         n,
+  alglib_impl::fftr1dinv(const_cast<alglib_impl::ae_vector *>(f.c_ptr()), n,
                          const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
                          &_alglib_env_state);
 
@@ -468,14 +472,15 @@ void fhtr1d(real_1d_array &a, const ae_int_t n, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fhtr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fhtr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -504,14 +509,15 @@ void fhtr1dinv(real_1d_array &a, const ae_int_t n, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::fhtr1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::fhtr1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), n,
+                         &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -547,11 +553,8 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1d(const complex_1d_array &a,
-             const ae_int_t m,
-             const complex_1d_array &b,
-             const ae_int_t n,
-             complex_1d_array &r,
+void convc1d(const complex_1d_array &a, const ae_int_t m,
+             const complex_1d_array &b, const ae_int_t n, complex_1d_array &r,
              const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -560,17 +563,15 @@ void convc1d(const complex_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                       m,
-                       const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                       n,
+  alglib_impl::convc1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+                       const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
                        const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                        &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -603,12 +604,9 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dinv(const complex_1d_array &a,
-                const ae_int_t m,
-                const complex_1d_array &b,
-                const ae_int_t n,
-                complex_1d_array &r,
-                const xparams _xparams) {
+void convc1dinv(const complex_1d_array &a, const ae_int_t m,
+                const complex_1d_array &b, const ae_int_t n,
+                complex_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -616,17 +614,15 @@ void convc1dinv(const complex_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                          m,
-                          const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                          n,
+  alglib_impl::convc1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+                          const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
                           const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -661,12 +657,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dcircular(const complex_1d_array &s,
-                     const ae_int_t m,
-                     const complex_1d_array &r,
-                     const ae_int_t n,
-                     complex_1d_array &c,
-                     const xparams _xparams) {
+void convc1dcircular(const complex_1d_array &s, const ae_int_t m,
+                     const complex_1d_array &r, const ae_int_t n,
+                     complex_1d_array &c, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -674,19 +667,17 @@ void convc1dcircular(const complex_1d_array &s,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convc1dcircular(const_cast<alglib_impl::ae_vector *>(s.c_ptr()),
-                               m,
-                               const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                               n,
-                               const_cast<alglib_impl::ae_vector *>(c.c_ptr()),
-                               &_alglib_env_state);
+  alglib_impl::convc1dcircular(
+      const_cast<alglib_impl::ae_vector *>(s.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(c.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -717,12 +708,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dcircularinv(const complex_1d_array &a,
-                        const ae_int_t m,
-                        const complex_1d_array &b,
-                        const ae_int_t n,
-                        complex_1d_array &r,
-                        const xparams _xparams) {
+void convc1dcircularinv(const complex_1d_array &a, const ae_int_t m,
+                        const complex_1d_array &b, const ae_int_t n,
+                        complex_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -730,19 +718,17 @@ void convc1dcircularinv(const complex_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convc1dcircularinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                                  m,
-                                  const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                                  n,
-                                  const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                                  &_alglib_env_state);
+  alglib_impl::convc1dcircularinv(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -769,12 +755,8 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1d(const real_1d_array &a,
-             const ae_int_t m,
-             const real_1d_array &b,
-             const ae_int_t n,
-             real_1d_array &r,
-             const xparams _xparams) {
+void convr1d(const real_1d_array &a, const ae_int_t m, const real_1d_array &b,
+             const ae_int_t n, real_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -782,17 +764,15 @@ void convr1d(const real_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                       m,
-                       const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                       n,
+  alglib_impl::convr1d(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+                       const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
                        const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                        &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -825,11 +805,8 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dinv(const real_1d_array &a,
-                const ae_int_t m,
-                const real_1d_array &b,
-                const ae_int_t n,
-                real_1d_array &r,
+void convr1dinv(const real_1d_array &a, const ae_int_t m,
+                const real_1d_array &b, const ae_int_t n, real_1d_array &r,
                 const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -838,17 +815,15 @@ void convr1dinv(const real_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convr1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                          m,
-                          const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                          n,
+  alglib_impl::convr1dinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+                          const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
                           const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -877,11 +852,8 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dcircular(const real_1d_array &s,
-                     const ae_int_t m,
-                     const real_1d_array &r,
-                     const ae_int_t n,
-                     real_1d_array &c,
+void convr1dcircular(const real_1d_array &s, const ae_int_t m,
+                     const real_1d_array &r, const ae_int_t n, real_1d_array &c,
                      const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -890,19 +862,17 @@ void convr1dcircular(const real_1d_array &s,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convr1dcircular(const_cast<alglib_impl::ae_vector *>(s.c_ptr()),
-                               m,
-                               const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                               n,
-                               const_cast<alglib_impl::ae_vector *>(c.c_ptr()),
-                               &_alglib_env_state);
+  alglib_impl::convr1dcircular(
+      const_cast<alglib_impl::ae_vector *>(s.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(c.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -933,12 +903,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dcircularinv(const real_1d_array &a,
-                        const ae_int_t m,
-                        const real_1d_array &b,
-                        const ae_int_t n,
-                        real_1d_array &r,
-                        const xparams _xparams) {
+void convr1dcircularinv(const real_1d_array &a, const ae_int_t m,
+                        const real_1d_array &b, const ae_int_t n,
+                        real_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -946,19 +913,17 @@ void convr1dcircularinv(const real_1d_array &a,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::convr1dcircularinv(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
-                                  m,
-                                  const_cast<alglib_impl::ae_vector *>(b.c_ptr()),
-                                  n,
-                                  const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                                  &_alglib_env_state);
+  alglib_impl::convr1dcircularinv(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(b.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -1001,12 +966,9 @@ on [-K..M-1],  you can still use this subroutine, just shift result by K.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrc1d(const complex_1d_array &signal,
-             const ae_int_t n,
-             const complex_1d_array &pattern,
-             const ae_int_t m,
-             complex_1d_array &r,
-             const xparams _xparams) {
+void corrc1d(const complex_1d_array &signal, const ae_int_t n,
+             const complex_1d_array &pattern, const ae_int_t m,
+             complex_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1014,17 +976,15 @@ void corrc1d(const complex_1d_array &signal,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::corrc1d(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()),
-                       n,
-                       const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()),
-                       m,
+  alglib_impl::corrc1d(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()), n,
+                       const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()), m,
                        const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                        &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -1058,12 +1018,9 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrc1dcircular(const complex_1d_array &signal,
-                     const ae_int_t m,
-                     const complex_1d_array &pattern,
-                     const ae_int_t n,
-                     complex_1d_array &c,
-                     const xparams _xparams) {
+void corrc1dcircular(const complex_1d_array &signal, const ae_int_t m,
+                     const complex_1d_array &pattern, const ae_int_t n,
+                     complex_1d_array &c, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1071,19 +1028,17 @@ void corrc1dcircular(const complex_1d_array &signal,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::corrc1dcircular(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()),
-                               m,
-                               const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()),
-                               n,
-                               const_cast<alglib_impl::ae_vector *>(c.c_ptr()),
-                               &_alglib_env_state);
+  alglib_impl::corrc1dcircular(
+      const_cast<alglib_impl::ae_vector *>(signal.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(c.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -1124,11 +1079,8 @@ on [-K..M-1],  you can still use this subroutine, just shift result by K.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrr1d(const real_1d_array &signal,
-             const ae_int_t n,
-             const real_1d_array &pattern,
-             const ae_int_t m,
-             real_1d_array &r,
+void corrr1d(const real_1d_array &signal, const ae_int_t n,
+             const real_1d_array &pattern, const ae_int_t m, real_1d_array &r,
              const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1137,17 +1089,15 @@ void corrr1d(const real_1d_array &signal,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::corrr1d(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()),
-                       n,
-                       const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()),
-                       m,
+  alglib_impl::corrr1d(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()), n,
+                       const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()), m,
                        const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
                        &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
@@ -1181,12 +1131,9 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrr1dcircular(const real_1d_array &signal,
-                     const ae_int_t m,
-                     const real_1d_array &pattern,
-                     const ae_int_t n,
-                     real_1d_array &c,
-                     const xparams _xparams) {
+void corrr1dcircular(const real_1d_array &signal, const ae_int_t m,
+                     const real_1d_array &pattern, const ae_int_t n,
+                     real_1d_array &c, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1194,24 +1141,22 @@ void corrr1dcircular(const real_1d_array &signal,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::corrr1dcircular(const_cast<alglib_impl::ae_vector *>(signal.c_ptr()),
-                               m,
-                               const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()),
-                               n,
-                               const_cast<alglib_impl::ae_vector *>(c.c_ptr()),
-                               &_alglib_env_state);
+  alglib_impl::corrr1dcircular(
+      const_cast<alglib_impl::ae_vector *>(signal.c_ptr()), m,
+      const_cast<alglib_impl::ae_vector *>(pattern.c_ptr()), n,
+      const_cast<alglib_impl::ae_vector *>(c.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
 #endif
-}
+} // namespace alglib
 
 /////////////////////////////////////////////////////////////////////////
 //
@@ -1277,20 +1222,21 @@ void fftc1d(/* Complex */ ae_vector *a, ae_int_t n, ae_state *_state) {
 
   ae_assert(n > 0, "FFTC1D: incorrect N!", _state);
   ae_assert(a->cnt >= n, "FFTC1D: Length(A)<N!", _state);
-  ae_assert(isfinitecvector(a, n, _state), "FFTC1D: A contains infinite or NAN values!", _state);
+  ae_assert(isfinitecvector(a, n, _state),
+            "FFTC1D: A contains infinite or NAN values!", _state);
 
   /*
-     * Special case: N=1, FFT is just identity transform.
-     * After this block we assume that N is strictly greater than 1.
-     */
+   * Special case: N=1, FFT is just identity transform.
+   * After this block we assume that N is strictly greater than 1.
+   */
   if (n == 1) {
     ae_frame_leave(_state);
     return;
   }
 
   /*
-     * convert input array to the more convinient format
-     */
+   * convert input array to the more convinient format
+   */
   ae_vector_set_length(&buf, 2 * n, _state);
   for (i = 0; i <= n - 1; i++) {
     buf.ptr.p_double[2 * i + 0] = a->ptr.p_complex[i].x;
@@ -1298,18 +1244,18 @@ void fftc1d(/* Complex */ ae_vector *a, ae_int_t n, ae_state *_state) {
   }
 
   /*
-     * Generate plan and execute it.
-     *
-     * Plan is a combination of a successive factorizations of N and
-     * precomputed data. It is much like a FFTW plan, but is not stored
-     * between subroutine calls and is much simpler.
-     */
+   * Generate plan and execute it.
+   *
+   * Plan is a combination of a successive factorizations of N and
+   * precomputed data. It is much like a FFTW plan, but is not stored
+   * between subroutine calls and is much simpler.
+   */
   ftcomplexfftplan(n, 1, &plan, _state);
   ftapplyplan(&plan, &buf, 0, 1, _state);
 
   /*
-     * result
-     */
+   * result
+   */
   for (i = 0; i <= n - 1; i++) {
     a->ptr.p_complex[i].x = buf.ptr.p_double[2 * i + 0];
     a->ptr.p_complex[i].y = buf.ptr.p_double[2 * i + 1];
@@ -1342,15 +1288,16 @@ void fftc1dinv(/* Complex */ ae_vector *a, ae_int_t n, ae_state *_state) {
 
   ae_assert(n > 0, "FFTC1DInv: incorrect N!", _state);
   ae_assert(a->cnt >= n, "FFTC1DInv: Length(A)<N!", _state);
-  ae_assert(isfinitecvector(a, n, _state), "FFTC1DInv: A contains infinite or NAN values!", _state);
+  ae_assert(isfinitecvector(a, n, _state),
+            "FFTC1DInv: A contains infinite or NAN values!", _state);
 
   /*
-     * Inverse DFT can be expressed in terms of the DFT as
-     *
-     *     invfft(x) = fft(x')'/N
-     *
-     * here x' means conj(x).
-     */
+   * Inverse DFT can be expressed in terms of the DFT as
+   *
+   *     invfft(x) = fft(x')'/N
+   *
+   * here x' means conj(x).
+   */
   for (i = 0; i <= n - 1; i++) {
     a->ptr.p_complex[i].y = -a->ptr.p_complex[i].y;
   }
@@ -1384,10 +1331,8 @@ other FFT-related subroutines.
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1d(/* Real    */ ae_vector *a,
-                          ae_int_t n,
-    /* Complex */ ae_vector *f,
-                          ae_state *_state) {
+void fftr1d(/* Real    */ ae_vector *a, ae_int_t n,
+            /* Complex */ ae_vector *f, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t n2;
@@ -1407,15 +1352,16 @@ void fftr1d(/* Real    */ ae_vector *a,
 
   ae_assert(n > 0, "FFTR1D: incorrect N!", _state);
   ae_assert(a->cnt >= n, "FFTR1D: Length(A)<N!", _state);
-  ae_assert(isfinitevector(a, n, _state), "FFTR1D: A contains infinite or NAN values!", _state);
+  ae_assert(isfinitevector(a, n, _state),
+            "FFTR1D: A contains infinite or NAN values!", _state);
 
   /*
-     * Special cases:
-     * * N=1, FFT is just identity transform.
-     * * N=2, FFT is simple too
-     *
-     * After this block we assume that N is strictly greater than 2
-     */
+   * Special cases:
+   * * N=1, FFT is just identity transform.
+   * * N=2, FFT is simple too
+   *
+   * After this block we assume that N is strictly greater than 2
+   */
   if (n == 1) {
     ae_vector_set_length(f, 1, _state);
     f->ptr.p_complex[0] = ae_complex_from_d(a->ptr.p_double[0]);
@@ -1425,24 +1371,25 @@ void fftr1d(/* Real    */ ae_vector *a,
   if (n == 2) {
     ae_vector_set_length(f, 2, _state);
     f->ptr.p_complex[0].x = a->ptr.p_double[0] + a->ptr.p_double[1];
-    f->ptr.p_complex[0].y = (double) (0);
+    f->ptr.p_complex[0].y = (double)(0);
     f->ptr.p_complex[1].x = a->ptr.p_double[0] - a->ptr.p_double[1];
-    f->ptr.p_complex[1].y = (double) (0);
+    f->ptr.p_complex[1].y = (double)(0);
     ae_frame_leave(_state);
     return;
   }
 
   /*
-     * Choose between odd-size and even-size FFTs
-     */
+   * Choose between odd-size and even-size FFTs
+   */
   if (n % 2 == 0) {
 
     /*
-         * even-size real FFT, use reduction to the complex task
-         */
+     * even-size real FFT, use reduction to the complex task
+     */
     n2 = n / 2;
     ae_vector_set_length(&buf, n, _state);
-    ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+    ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+              ae_v_len(0, n - 1));
     ftcomplexfftplan(n2, 1, &plan, _state);
     ftapplyplan(&plan, &buf, 0, 1, _state);
     ae_vector_set_length(f, n, _state);
@@ -1455,7 +1402,8 @@ void fftr1d(/* Real    */ ae_vector *a,
       hmnc.y = -buf.ptr.p_double[idx + 1];
       v.x = -ae_sin(-2 * ae_pi * i / n, _state);
       v.y = ae_cos(-2 * ae_pi * i / n, _state);
-      f->ptr.p_complex[i] = ae_c_sub(ae_c_add(hn, hmnc), ae_c_mul(v, ae_c_sub(hn, hmnc)));
+      f->ptr.p_complex[i] =
+          ae_c_sub(ae_c_add(hn, hmnc), ae_c_mul(v, ae_c_sub(hn, hmnc)));
       f->ptr.p_complex[i].x = 0.5 * f->ptr.p_complex[i].x;
       f->ptr.p_complex[i].y = 0.5 * f->ptr.p_complex[i].y;
     }
@@ -1465,8 +1413,8 @@ void fftr1d(/* Real    */ ae_vector *a,
   } else {
 
     /*
-         * use complex FFT
-         */
+     * use complex FFT
+     */
     ae_vector_set_length(f, n, _state);
     for (i = 0; i <= n - 1; i++) {
       f->ptr.p_complex[i] = ae_complex_from_d(a->ptr.p_double[i]);
@@ -1511,10 +1459,8 @@ not used) because array size is used to automatically determine FFT length
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1dinv(/* Complex */ ae_vector *f,
-                             ae_int_t n,
-    /* Real    */ ae_vector *a,
-                             ae_state *_state) {
+void fftr1dinv(/* Complex */ ae_vector *f, ae_int_t n,
+               /* Real    */ ae_vector *a, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_vector h;
@@ -1528,26 +1474,30 @@ void fftr1dinv(/* Complex */ ae_vector *f,
   ae_vector_init(&fh, 0, DT_COMPLEX, _state, ae_true);
 
   ae_assert(n > 0, "FFTR1DInv: incorrect N!", _state);
-  ae_assert(f->cnt >= ae_ifloor((double) n / (double) 2, _state) + 1, "FFTR1DInv: Length(F)<Floor(N/2)+1!", _state);
-  ae_assert(ae_isfinite(f->ptr.p_complex[0].x, _state), "FFTR1DInv: F contains infinite or NAN values!", _state);
-  for (i = 1; i <= ae_ifloor((double) n / (double) 2, _state) - 1; i++) {
-    ae_assert(ae_isfinite(f->ptr.p_complex[i].x, _state) && ae_isfinite(f->ptr.p_complex[i].y, _state),
-              "FFTR1DInv: F contains infinite or NAN values!",
-              _state);
+  ae_assert(f->cnt >= ae_ifloor((double)n / (double)2, _state) + 1,
+            "FFTR1DInv: Length(F)<Floor(N/2)+1!", _state);
+  ae_assert(ae_isfinite(f->ptr.p_complex[0].x, _state),
+            "FFTR1DInv: F contains infinite or NAN values!", _state);
+  for (i = 1; i <= ae_ifloor((double)n / (double)2, _state) - 1; i++) {
+    ae_assert(ae_isfinite(f->ptr.p_complex[i].x, _state) &&
+                  ae_isfinite(f->ptr.p_complex[i].y, _state),
+              "FFTR1DInv: F contains infinite or NAN values!", _state);
   }
-  ae_assert(ae_isfinite(f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].x, _state),
-            "FFTR1DInv: F contains infinite or NAN values!",
-            _state);
+  ae_assert(
+      ae_isfinite(f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].x,
+                  _state),
+      "FFTR1DInv: F contains infinite or NAN values!", _state);
   if (n % 2 != 0) {
-    ae_assert(ae_isfinite(f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].y, _state),
-              "FFTR1DInv: F contains infinite or NAN values!",
-              _state);
+    ae_assert(ae_isfinite(
+                  f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].y,
+                  _state),
+              "FFTR1DInv: F contains infinite or NAN values!", _state);
   }
 
   /*
-     * Special case: N=1, FFT is just identity transform.
-     * After this block we assume that N is strictly greater than 1.
-     */
+   * Special case: N=1, FFT is just identity transform.
+   * After this block we assume that N is strictly greater than 1.
+   */
   if (n == 1) {
     ae_vector_set_length(a, 1, _state);
     a->ptr.p_double[0] = f->ptr.p_complex[0].x;
@@ -1556,29 +1506,29 @@ void fftr1dinv(/* Complex */ ae_vector *f,
   }
 
   /*
-     * inverse real FFT is reduced to the inverse real FHT,
-     * which is reduced to the forward real FHT,
-     * which is reduced to the forward real FFT.
-     *
-     * Don't worry, it is really compact and efficient reduction :)
-     */
+   * inverse real FFT is reduced to the inverse real FHT,
+   * which is reduced to the forward real FHT,
+   * which is reduced to the forward real FFT.
+   *
+   * Don't worry, it is really compact and efficient reduction :)
+   */
   ae_vector_set_length(&h, n, _state);
   ae_vector_set_length(a, n, _state);
   h.ptr.p_double[0] = f->ptr.p_complex[0].x;
-  for (i = 1; i <= ae_ifloor((double) n / (double) 2, _state) - 1; i++) {
+  for (i = 1; i <= ae_ifloor((double)n / (double)2, _state) - 1; i++) {
     h.ptr.p_double[i] = f->ptr.p_complex[i].x - f->ptr.p_complex[i].y;
     h.ptr.p_double[n - i] = f->ptr.p_complex[i].x + f->ptr.p_complex[i].y;
   }
   if (n % 2 == 0) {
-    h.ptr.p_double[ae_ifloor((double) n / (double) 2, _state)] =
-        f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].x;
+    h.ptr.p_double[ae_ifloor((double)n / (double)2, _state)] =
+        f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].x;
   } else {
-    h.ptr.p_double[ae_ifloor((double) n / (double) 2, _state)] =
-        f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].x
-            - f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].y;
-    h.ptr.p_double[ae_ifloor((double) n / (double) 2, _state) + 1] =
-        f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].x
-            + f->ptr.p_complex[ae_ifloor((double) n / (double) 2, _state)].y;
+    h.ptr.p_double[ae_ifloor((double)n / (double)2, _state)] =
+        f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].x -
+        f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].y;
+    h.ptr.p_double[ae_ifloor((double)n / (double)2, _state) + 1] =
+        f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].x +
+        f->ptr.p_complex[ae_ifloor((double)n / (double)2, _state)].y;
   }
   fftr1d(&h, n, &fh, _state);
   for (i = 0; i <= n - 1; i++) {
@@ -1594,11 +1544,9 @@ Internal subroutine. Never call it directly!
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1dinternaleven(/* Real    */ ae_vector *a,
-                                      ae_int_t n,
-    /* Real    */ ae_vector *buf,
-                                      fasttransformplan *plan,
-                                      ae_state *_state) {
+void fftr1dinternaleven(/* Real    */ ae_vector *a, ae_int_t n,
+                        /* Real    */ ae_vector *buf, fasttransformplan *plan,
+                        ae_state *_state) {
   double x;
   double y;
   ae_int_t i;
@@ -1611,11 +1559,11 @@ void fftr1dinternaleven(/* Real    */ ae_vector *a,
   ae_assert(n > 0 && n % 2 == 0, "FFTR1DEvenInplace: incorrect N!", _state);
 
   /*
-     * Special cases:
-     * * N=2
-     *
-     * After this block we assume that N is strictly greater than 2
-     */
+   * Special cases:
+   * * N=2
+   *
+   * After this block we assume that N is strictly greater than 2
+   */
   if (n == 2) {
     x = a->ptr.p_double[0] + a->ptr.p_double[1];
     y = a->ptr.p_double[0] - a->ptr.p_double[1];
@@ -1625,10 +1573,11 @@ void fftr1dinternaleven(/* Real    */ ae_vector *a,
   }
 
   /*
-     * even-size real FFT, use reduction to the complex task
-     */
+   * even-size real FFT, use reduction to the complex task
+   */
   n2 = n / 2;
-  ae_v_move(&buf->ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+  ae_v_move(&buf->ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+            ae_v_len(0, n - 1));
   ftapplyplan(plan, buf, 0, 1, _state);
   a->ptr.p_double[0] = buf->ptr.p_double[0] + buf->ptr.p_double[1];
   for (i = 1; i <= n2 - 1; i++) {
@@ -1654,11 +1603,9 @@ Internal subroutine. Never call it directly!
   -- ALGLIB --
      Copyright 01.06.2009 by Bochkanov Sergey
 *************************************************************************/
-void fftr1dinvinternaleven(/* Real    */ ae_vector *a,
-                                         ae_int_t n,
-    /* Real    */ ae_vector *buf,
-                                         fasttransformplan *plan,
-                                         ae_state *_state) {
+void fftr1dinvinternaleven(/* Real    */ ae_vector *a, ae_int_t n,
+                           /* Real    */ ae_vector *buf,
+                           fasttransformplan *plan, ae_state *_state) {
   double x;
   double y;
   double t;
@@ -1668,11 +1615,11 @@ void fftr1dinvinternaleven(/* Real    */ ae_vector *a,
   ae_assert(n > 0 && n % 2 == 0, "FFTR1DInvInternalEven: incorrect N!", _state);
 
   /*
-     * Special cases:
-     * * N=2
-     *
-     * After this block we assume that N is strictly greater than 2
-     */
+   * Special cases:
+   * * N=2
+   *
+   * After this block we assume that N is strictly greater than 2
+   */
   if (n == 2) {
     x = 0.5 * (a->ptr.p_double[0] + a->ptr.p_double[1]);
     y = 0.5 * (a->ptr.p_double[0] - a->ptr.p_double[1]);
@@ -1682,12 +1629,12 @@ void fftr1dinvinternaleven(/* Real    */ ae_vector *a,
   }
 
   /*
-     * inverse real FFT is reduced to the inverse real FHT,
-     * which is reduced to the forward real FHT,
-     * which is reduced to the forward real FFT.
-     *
-     * Don't worry, it is really compact and efficient reduction :)
-     */
+   * inverse real FFT is reduced to the inverse real FHT,
+   * which is reduced to the forward real FHT,
+   * which is reduced to the forward real FFT.
+   *
+   * Don't worry, it is really compact and efficient reduction :)
+   */
   n2 = n / 2;
   buf->ptr.p_double[0] = a->ptr.p_double[0];
   for (i = 1; i <= n2 - 1; i++) {
@@ -1699,7 +1646,7 @@ void fftr1dinvinternaleven(/* Real    */ ae_vector *a,
   buf->ptr.p_double[n2] = a->ptr.p_double[1];
   fftr1dinternaleven(buf, n, a, plan, _state);
   a->ptr.p_double[0] = buf->ptr.p_double[0] / n;
-  t = (double) 1 / (double) n;
+  t = (double)1 / (double)n;
   for (i = 1; i <= n2 - 1; i++) {
     x = buf->ptr.p_double[2 * i + 0];
     y = buf->ptr.p_double[2 * i + 1];
@@ -1741,17 +1688,17 @@ void fhtr1d(/* Real    */ ae_vector *a, ae_int_t n, ae_state *_state) {
   ae_assert(n > 0, "FHTR1D: incorrect N!", _state);
 
   /*
-     * Special case: N=1, FHT is just identity transform.
-     * After this block we assume that N is strictly greater than 1.
-     */
+   * Special case: N=1, FHT is just identity transform.
+   * After this block we assume that N is strictly greater than 1.
+   */
   if (n == 1) {
     ae_frame_leave(_state);
     return;
   }
 
   /*
-     * Reduce FHt to real FFT
-     */
+   * Reduce FHt to real FFT
+   */
   fftr1d(a, n, &fa, _state);
   for (i = 0; i <= n - 1; i++) {
     a->ptr.p_double[i] = fa.ptr.p_complex[i].x - fa.ptr.p_complex[i].y;
@@ -1781,18 +1728,18 @@ void fhtr1dinv(/* Real    */ ae_vector *a, ae_int_t n, ae_state *_state) {
   ae_assert(n > 0, "FHTR1DInv: incorrect N!", _state);
 
   /*
-     * Special case: N=1, iFHT is just identity transform.
-     * After this block we assume that N is strictly greater than 1.
-     */
+   * Special case: N=1, iFHT is just identity transform.
+   * After this block we assume that N is strictly greater than 1.
+   */
   if (n == 1) {
     return;
   }
 
   /*
-     * Inverse FHT can be expressed in terms of the FHT as
-     *
-     *     invfht(x) = fht(x)/N
-     */
+   * Inverse FHT can be expressed in terms of the FHT as
+   *
+   *     invfht(x) = fht(x)/N
+   */
   fhtr1d(a, n, _state);
   for (i = 0; i <= n - 1; i++) {
     a->ptr.p_double[i] = a->ptr.p_double[i] / n;
@@ -1831,21 +1778,18 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1d(/* Complex */ ae_vector *a,
-                           ae_int_t m,
-    /* Complex */ ae_vector *b,
-                           ae_int_t n,
-    /* Complex */ ae_vector *r,
-                           ae_state *_state) {
+void convc1d(/* Complex */ ae_vector *a, ae_int_t m,
+             /* Complex */ ae_vector *b, ae_int_t n,
+             /* Complex */ ae_vector *r, ae_state *_state) {
 
   ae_vector_clear(r);
 
   ae_assert(n > 0 && m > 0, "ConvC1D: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer that B.
+   */
   if (m < n) {
     convc1d(b, n, a, m, r, _state);
     return;
@@ -1879,12 +1823,9 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dinv(/* Complex */ ae_vector *a,
-                              ae_int_t m,
-    /* Complex */ ae_vector *b,
-                              ae_int_t n,
-    /* Complex */ ae_vector *r,
-                              ae_state *_state) {
+void convc1dinv(/* Complex */ ae_vector *a, ae_int_t m,
+                /* Complex */ ae_vector *b, ae_int_t n,
+                /* Complex */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t p;
@@ -1905,7 +1846,8 @@ void convc1dinv(/* Complex */ ae_vector *a,
   ae_vector_init(&buf2, 0, DT_REAL, _state, ae_true);
   _fasttransformplan_init(&plan, _state, ae_true);
 
-  ae_assert((n > 0 && m > 0) && n <= m, "ConvC1DInv: incorrect N or M!", _state);
+  ae_assert((n > 0 && m > 0) && n <= m, "ConvC1DInv: incorrect N or M!",
+            _state);
   p = ftbasefindsmooth(m, _state);
   ftcomplexfftplan(p, 1, &plan, _state);
   ae_vector_set_length(&buf, 2 * p, _state);
@@ -1914,8 +1856,8 @@ void convc1dinv(/* Complex */ ae_vector *a,
     buf.ptr.p_double[2 * i + 1] = a->ptr.p_complex[i].y;
   }
   for (i = m; i <= p - 1; i++) {
-    buf.ptr.p_double[2 * i + 0] = (double) (0);
-    buf.ptr.p_double[2 * i + 1] = (double) (0);
+    buf.ptr.p_double[2 * i + 0] = (double)(0);
+    buf.ptr.p_double[2 * i + 1] = (double)(0);
   }
   ae_vector_set_length(&buf2, 2 * p, _state);
   for (i = 0; i <= n - 1; i++) {
@@ -1923,8 +1865,8 @@ void convc1dinv(/* Complex */ ae_vector *a,
     buf2.ptr.p_double[2 * i + 1] = b->ptr.p_complex[i].y;
   }
   for (i = n; i <= p - 1; i++) {
-    buf2.ptr.p_double[2 * i + 0] = (double) (0);
-    buf2.ptr.p_double[2 * i + 1] = (double) (0);
+    buf2.ptr.p_double[2 * i + 0] = (double)(0);
+    buf2.ptr.p_double[2 * i + 1] = (double)(0);
   }
   ftapplyplan(&plan, &buf, 0, 1, _state);
   ftapplyplan(&plan, &buf2, 0, 1, _state);
@@ -1938,7 +1880,7 @@ void convc1dinv(/* Complex */ ae_vector *a,
     buf.ptr.p_double[2 * i + 1] = -c3.y;
   }
   ftapplyplan(&plan, &buf, 0, 1, _state);
-  t = (double) 1 / (double) p;
+  t = (double)1 / (double)p;
   ae_vector_set_length(r, m - n + 1, _state);
   for (i = 0; i <= m - n; i++) {
     r->ptr.p_complex[i].x = t * buf.ptr.p_double[2 * i + 0];
@@ -1975,12 +1917,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dcircular(/* Complex */ ae_vector *s,
-                                   ae_int_t m,
-    /* Complex */ ae_vector *r,
-                                   ae_int_t n,
-    /* Complex */ ae_vector *c,
-                                   ae_state *_state) {
+void convc1dcircular(/* Complex */ ae_vector *s, ae_int_t m,
+                     /* Complex */ ae_vector *r, ae_int_t n,
+                     /* Complex */ ae_vector *c, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector buf;
   ae_int_t i1;
@@ -1995,9 +1934,9 @@ void convc1dcircular(/* Complex */ ae_vector *s,
   ae_assert(n > 0 && m > 0, "ConvC1DCircular: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&buf, m, _state);
     for (i1 = 0; i1 <= m - 1; i1++) {
@@ -2007,7 +1946,8 @@ void convc1dcircular(/* Complex */ ae_vector *s,
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_cadd(&buf.ptr.p_complex[0], 1, &r->ptr.p_complex[i1], 1, "N", ae_v_len(0, j2));
+      ae_v_cadd(&buf.ptr.p_complex[0], 1, &r->ptr.p_complex[i1], 1, "N",
+                ae_v_len(0, j2));
       i1 = i1 + m;
     }
     convc1dcircular(s, m, &buf, m, c, _state);
@@ -2044,12 +1984,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dcircularinv(/* Complex */ ae_vector *a,
-                                      ae_int_t m,
-    /* Complex */ ae_vector *b,
-                                      ae_int_t n,
-    /* Complex */ ae_vector *r,
-                                      ae_state *_state) {
+void convc1dcircularinv(/* Complex */ ae_vector *a, ae_int_t m,
+                        /* Complex */ ae_vector *b, ae_int_t n,
+                        /* Complex */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t i1;
@@ -2078,9 +2015,9 @@ void convc1dcircularinv(/* Complex */ ae_vector *a,
   ae_assert(n > 0 && m > 0, "ConvC1DCircularInv: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&cbuf, m, _state);
     for (i = 0; i <= m - 1; i++) {
@@ -2090,7 +2027,8 @@ void convc1dcircularinv(/* Complex */ ae_vector *a,
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_cadd(&cbuf.ptr.p_complex[0], 1, &b->ptr.p_complex[i1], 1, "N", ae_v_len(0, j2));
+      ae_v_cadd(&cbuf.ptr.p_complex[0], 1, &b->ptr.p_complex[i1], 1, "N",
+                ae_v_len(0, j2));
       i1 = i1 + m;
     }
     convc1dcircularinv(a, m, &cbuf, m, r, _state);
@@ -2099,8 +2037,8 @@ void convc1dcircularinv(/* Complex */ ae_vector *a,
   }
 
   /*
-     * Task is normalized
-     */
+   * Task is normalized
+   */
   ftcomplexfftplan(m, 1, &plan, _state);
   ae_vector_set_length(&buf, 2 * m, _state);
   for (i = 0; i <= m - 1; i++) {
@@ -2113,8 +2051,8 @@ void convc1dcircularinv(/* Complex */ ae_vector *a,
     buf2.ptr.p_double[2 * i + 1] = b->ptr.p_complex[i].y;
   }
   for (i = n; i <= m - 1; i++) {
-    buf2.ptr.p_double[2 * i + 0] = (double) (0);
-    buf2.ptr.p_double[2 * i + 1] = (double) (0);
+    buf2.ptr.p_double[2 * i + 0] = (double)(0);
+    buf2.ptr.p_double[2 * i + 1] = (double)(0);
   }
   ftapplyplan(&plan, &buf, 0, 1, _state);
   ftapplyplan(&plan, &buf2, 0, 1, _state);
@@ -2128,7 +2066,7 @@ void convc1dcircularinv(/* Complex */ ae_vector *a,
     buf.ptr.p_double[2 * i + 1] = -c3.y;
   }
   ftapplyplan(&plan, &buf, 0, 1, _state);
-  t = (double) 1 / (double) m;
+  t = (double)1 / (double)m;
   ae_vector_set_length(r, m, _state);
   for (i = 0; i <= m - 1; i++) {
     r->ptr.p_complex[i].x = t * buf.ptr.p_double[2 * i + 0];
@@ -2159,21 +2097,18 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1d(/* Real    */ ae_vector *a,
-                           ae_int_t m,
-    /* Real    */ ae_vector *b,
-                           ae_int_t n,
-    /* Real    */ ae_vector *r,
-                           ae_state *_state) {
+void convr1d(/* Real    */ ae_vector *a, ae_int_t m,
+             /* Real    */ ae_vector *b, ae_int_t n,
+             /* Real    */ ae_vector *r, ae_state *_state) {
 
   ae_vector_clear(r);
 
   ae_assert(n > 0 && m > 0, "ConvR1D: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer that B.
+   */
   if (m < n) {
     convr1d(b, n, a, m, r, _state);
     return;
@@ -2207,12 +2142,9 @@ subroutine - just shift its result correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dinv(/* Real    */ ae_vector *a,
-                              ae_int_t m,
-    /* Real    */ ae_vector *b,
-                              ae_int_t n,
-    /* Real    */ ae_vector *r,
-                              ae_state *_state) {
+void convr1dinv(/* Real    */ ae_vector *a, ae_int_t m,
+                /* Real    */ ae_vector *b, ae_int_t n,
+                /* Real    */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t p;
@@ -2235,17 +2167,20 @@ void convr1dinv(/* Real    */ ae_vector *a,
   ae_vector_init(&buf3, 0, DT_REAL, _state, ae_true);
   _fasttransformplan_init(&plan, _state, ae_true);
 
-  ae_assert((n > 0 && m > 0) && n <= m, "ConvR1DInv: incorrect N or M!", _state);
+  ae_assert((n > 0 && m > 0) && n <= m, "ConvR1DInv: incorrect N or M!",
+            _state);
   p = ftbasefindsmootheven(m, _state);
   ae_vector_set_length(&buf, p, _state);
-  ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1));
+  ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+            ae_v_len(0, m - 1));
   for (i = m; i <= p - 1; i++) {
-    buf.ptr.p_double[i] = (double) (0);
+    buf.ptr.p_double[i] = (double)(0);
   }
   ae_vector_set_length(&buf2, p, _state);
-  ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+  ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+            ae_v_len(0, n - 1));
   for (i = n; i <= p - 1; i++) {
-    buf2.ptr.p_double[i] = (double) (0);
+    buf2.ptr.p_double[i] = (double)(0);
   }
   ae_vector_set_length(&buf3, p, _state);
   ftcomplexfftplan(p / 2, 1, &plan, _state);
@@ -2264,7 +2199,8 @@ void convr1dinv(/* Real    */ ae_vector *a,
   }
   fftr1dinvinternaleven(&buf, p, &buf3, &plan, _state);
   ae_vector_set_length(r, m - n + 1, _state);
-  ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1, ae_v_len(0, m - n));
+  ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1,
+            ae_v_len(0, m - n));
   ae_frame_leave(_state);
 }
 
@@ -2290,12 +2226,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dcircular(/* Real    */ ae_vector *s,
-                                   ae_int_t m,
-    /* Real    */ ae_vector *r,
-                                   ae_int_t n,
-    /* Real    */ ae_vector *c,
-                                   ae_state *_state) {
+void convr1dcircular(/* Real    */ ae_vector *s, ae_int_t m,
+                     /* Real    */ ae_vector *r, ae_int_t n,
+                     /* Real    */ ae_vector *c, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector buf;
   ae_int_t i1;
@@ -2310,19 +2243,20 @@ void convr1dcircular(/* Real    */ ae_vector *s,
   ae_assert(n > 0 && m > 0, "ConvC1DCircular: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&buf, m, _state);
     for (i1 = 0; i1 <= m - 1; i1++) {
-      buf.ptr.p_double[i1] = (double) (0);
+      buf.ptr.p_double[i1] = (double)(0);
     }
     i1 = 0;
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_add(&buf.ptr.p_double[0], 1, &r->ptr.p_double[i1], 1, ae_v_len(0, j2));
+      ae_v_add(&buf.ptr.p_double[0], 1, &r->ptr.p_double[i1], 1,
+               ae_v_len(0, j2));
       i1 = i1 + m;
     }
     convr1dcircular(s, m, &buf, m, c, _state);
@@ -2331,8 +2265,8 @@ void convr1dcircular(/* Real    */ ae_vector *s,
   }
 
   /*
-     * reduce to usual convolution
-     */
+   * reduce to usual convolution
+   */
   convr1dx(s, m, r, n, ae_true, -1, 0, c, _state);
   ae_frame_leave(_state);
 }
@@ -2363,12 +2297,9 @@ correspondingly.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dcircularinv(/* Real    */ ae_vector *a,
-                                      ae_int_t m,
-    /* Real    */ ae_vector *b,
-                                      ae_int_t n,
-    /* Real    */ ae_vector *r,
-                                      ae_state *_state) {
+void convr1dcircularinv(/* Real    */ ae_vector *a, ae_int_t m,
+                        /* Real    */ ae_vector *b, ae_int_t n,
+                        /* Real    */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t i1;
@@ -2402,19 +2333,20 @@ void convr1dcircularinv(/* Real    */ ae_vector *a,
   ae_assert(n > 0 && m > 0, "ConvR1DCircularInv: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&buf, m, _state);
     for (i = 0; i <= m - 1; i++) {
-      buf.ptr.p_double[i] = (double) (0);
+      buf.ptr.p_double[i] = (double)(0);
     }
     i1 = 0;
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_add(&buf.ptr.p_double[0], 1, &b->ptr.p_double[i1], 1, ae_v_len(0, j2));
+      ae_v_add(&buf.ptr.p_double[0], 1, &b->ptr.p_double[i1], 1,
+               ae_v_len(0, j2));
       i1 = i1 + m;
     }
     convr1dcircularinv(a, m, &buf, m, r, _state);
@@ -2423,19 +2355,21 @@ void convr1dcircularinv(/* Real    */ ae_vector *a,
   }
 
   /*
-     * Task is normalized
-     */
+   * Task is normalized
+   */
   if (m % 2 == 0) {
 
     /*
-         * size is even, use fast even-size FFT
-         */
+     * size is even, use fast even-size FFT
+     */
     ae_vector_set_length(&buf, m, _state);
-    ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1));
+    ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+              ae_v_len(0, m - 1));
     ae_vector_set_length(&buf2, m, _state);
-    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+              ae_v_len(0, n - 1));
     for (i = n; i <= m - 1; i++) {
-      buf2.ptr.p_double[i] = (double) (0);
+      buf2.ptr.p_double[i] = (double)(0);
     }
     ae_vector_set_length(&buf3, m, _state);
     ftcomplexfftplan(m / 2, 1, &plan, _state);
@@ -2454,21 +2388,24 @@ void convr1dcircularinv(/* Real    */ ae_vector *a,
     }
     fftr1dinvinternaleven(&buf, m, &buf3, &plan, _state);
     ae_vector_set_length(r, m, _state);
-    ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1, ae_v_len(0, m - 1));
+    ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1,
+              ae_v_len(0, m - 1));
   } else {
 
     /*
-         * odd-size, use general real FFT
-         */
+     * odd-size, use general real FFT
+     */
     fftr1d(a, m, &cbuf, _state);
     ae_vector_set_length(&buf2, m, _state);
-    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+              ae_v_len(0, n - 1));
     for (i = n; i <= m - 1; i++) {
-      buf2.ptr.p_double[i] = (double) (0);
+      buf2.ptr.p_double[i] = (double)(0);
     }
     fftr1d(&buf2, m, &cbuf2, _state);
-    for (i = 0; i <= ae_ifloor((double) m / (double) 2, _state); i++) {
-      cbuf.ptr.p_complex[i] = ae_c_div(cbuf.ptr.p_complex[i], cbuf2.ptr.p_complex[i]);
+    for (i = 0; i <= ae_ifloor((double)m / (double)2, _state); i++) {
+      cbuf.ptr.p_complex[i] =
+          ae_c_div(cbuf.ptr.p_complex[i], cbuf2.ptr.p_complex[i]);
     }
     fftr1dinv(&cbuf, m, r, _state);
   }
@@ -2500,15 +2437,10 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convc1dx(/* Complex */ ae_vector *a,
-                            ae_int_t m,
-    /* Complex */ ae_vector *b,
-                            ae_int_t n,
-                            ae_bool circular,
-                            ae_int_t alg,
-                            ae_int_t q,
-    /* Complex */ ae_vector *r,
-                            ae_state *_state) {
+void convc1dx(/* Complex */ ae_vector *a, ae_int_t m,
+              /* Complex */ ae_vector *b, ae_int_t n, ae_bool circular,
+              ae_int_t alg, ae_int_t q,
+              /* Complex */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_int_t i;
   ae_int_t j;
@@ -2549,33 +2481,34 @@ void convc1dx(/* Complex */ ae_vector *a,
   ae_assert(n <= m, "ConvC1DX: N<M assumption is false!", _state);
 
   /*
-     * Auto-select
-     */
+   * Auto-select
+   */
   if (alg == -1 || alg == -2) {
 
     /*
-         * Initial candidate: straightforward implementation.
-         *
-         * If we want to use auto-fitted overlap-add,
-         * flop count is initialized by large real number - to force
-         * another algorithm selection
-         */
+     * Initial candidate: straightforward implementation.
+     *
+     * If we want to use auto-fitted overlap-add,
+     * flop count is initialized by large real number - to force
+     * another algorithm selection
+     */
     algbest = 0;
     if (alg == -1) {
-      flopbest = (double) (2 * m * n);
+      flopbest = (double)(2 * m * n);
     } else {
       flopbest = ae_maxrealnumber;
     }
 
     /*
-         * Another candidate - generic FFT code
-         */
+     * Another candidate - generic FFT code
+     */
     if (alg == -1) {
       if (circular && ftbaseissmooth(m, _state)) {
 
         /*
-                 * special code for circular convolution of a sequence with a smooth length
-                 */
+         * special code for circular convolution of a sequence with a smooth
+         * length
+         */
         flopcand = 3 * ftbasegetflopestimate(m, _state) + 6 * m;
         if (ae_fp_less(flopcand, flopbest)) {
           algbest = 1;
@@ -2584,8 +2517,8 @@ void convc1dx(/* Complex */ ae_vector *a,
       } else {
 
         /*
-                 * general cyclic/non-cyclic convolution
-                 */
+         * general cyclic/non-cyclic convolution
+         */
         p = ftbasefindsmooth(m + n - 1, _state);
         flopcand = 3 * ftbasegetflopestimate(p, _state) + 6 * p;
         if (ae_fp_less(flopcand, flopbest)) {
@@ -2596,8 +2529,8 @@ void convc1dx(/* Complex */ ae_vector *a,
     }
 
     /*
-         * Another candidate - overlap-add
-         */
+     * Another candidate - overlap-add
+     */
     q = 1;
     ptotal = 1;
     while (ptotal < n) {
@@ -2605,7 +2538,8 @@ void convc1dx(/* Complex */ ae_vector *a,
     }
     while (ptotal <= m + n - 1) {
       p = ptotal - n + 1;
-      flopcand = ae_iceil((double) m / (double) p, _state) * (2 * ftbasegetflopestimate(ptotal, _state) + 8 * ptotal);
+      flopcand = ae_iceil((double)m / (double)p, _state) *
+                 (2 * ftbasegetflopestimate(ptotal, _state) + 8 * ptotal);
       if (ae_fp_less(flopcand, flopbest)) {
         flopbest = flopcand;
         algbest = 2;
@@ -2620,60 +2554,65 @@ void convc1dx(/* Complex */ ae_vector *a,
   }
 
   /*
-     * straightforward formula for
-     * circular and non-circular convolutions.
-     *
-     * Very simple code, no further comments needed.
-     */
+   * straightforward formula for
+   * circular and non-circular convolutions.
+   *
+   * Very simple code, no further comments needed.
+   */
   if (alg == 0) {
 
     /*
-         * Special case: N=1
-         */
+     * Special case: N=1
+     */
     if (n == 1) {
       ae_vector_set_length(r, m, _state);
       v = b->ptr.p_complex[0];
-      ae_v_cmovec(&r->ptr.p_complex[0], 1, &a->ptr.p_complex[0], 1, "N", ae_v_len(0, m - 1), v);
+      ae_v_cmovec(&r->ptr.p_complex[0], 1, &a->ptr.p_complex[0], 1, "N",
+                  ae_v_len(0, m - 1), v);
       ae_frame_leave(_state);
       return;
     }
 
     /*
-         * use straightforward formula
-         */
+     * use straightforward formula
+     */
     if (circular) {
 
       /*
-             * circular convolution
-             */
+       * circular convolution
+       */
       ae_vector_set_length(r, m, _state);
       v = b->ptr.p_complex[0];
-      ae_v_cmovec(&r->ptr.p_complex[0], 1, &a->ptr.p_complex[0], 1, "N", ae_v_len(0, m - 1), v);
+      ae_v_cmovec(&r->ptr.p_complex[0], 1, &a->ptr.p_complex[0], 1, "N",
+                  ae_v_len(0, m - 1), v);
       for (i = 1; i <= n - 1; i++) {
         v = b->ptr.p_complex[i];
         i1 = 0;
         i2 = i - 1;
         j1 = m - i;
         j2 = m - 1;
-        ae_v_caddc(&r->ptr.p_complex[i1], 1, &a->ptr.p_complex[j1], 1, "N", ae_v_len(i1, i2), v);
+        ae_v_caddc(&r->ptr.p_complex[i1], 1, &a->ptr.p_complex[j1], 1, "N",
+                   ae_v_len(i1, i2), v);
         i1 = i;
         i2 = m - 1;
         j1 = 0;
         j2 = m - i - 1;
-        ae_v_caddc(&r->ptr.p_complex[i1], 1, &a->ptr.p_complex[j1], 1, "N", ae_v_len(i1, i2), v);
+        ae_v_caddc(&r->ptr.p_complex[i1], 1, &a->ptr.p_complex[j1], 1, "N",
+                   ae_v_len(i1, i2), v);
       }
     } else {
 
       /*
-             * non-circular convolution
-             */
+       * non-circular convolution
+       */
       ae_vector_set_length(r, m + n - 1, _state);
       for (i = 0; i <= m + n - 2; i++) {
         r->ptr.p_complex[i] = ae_complex_from_i(0);
       }
       for (i = 0; i <= n - 1; i++) {
         v = b->ptr.p_complex[i];
-        ae_v_caddc(&r->ptr.p_complex[i], 1, &a->ptr.p_complex[0], 1, "N", ae_v_len(i, i + m - 1), v);
+        ae_v_caddc(&r->ptr.p_complex[i], 1, &a->ptr.p_complex[0], 1, "N",
+                   ae_v_len(i, i + m - 1), v);
       }
     }
     ae_frame_leave(_state);
@@ -2681,21 +2620,21 @@ void convc1dx(/* Complex */ ae_vector *a,
   }
 
   /*
-     * general FFT-based code for
-     * circular and non-circular convolutions.
-     *
-     * First, if convolution is circular, we test whether M is smooth or not.
-     * If it is smooth, we just use M-length FFT to calculate convolution.
-     * If it is not, we calculate non-circular convolution and wrap it arount.
-     *
-     * IF convolution is non-circular, we use zero-padding + FFT.
-     */
+   * general FFT-based code for
+   * circular and non-circular convolutions.
+   *
+   * First, if convolution is circular, we test whether M is smooth or not.
+   * If it is smooth, we just use M-length FFT to calculate convolution.
+   * If it is not, we calculate non-circular convolution and wrap it arount.
+   *
+   * IF convolution is non-circular, we use zero-padding + FFT.
+   */
   if (alg == 1) {
     if (circular && ftbaseissmooth(m, _state)) {
 
       /*
-             * special code for circular convolution with smooth M
-             */
+       * special code for circular convolution with smooth M
+       */
       ftcomplexfftplan(m, 1, &plan, _state);
       ae_vector_set_length(&buf, 2 * m, _state);
       for (i = 0; i <= m - 1; i++) {
@@ -2708,8 +2647,8 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf2.ptr.p_double[2 * i + 1] = b->ptr.p_complex[i].y;
       }
       for (i = n; i <= m - 1; i++) {
-        buf2.ptr.p_double[2 * i + 0] = (double) (0);
-        buf2.ptr.p_double[2 * i + 1] = (double) (0);
+        buf2.ptr.p_double[2 * i + 0] = (double)(0);
+        buf2.ptr.p_double[2 * i + 1] = (double)(0);
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
       ftapplyplan(&plan, &buf2, 0, 1, _state);
@@ -2724,7 +2663,7 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf.ptr.p_double[2 * i + 1] = -ty;
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
-      t = (double) 1 / (double) m;
+      t = (double)1 / (double)m;
       ae_vector_set_length(r, m, _state);
       for (i = 0; i <= m - 1; i++) {
         r->ptr.p_complex[i].x = t * buf.ptr.p_double[2 * i + 0];
@@ -2733,13 +2672,13 @@ void convc1dx(/* Complex */ ae_vector *a,
     } else {
 
       /*
-             * M is non-smooth, general code (circular/non-circular):
-             * * first part is the same for circular and non-circular
-             *   convolutions. zero padding, FFTs, inverse FFTs
-             * * second part differs:
-             *   * for non-circular convolution we just copy array
-             *   * for circular convolution we add array tail to its head
-             */
+       * M is non-smooth, general code (circular/non-circular):
+       * * first part is the same for circular and non-circular
+       *   convolutions. zero padding, FFTs, inverse FFTs
+       * * second part differs:
+       *   * for non-circular convolution we just copy array
+       *   * for circular convolution we add array tail to its head
+       */
       p = ftbasefindsmooth(m + n - 1, _state);
       ftcomplexfftplan(p, 1, &plan, _state);
       ae_vector_set_length(&buf, 2 * p, _state);
@@ -2748,8 +2687,8 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf.ptr.p_double[2 * i + 1] = a->ptr.p_complex[i].y;
       }
       for (i = m; i <= p - 1; i++) {
-        buf.ptr.p_double[2 * i + 0] = (double) (0);
-        buf.ptr.p_double[2 * i + 1] = (double) (0);
+        buf.ptr.p_double[2 * i + 0] = (double)(0);
+        buf.ptr.p_double[2 * i + 1] = (double)(0);
       }
       ae_vector_set_length(&buf2, 2 * p, _state);
       for (i = 0; i <= n - 1; i++) {
@@ -2757,8 +2696,8 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf2.ptr.p_double[2 * i + 1] = b->ptr.p_complex[i].y;
       }
       for (i = n; i <= p - 1; i++) {
-        buf2.ptr.p_double[2 * i + 0] = (double) (0);
-        buf2.ptr.p_double[2 * i + 1] = (double) (0);
+        buf2.ptr.p_double[2 * i + 0] = (double)(0);
+        buf2.ptr.p_double[2 * i + 1] = (double)(0);
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
       ftapplyplan(&plan, &buf2, 0, 1, _state);
@@ -2773,26 +2712,28 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf.ptr.p_double[2 * i + 1] = -ty;
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
-      t = (double) 1 / (double) p;
+      t = (double)1 / (double)p;
       if (circular) {
 
         /*
-                 * circular, add tail to head
-                 */
+         * circular, add tail to head
+         */
         ae_vector_set_length(r, m, _state);
         for (i = 0; i <= m - 1; i++) {
           r->ptr.p_complex[i].x = t * buf.ptr.p_double[2 * i + 0];
           r->ptr.p_complex[i].y = -t * buf.ptr.p_double[2 * i + 1];
         }
         for (i = m; i <= m + n - 2; i++) {
-          r->ptr.p_complex[i - m].x = r->ptr.p_complex[i - m].x + t * buf.ptr.p_double[2 * i + 0];
-          r->ptr.p_complex[i - m].y = r->ptr.p_complex[i - m].y - t * buf.ptr.p_double[2 * i + 1];
+          r->ptr.p_complex[i - m].x =
+              r->ptr.p_complex[i - m].x + t * buf.ptr.p_double[2 * i + 0];
+          r->ptr.p_complex[i - m].y =
+              r->ptr.p_complex[i - m].y - t * buf.ptr.p_double[2 * i + 1];
         }
       } else {
 
         /*
-                 * non-circular, just copy
-                 */
+         * non-circular, just copy
+         */
         ae_vector_set_length(r, m + n - 1, _state);
         for (i = 0; i <= m + n - 2; i++) {
           r->ptr.p_complex[i].x = t * buf.ptr.p_double[2 * i + 0];
@@ -2805,21 +2746,21 @@ void convc1dx(/* Complex */ ae_vector *a,
   }
 
   /*
-     * overlap-add method for
-     * circular and non-circular convolutions.
-     *
-     * First part of code (separate FFTs of input blocks) is the same
-     * for all types of convolution. Second part (overlapping outputs)
-     * differs for different types of convolution. We just copy output
-     * when convolution is non-circular. We wrap it around, if it is
-     * circular.
-     */
+   * overlap-add method for
+   * circular and non-circular convolutions.
+   *
+   * First part of code (separate FFTs of input blocks) is the same
+   * for all types of convolution. Second part (overlapping outputs)
+   * differs for different types of convolution. We just copy output
+   * when convolution is non-circular. We wrap it around, if it is
+   * circular.
+   */
   if (alg == 2) {
     ae_vector_set_length(&buf, 2 * (q + n - 1), _state);
 
     /*
-         * prepare R
-         */
+     * prepare R
+     */
     if (circular) {
       ae_vector_set_length(r, m, _state);
       for (i = 0; i <= m - 1; i++) {
@@ -2833,23 +2774,24 @@ void convc1dx(/* Complex */ ae_vector *a,
     }
 
     /*
-         * pre-calculated FFT(B)
-         */
+     * pre-calculated FFT(B)
+     */
     ae_vector_set_length(&bbuf, q + n - 1, _state);
-    ae_v_cmove(&bbuf.ptr.p_complex[0], 1, &b->ptr.p_complex[0], 1, "N", ae_v_len(0, n - 1));
+    ae_v_cmove(&bbuf.ptr.p_complex[0], 1, &b->ptr.p_complex[0], 1, "N",
+               ae_v_len(0, n - 1));
     for (j = n; j <= q + n - 2; j++) {
       bbuf.ptr.p_complex[j] = ae_complex_from_i(0);
     }
     fftc1d(&bbuf, q + n - 1, _state);
 
     /*
-         * prepare FFT plan for chunks of A
-         */
+     * prepare FFT plan for chunks of A
+     */
     ftcomplexfftplan(q + n - 1, 1, &plan, _state);
 
     /*
-         * main overlap-add cycle
-         */
+     * main overlap-add cycle
+     */
     i = 0;
     while (i <= m - 1) {
       p = ae_minint(q, m - i, _state);
@@ -2858,8 +2800,8 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf.ptr.p_double[2 * j + 1] = a->ptr.p_complex[i + j].y;
       }
       for (j = p; j <= q + n - 2; j++) {
-        buf.ptr.p_double[2 * j + 0] = (double) (0);
-        buf.ptr.p_double[2 * j + 1] = (double) (0);
+        buf.ptr.p_double[2 * j + 0] = (double)(0);
+        buf.ptr.p_double[2 * j + 1] = (double)(0);
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
       for (j = 0; j <= q + n - 2; j++) {
@@ -2873,7 +2815,7 @@ void convc1dx(/* Complex */ ae_vector *a,
         buf.ptr.p_double[2 * j + 1] = -ty;
       }
       ftapplyplan(&plan, &buf, 0, 1, _state);
-      t = (double) 1 / (double) (q + n - 1);
+      t = (double)1 / (double)(q + n - 1);
       if (circular) {
         j1 = ae_minint(i + p + n - 2, m - 1, _state) - i;
         j2 = j1 + 1;
@@ -2882,12 +2824,16 @@ void convc1dx(/* Complex */ ae_vector *a,
         j2 = j1 + 1;
       }
       for (j = 0; j <= j1; j++) {
-        r->ptr.p_complex[i + j].x = r->ptr.p_complex[i + j].x + buf.ptr.p_double[2 * j + 0] * t;
-        r->ptr.p_complex[i + j].y = r->ptr.p_complex[i + j].y - buf.ptr.p_double[2 * j + 1] * t;
+        r->ptr.p_complex[i + j].x =
+            r->ptr.p_complex[i + j].x + buf.ptr.p_double[2 * j + 0] * t;
+        r->ptr.p_complex[i + j].y =
+            r->ptr.p_complex[i + j].y - buf.ptr.p_double[2 * j + 1] * t;
       }
       for (j = j2; j <= p + n - 2; j++) {
-        r->ptr.p_complex[j - j2].x = r->ptr.p_complex[j - j2].x + buf.ptr.p_double[2 * j + 0] * t;
-        r->ptr.p_complex[j - j2].y = r->ptr.p_complex[j - j2].y - buf.ptr.p_double[2 * j + 1] * t;
+        r->ptr.p_complex[j - j2].x =
+            r->ptr.p_complex[j - j2].x + buf.ptr.p_double[2 * j + 0] * t;
+        r->ptr.p_complex[j - j2].y =
+            r->ptr.p_complex[j - j2].y - buf.ptr.p_double[2 * j + 1] * t;
       }
       i = i + p;
     }
@@ -2922,15 +2868,10 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void convr1dx(/* Real    */ ae_vector *a,
-                            ae_int_t m,
-    /* Real    */ ae_vector *b,
-                            ae_int_t n,
-                            ae_bool circular,
-                            ae_int_t alg,
-                            ae_int_t q,
-    /* Real    */ ae_vector *r,
-                            ae_state *_state) {
+void convr1dx(/* Real    */ ae_vector *a, ae_int_t m,
+              /* Real    */ ae_vector *b, ae_int_t n, ae_bool circular,
+              ae_int_t alg, ae_int_t q,
+              /* Real    */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   double v;
   ae_int_t i;
@@ -2970,24 +2911,24 @@ void convr1dx(/* Real    */ ae_vector *a,
   ae_assert(n <= m, "ConvC1DX: N<M assumption is false!", _state);
 
   /*
-     * handle special cases
-     */
+   * handle special cases
+   */
   if (ae_minint(m, n, _state) <= 2) {
     alg = 0;
   }
 
   /*
-     * Auto-select
-     */
+   * Auto-select
+   */
   if (alg < 0) {
 
     /*
-         * Initial candidate: straightforward implementation.
-         *
-         * If we want to use auto-fitted overlap-add,
-         * flop count is initialized by large real number - to force
-         * another algorithm selection
-         */
+     * Initial candidate: straightforward implementation.
+     *
+     * If we want to use auto-fitted overlap-add,
+     * flop count is initialized by large real number - to force
+     * another algorithm selection
+     */
     algbest = 0;
     if (alg == -1) {
       flopbest = 0.15 * m * n;
@@ -2996,15 +2937,17 @@ void convr1dx(/* Real    */ ae_vector *a,
     }
 
     /*
-         * Another candidate - generic FFT code
-         */
+     * Another candidate - generic FFT code
+     */
     if (alg == -1) {
       if ((circular && ftbaseissmooth(m, _state)) && m % 2 == 0) {
 
         /*
-                 * special code for circular convolution of a sequence with a smooth length
-                 */
-        flopcand = 3 * ftbasegetflopestimate(m / 2, _state) + (double) (6 * m) / (double) 2;
+         * special code for circular convolution of a sequence with a smooth
+         * length
+         */
+        flopcand = 3 * ftbasegetflopestimate(m / 2, _state) +
+                   (double)(6 * m) / (double)2;
         if (ae_fp_less(flopcand, flopbest)) {
           algbest = 1;
           flopbest = flopcand;
@@ -3012,10 +2955,11 @@ void convr1dx(/* Real    */ ae_vector *a,
       } else {
 
         /*
-                 * general cyclic/non-cyclic convolution
-                 */
+         * general cyclic/non-cyclic convolution
+         */
         p = ftbasefindsmootheven(m + n - 1, _state);
-        flopcand = 3 * ftbasegetflopestimate(p / 2, _state) + (double) (6 * p) / (double) 2;
+        flopcand = 3 * ftbasegetflopestimate(p / 2, _state) +
+                   (double)(6 * p) / (double)2;
         if (ae_fp_less(flopcand, flopbest)) {
           algbest = 1;
           flopbest = flopcand;
@@ -3024,8 +2968,8 @@ void convr1dx(/* Real    */ ae_vector *a,
     }
 
     /*
-         * Another candidate - overlap-add
-         */
+     * Another candidate - overlap-add
+     */
     q = 1;
     ptotal = 1;
     while (ptotal < n) {
@@ -3033,8 +2977,9 @@ void convr1dx(/* Real    */ ae_vector *a,
     }
     while (ptotal <= m + n - 1) {
       p = ptotal - n + 1;
-      flopcand = ae_iceil((double) m / (double) p, _state)
-          * (2 * ftbasegetflopestimate(ptotal / 2, _state) + 1 * (ptotal / 2));
+      flopcand =
+          ae_iceil((double)m / (double)p, _state) *
+          (2 * ftbasegetflopestimate(ptotal / 2, _state) + 1 * (ptotal / 2));
       if (ae_fp_less(flopcand, flopbest)) {
         flopbest = flopcand;
         algbest = 2;
@@ -3049,60 +2994,65 @@ void convr1dx(/* Real    */ ae_vector *a,
   }
 
   /*
-     * straightforward formula for
-     * circular and non-circular convolutions.
-     *
-     * Very simple code, no further comments needed.
-     */
+   * straightforward formula for
+   * circular and non-circular convolutions.
+   *
+   * Very simple code, no further comments needed.
+   */
   if (alg == 0) {
 
     /*
-         * Special case: N=1
-         */
+     * Special case: N=1
+     */
     if (n == 1) {
       ae_vector_set_length(r, m, _state);
       v = b->ptr.p_double[0];
-      ae_v_moved(&r->ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1), v);
+      ae_v_moved(&r->ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+                 ae_v_len(0, m - 1), v);
       ae_frame_leave(_state);
       return;
     }
 
     /*
-         * use straightforward formula
-         */
+     * use straightforward formula
+     */
     if (circular) {
 
       /*
-             * circular convolution
-             */
+       * circular convolution
+       */
       ae_vector_set_length(r, m, _state);
       v = b->ptr.p_double[0];
-      ae_v_moved(&r->ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1), v);
+      ae_v_moved(&r->ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+                 ae_v_len(0, m - 1), v);
       for (i = 1; i <= n - 1; i++) {
         v = b->ptr.p_double[i];
         i1 = 0;
         i2 = i - 1;
         j1 = m - i;
         j2 = m - 1;
-        ae_v_addd(&r->ptr.p_double[i1], 1, &a->ptr.p_double[j1], 1, ae_v_len(i1, i2), v);
+        ae_v_addd(&r->ptr.p_double[i1], 1, &a->ptr.p_double[j1], 1,
+                  ae_v_len(i1, i2), v);
         i1 = i;
         i2 = m - 1;
         j1 = 0;
         j2 = m - i - 1;
-        ae_v_addd(&r->ptr.p_double[i1], 1, &a->ptr.p_double[j1], 1, ae_v_len(i1, i2), v);
+        ae_v_addd(&r->ptr.p_double[i1], 1, &a->ptr.p_double[j1], 1,
+                  ae_v_len(i1, i2), v);
       }
     } else {
 
       /*
-             * non-circular convolution
-             */
+       * non-circular convolution
+       */
       ae_vector_set_length(r, m + n - 1, _state);
       for (i = 0; i <= m + n - 2; i++) {
-        r->ptr.p_double[i] = (double) (0);
+        r->ptr.p_double[i] = (double)(0);
       }
       for (i = 0; i <= n - 1; i++) {
         v = b->ptr.p_double[i];
-        ae_v_addd(&r->ptr.p_double[i], 1, &a->ptr.p_double[0], 1, ae_v_len(i, i + m - 1), v);
+        ae_v_addd(&r->ptr.p_double[i], 1, &a->ptr.p_double[0], 1,
+                  ae_v_len(i, i + m - 1), v);
       }
     }
     ae_frame_leave(_state);
@@ -3110,30 +3060,32 @@ void convr1dx(/* Real    */ ae_vector *a,
   }
 
   /*
-     * general FFT-based code for
-     * circular and non-circular convolutions.
-     *
-     * First, if convolution is circular, we test whether M is smooth or not.
-     * If it is smooth, we just use M-length FFT to calculate convolution.
-     * If it is not, we calculate non-circular convolution and wrap it arount.
-     *
-     * If convolution is non-circular, we use zero-padding + FFT.
-     *
-     * We assume that M+N-1>2 - we should call small case code otherwise
-     */
+   * general FFT-based code for
+   * circular and non-circular convolutions.
+   *
+   * First, if convolution is circular, we test whether M is smooth or not.
+   * If it is smooth, we just use M-length FFT to calculate convolution.
+   * If it is not, we calculate non-circular convolution and wrap it arount.
+   *
+   * If convolution is non-circular, we use zero-padding + FFT.
+   *
+   * We assume that M+N-1>2 - we should call small case code otherwise
+   */
   if (alg == 1) {
     ae_assert(m + n - 1 > 2, "ConvR1DX: internal error!", _state);
     if ((circular && ftbaseissmooth(m, _state)) && m % 2 == 0) {
 
       /*
-             * special code for circular convolution with smooth even M
-             */
+       * special code for circular convolution with smooth even M
+       */
       ae_vector_set_length(&buf, m, _state);
-      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1));
+      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+                ae_v_len(0, m - 1));
       ae_vector_set_length(&buf2, m, _state);
-      ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+      ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+                ae_v_len(0, n - 1));
       for (i = n; i <= m - 1; i++) {
-        buf2.ptr.p_double[i] = (double) (0);
+        buf2.ptr.p_double[i] = (double)(0);
       }
       ae_vector_set_length(&buf3, m, _state);
       ftcomplexfftplan(m / 2, 1, &plan, _state);
@@ -3153,27 +3105,30 @@ void convr1dx(/* Real    */ ae_vector *a,
       }
       fftr1dinvinternaleven(&buf, m, &buf3, &plan, _state);
       ae_vector_set_length(r, m, _state);
-      ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1, ae_v_len(0, m - 1));
+      ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1,
+                ae_v_len(0, m - 1));
     } else {
 
       /*
-             * M is non-smooth or non-even, general code (circular/non-circular):
-             * * first part is the same for circular and non-circular
-             *   convolutions. zero padding, FFTs, inverse FFTs
-             * * second part differs:
-             *   * for non-circular convolution we just copy array
-             *   * for circular convolution we add array tail to its head
-             */
+       * M is non-smooth or non-even, general code (circular/non-circular):
+       * * first part is the same for circular and non-circular
+       *   convolutions. zero padding, FFTs, inverse FFTs
+       * * second part differs:
+       *   * for non-circular convolution we just copy array
+       *   * for circular convolution we add array tail to its head
+       */
       p = ftbasefindsmootheven(m + n - 1, _state);
       ae_vector_set_length(&buf, p, _state);
-      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1, ae_v_len(0, m - 1));
+      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[0], 1,
+                ae_v_len(0, m - 1));
       for (i = m; i <= p - 1; i++) {
-        buf.ptr.p_double[i] = (double) (0);
+        buf.ptr.p_double[i] = (double)(0);
       }
       ae_vector_set_length(&buf2, p, _state);
-      ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+      ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+                ae_v_len(0, n - 1));
       for (i = n; i <= p - 1; i++) {
-        buf2.ptr.p_double[i] = (double) (0);
+        buf2.ptr.p_double[i] = (double)(0);
       }
       ae_vector_set_length(&buf3, p, _state);
       ftcomplexfftplan(p / 2, 1, &plan, _state);
@@ -3195,20 +3150,23 @@ void convr1dx(/* Real    */ ae_vector *a,
       if (circular) {
 
         /*
-                 * circular, add tail to head
-                 */
+         * circular, add tail to head
+         */
         ae_vector_set_length(r, m, _state);
-        ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1, ae_v_len(0, m - 1));
+        ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1,
+                  ae_v_len(0, m - 1));
         if (n >= 2) {
-          ae_v_add(&r->ptr.p_double[0], 1, &buf.ptr.p_double[m], 1, ae_v_len(0, n - 2));
+          ae_v_add(&r->ptr.p_double[0], 1, &buf.ptr.p_double[m], 1,
+                   ae_v_len(0, n - 2));
         }
       } else {
 
         /*
-                 * non-circular, just copy
-                 */
+         * non-circular, just copy
+         */
         ae_vector_set_length(r, m + n - 1, _state);
-        ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1, ae_v_len(0, m + n - 2));
+        ae_v_move(&r->ptr.p_double[0], 1, &buf.ptr.p_double[0], 1,
+                  ae_v_len(0, m + n - 2));
       }
     }
     ae_frame_leave(_state);
@@ -3216,8 +3174,8 @@ void convr1dx(/* Real    */ ae_vector *a,
   }
 
   /*
-     * overlap-add method
-     */
+   * overlap-add method
+   */
   if (alg == 2) {
     ae_assert((q + n - 1) % 2 == 0, "ConvR1DX: internal error!", _state);
     ae_vector_set_length(&buf, q + n - 1, _state);
@@ -3226,38 +3184,40 @@ void convr1dx(/* Real    */ ae_vector *a,
     ftcomplexfftplan((q + n - 1) / 2, 1, &plan, _state);
 
     /*
-         * prepare R
-         */
+     * prepare R
+     */
     if (circular) {
       ae_vector_set_length(r, m, _state);
       for (i = 0; i <= m - 1; i++) {
-        r->ptr.p_double[i] = (double) (0);
+        r->ptr.p_double[i] = (double)(0);
       }
     } else {
       ae_vector_set_length(r, m + n - 1, _state);
       for (i = 0; i <= m + n - 2; i++) {
-        r->ptr.p_double[i] = (double) (0);
+        r->ptr.p_double[i] = (double)(0);
       }
     }
 
     /*
-         * pre-calculated FFT(B)
-         */
-    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1, ae_v_len(0, n - 1));
+     * pre-calculated FFT(B)
+     */
+    ae_v_move(&buf2.ptr.p_double[0], 1, &b->ptr.p_double[0], 1,
+              ae_v_len(0, n - 1));
     for (j = n; j <= q + n - 2; j++) {
-      buf2.ptr.p_double[j] = (double) (0);
+      buf2.ptr.p_double[j] = (double)(0);
     }
     fftr1dinternaleven(&buf2, q + n - 1, &buf3, &plan, _state);
 
     /*
-         * main overlap-add cycle
-         */
+     * main overlap-add cycle
+     */
     i = 0;
     while (i <= m - 1) {
       p = ae_minint(q, m - i, _state);
-      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[i], 1, ae_v_len(0, p - 1));
+      ae_v_move(&buf.ptr.p_double[0], 1, &a->ptr.p_double[i], 1,
+                ae_v_len(0, p - 1));
       for (j = p; j <= q + n - 2; j++) {
-        buf.ptr.p_double[j] = (double) (0);
+        buf.ptr.p_double[j] = (double)(0);
       }
       fftr1dinternaleven(&buf, q + n - 1, &buf3, &plan, _state);
       buf.ptr.p_double[0] = buf.ptr.p_double[0] * buf2.ptr.p_double[0];
@@ -3280,9 +3240,11 @@ void convr1dx(/* Real    */ ae_vector *a,
         j1 = p + n - 2;
         j2 = j1 + 1;
       }
-      ae_v_add(&r->ptr.p_double[i], 1, &buf.ptr.p_double[0], 1, ae_v_len(i, i + j1));
+      ae_v_add(&r->ptr.p_double[i], 1, &buf.ptr.p_double[0], 1,
+               ae_v_len(i, i + j1));
       if (p + n - 2 >= j2) {
-        ae_v_add(&r->ptr.p_double[0], 1, &buf.ptr.p_double[j2], 1, ae_v_len(0, p + n - 2 - j2));
+        ae_v_add(&r->ptr.p_double[0], 1, &buf.ptr.p_double[j2], 1,
+                 ae_v_len(0, p + n - 2 - j2));
       }
       i = i + p;
     }
@@ -3331,12 +3293,9 @@ on [-K..M-1],  you can still use this subroutine, just shift result by K.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrc1d(/* Complex */ ae_vector *signal,
-                           ae_int_t n,
-    /* Complex */ ae_vector *pattern,
-                           ae_int_t m,
-    /* Complex */ ae_vector *r,
-                           ae_state *_state) {
+void corrc1d(/* Complex */ ae_vector *signal, ae_int_t n,
+             /* Complex */ ae_vector *pattern, ae_int_t m,
+             /* Complex */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector p;
   ae_vector b;
@@ -3356,9 +3315,11 @@ void corrc1d(/* Complex */ ae_vector *signal,
   }
   convc1d(&p, m, signal, n, &b, _state);
   ae_vector_set_length(r, m + n - 1, _state);
-  ae_v_cmove(&r->ptr.p_complex[0], 1, &b.ptr.p_complex[m - 1], 1, "N", ae_v_len(0, n - 1));
+  ae_v_cmove(&r->ptr.p_complex[0], 1, &b.ptr.p_complex[m - 1], 1, "N",
+             ae_v_len(0, n - 1));
   if (m + n - 2 >= n) {
-    ae_v_cmove(&r->ptr.p_complex[n], 1, &b.ptr.p_complex[0], 1, "N", ae_v_len(n, m + n - 2));
+    ae_v_cmove(&r->ptr.p_complex[n], 1, &b.ptr.p_complex[0], 1, "N",
+               ae_v_len(n, m + n - 2));
   }
   ae_frame_leave(_state);
 }
@@ -3390,12 +3351,9 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrc1dcircular(/* Complex */ ae_vector *signal,
-                                   ae_int_t m,
-    /* Complex */ ae_vector *pattern,
-                                   ae_int_t n,
-    /* Complex */ ae_vector *c,
-                                   ae_state *_state) {
+void corrc1dcircular(/* Complex */ ae_vector *signal, ae_int_t m,
+                     /* Complex */ ae_vector *pattern, ae_int_t n,
+                     /* Complex */ ae_vector *c, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector p;
   ae_vector b;
@@ -3414,9 +3372,9 @@ void corrc1dcircular(/* Complex */ ae_vector *signal,
   ae_assert(n > 0 && m > 0, "ConvC1DCircular: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&b, m, _state);
     for (i1 = 0; i1 <= m - 1; i1++) {
@@ -3426,7 +3384,8 @@ void corrc1dcircular(/* Complex */ ae_vector *signal,
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_cadd(&b.ptr.p_complex[0], 1, &pattern->ptr.p_complex[i1], 1, "N", ae_v_len(0, j2));
+      ae_v_cadd(&b.ptr.p_complex[0], 1, &pattern->ptr.p_complex[i1], 1, "N",
+                ae_v_len(0, j2));
       i1 = i1 + m;
     }
     corrc1dcircular(signal, m, &b, m, c, _state);
@@ -3435,17 +3394,19 @@ void corrc1dcircular(/* Complex */ ae_vector *signal,
   }
 
   /*
-     * Task is normalized
-     */
+   * Task is normalized
+   */
   ae_vector_set_length(&p, n, _state);
   for (i = 0; i <= n - 1; i++) {
     p.ptr.p_complex[n - 1 - i] = ae_c_conj(pattern->ptr.p_complex[i], _state);
   }
   convc1dcircular(signal, m, &p, n, &b, _state);
   ae_vector_set_length(c, m, _state);
-  ae_v_cmove(&c->ptr.p_complex[0], 1, &b.ptr.p_complex[n - 1], 1, "N", ae_v_len(0, m - n));
+  ae_v_cmove(&c->ptr.p_complex[0], 1, &b.ptr.p_complex[n - 1], 1, "N",
+             ae_v_len(0, m - n));
   if (m - n + 1 <= m - 1) {
-    ae_v_cmove(&c->ptr.p_complex[m - n + 1], 1, &b.ptr.p_complex[0], 1, "N", ae_v_len(m - n + 1, m - 1));
+    ae_v_cmove(&c->ptr.p_complex[m - n + 1], 1, &b.ptr.p_complex[0], 1, "N",
+               ae_v_len(m - n + 1, m - 1));
   }
   ae_frame_leave(_state);
 }
@@ -3486,12 +3447,9 @@ on [-K..M-1],  you can still use this subroutine, just shift result by K.
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrr1d(/* Real    */ ae_vector *signal,
-                           ae_int_t n,
-    /* Real    */ ae_vector *pattern,
-                           ae_int_t m,
-    /* Real    */ ae_vector *r,
-                           ae_state *_state) {
+void corrr1d(/* Real    */ ae_vector *signal, ae_int_t n,
+             /* Real    */ ae_vector *pattern, ae_int_t m,
+             /* Real    */ ae_vector *r, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector p;
   ae_vector b;
@@ -3511,9 +3469,11 @@ void corrr1d(/* Real    */ ae_vector *signal,
   }
   convr1d(&p, m, signal, n, &b, _state);
   ae_vector_set_length(r, m + n - 1, _state);
-  ae_v_move(&r->ptr.p_double[0], 1, &b.ptr.p_double[m - 1], 1, ae_v_len(0, n - 1));
+  ae_v_move(&r->ptr.p_double[0], 1, &b.ptr.p_double[m - 1], 1,
+            ae_v_len(0, n - 1));
   if (m + n - 2 >= n) {
-    ae_v_move(&r->ptr.p_double[n], 1, &b.ptr.p_double[0], 1, ae_v_len(n, m + n - 2));
+    ae_v_move(&r->ptr.p_double[n], 1, &b.ptr.p_double[0], 1,
+              ae_v_len(n, m + n - 2));
   }
   ae_frame_leave(_state);
 }
@@ -3545,12 +3505,9 @@ OUTPUT PARAMETERS
   -- ALGLIB --
      Copyright 21.07.2009 by Bochkanov Sergey
 *************************************************************************/
-void corrr1dcircular(/* Real    */ ae_vector *signal,
-                                   ae_int_t m,
-    /* Real    */ ae_vector *pattern,
-                                   ae_int_t n,
-    /* Real    */ ae_vector *c,
-                                   ae_state *_state) {
+void corrr1dcircular(/* Real    */ ae_vector *signal, ae_int_t m,
+                     /* Real    */ ae_vector *pattern, ae_int_t n,
+                     /* Real    */ ae_vector *c, ae_state *_state) {
   ae_frame _frame_block;
   ae_vector p;
   ae_vector b;
@@ -3569,19 +3526,20 @@ void corrr1dcircular(/* Real    */ ae_vector *signal,
   ae_assert(n > 0 && m > 0, "ConvC1DCircular: incorrect N or M!", _state);
 
   /*
-     * normalize task: make M>=N,
-     * so A will be longer (at least - not shorter) that B.
-     */
+   * normalize task: make M>=N,
+   * so A will be longer (at least - not shorter) that B.
+   */
   if (m < n) {
     ae_vector_set_length(&b, m, _state);
     for (i1 = 0; i1 <= m - 1; i1++) {
-      b.ptr.p_double[i1] = (double) (0);
+      b.ptr.p_double[i1] = (double)(0);
     }
     i1 = 0;
     while (i1 < n) {
       i2 = ae_minint(i1 + m - 1, n - 1, _state);
       j2 = i2 - i1;
-      ae_v_add(&b.ptr.p_double[0], 1, &pattern->ptr.p_double[i1], 1, ae_v_len(0, j2));
+      ae_v_add(&b.ptr.p_double[0], 1, &pattern->ptr.p_double[i1], 1,
+               ae_v_len(0, j2));
       i1 = i1 + m;
     }
     corrr1dcircular(signal, m, &b, m, c, _state);
@@ -3590,22 +3548,23 @@ void corrr1dcircular(/* Real    */ ae_vector *signal,
   }
 
   /*
-     * Task is normalized
-     */
+   * Task is normalized
+   */
   ae_vector_set_length(&p, n, _state);
   for (i = 0; i <= n - 1; i++) {
     p.ptr.p_double[n - 1 - i] = pattern->ptr.p_double[i];
   }
   convr1dcircular(signal, m, &p, n, &b, _state);
   ae_vector_set_length(c, m, _state);
-  ae_v_move(&c->ptr.p_double[0], 1, &b.ptr.p_double[n - 1], 1, ae_v_len(0, m - n));
+  ae_v_move(&c->ptr.p_double[0], 1, &b.ptr.p_double[n - 1], 1,
+            ae_v_len(0, m - n));
   if (m - n + 1 <= m - 1) {
-    ae_v_move(&c->ptr.p_double[m - n + 1], 1, &b.ptr.p_double[0], 1, ae_v_len(m - n + 1, m - 1));
+    ae_v_move(&c->ptr.p_double[m - n + 1], 1, &b.ptr.p_double[0], 1,
+              ae_v_len(m - n + 1, m - 1));
   }
   ae_frame_leave(_state);
 }
 
 #endif
 
-}
-
+} // namespace alglib_impl

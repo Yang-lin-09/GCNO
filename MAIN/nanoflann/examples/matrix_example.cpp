@@ -103,7 +103,7 @@ void kdtree_demo(const size_t nSamples, const size_t dim) {
   //	typedef KDTreeEigenMatrixAdaptor<
   // Eigen::Matrix<num_t,Dynamic,Dynamic>,nanoflann::metric_L2, true>
   // my_kd_tree_t;
-  
+
   my_kd_tree_t mat_index(dim, std::cref(mat), 10 /* max leaf */);
   mat_index.index->buildIndex();
 

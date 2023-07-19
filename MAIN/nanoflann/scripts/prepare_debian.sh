@@ -56,7 +56,7 @@ else
 fi
 
 # Prepare a directory for building the debian package:
-# 
+#
 rm -fR $NANOFLANN_DEB_DIR
 mkdir $NANOFLANN_DEB_DIR
 
@@ -102,7 +102,7 @@ cp -r ${NANOFLANN_EXTERN_DEBIAN_DIR}/* nanoflann-${NANOFLANN_VERSION_STR}/debian
 cp ${NANOFLANN_EXTERN_DEBIAN_DIR}/copyright nanoflann-${NANOFLANN_VERSION_STR}/copyright
 
 # Strip my custom files...
-rm nanoflann-${NANOFLANN_VERSION_STR}/debian/*.new 
+rm nanoflann-${NANOFLANN_VERSION_STR}/debian/*.new
 # debian/source file issues for old Ubuntu distros:
 if [ $IS_FOR_UBUNTU == "1" ];
 then
@@ -149,4 +149,3 @@ ls -lh
 
 
 exit 0
-

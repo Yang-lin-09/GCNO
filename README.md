@@ -21,13 +21,13 @@ We just got the SIGGRAPH 2023 Best Paper Award!!! Congrats!
 
 ## Tested Platform
 
-- Windows 10 
+- Windows 10
 - Visual Studio 2022 Professional
 - AMD Ryzen 5950X
 - 32GB Memory
 
 ## Dependencies
-- CGAL 
+- CGAL
 - Eigen3
 - Boost
 
@@ -71,7 +71,7 @@ Turn Debug to Release -> ALL_BUILD -> Build
 Please set `MAIN` as Startup Project, and make the following changes:
 
 ```
-Properties -> Configuration Properties -> C/C++ -> Code Generation -> 
+Properties -> Configuration Properties -> C/C++ -> Code Generation ->
 - Enable Parallel Code Generation : Yes
 - Enable Enhanced Instruction Set : AVX2
 - Floating Point Model : Fast
@@ -81,19 +81,19 @@ Properties -> Configuration Properties -> C/C++ -> Language -> Open MP Support :
 
 ## Test
 
-- All examples are in `MAIN`. 
-- All the files is in `NormalOrientation\data`. 
+- All examples are in `MAIN`.
+- All the files is in `NormalOrientation\data`.
 - The output files is in `NormalOrientation\data\Out\`.
 - The result of operations are in `NormalOrientation\data\MyResult\`, for checking whether the program is running correctly.
 
 
-### Important Tips: 
+### Important Tips:
 
 💡💡💡 **Speed**
-  
+
 This code is not optimized for speed, but for clarity. Please open Openmp and AVX2 in Visual Studio to speed up the code.
 Please set the floating point model to fast in Visual Studio to speed up the code.
-The default number of Openmp parallel threads is 28, set according to an AMD Ryzen 5950x CPU, 
+The default number of Openmp parallel threads is 28, set according to an AMD Ryzen 5950x CPU,
 please set different number of threads according to the CPU you use to get the best running effect.
 
 <img src="pics\image-20230116154151378.png" alt="image-20230116154151378" style="zoom:40%;" />

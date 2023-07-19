@@ -26,7 +26,7 @@ EXECUTABLE = pointcloud_example
 CFLAGS     += `pkg-config --cflags nanoflann`
 
 all: $(SOURCES) $(EXECUTABLE)
-	
+
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
@@ -35,4 +35,3 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	rm $(OBJECTS) $(EXECUTABLE)
-	

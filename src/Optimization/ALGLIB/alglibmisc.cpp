@@ -5,7 +5,7 @@ Copyright (c) Sergey Bochkanov (ALGLIB project).
 >>> SOURCE LICENSE >>>
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation (www.fsf.org); either version 2 of the 
+the Free Software Foundation (www.fsf.org); either version 2 of the
 License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -23,14 +23,13 @@ http://www.fsf.org/licensing/licenses
 #include "BGAL/Optimization/ALGLIB/alglibmisc.h"
 #include "BGAL/Optimization/ALGLIB/ap.h"
 
-
 // disable some irrelevant warnings
 #if (AE_COMPILER == AE_MSVC) && !defined(AE_ALL_WARNINGS)
-#pragma warning(disable:4100)
-#pragma warning(disable:4127)
-#pragma warning(disable:4611)
-#pragma warning(disable:4702)
-#pragma warning(disable:4996)
+#pragma warning(disable : 4100)
+#pragma warning(disable : 4127)
+#pragma warning(disable : 4611)
+#pragma warning(disable : 4702)
+#pragma warning(disable : 4996)
 #endif
 
 /////////////////////////////////////////////////////////////////////////
@@ -73,20 +72,21 @@ _kdtreerequestbuffer_owner::_kdtreerequestbuffer_owner() {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  p_struct =
-      (alglib_impl::kdtreerequestbuffer *) alglib_impl::ae_malloc(sizeof(alglib_impl::kdtreerequestbuffer), &_state);
+  p_struct = (alglib_impl::kdtreerequestbuffer *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::kdtreerequestbuffer), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::kdtreerequestbuffer));
   alglib_impl::_kdtreerequestbuffer_init(p_struct, &_state, ae_false);
   ae_state_clear(&_state);
 }
 
-_kdtreerequestbuffer_owner::_kdtreerequestbuffer_owner(const _kdtreerequestbuffer_owner &rhs) {
+_kdtreerequestbuffer_owner::_kdtreerequestbuffer_owner(
+    const _kdtreerequestbuffer_owner &rhs) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _state;
 
@@ -100,26 +100,27 @@ _kdtreerequestbuffer_owner::_kdtreerequestbuffer_owner(const _kdtreerequestbuffe
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: kdtreerequestbuffer copy constructor failure (source is not initialized)",
+                         "ALGLIB: kdtreerequestbuffer copy constructor failure "
+                         "(source is not initialized)",
                          &_state);
-  p_struct =
-      (alglib_impl::kdtreerequestbuffer *) alglib_impl::ae_malloc(sizeof(alglib_impl::kdtreerequestbuffer), &_state);
+  p_struct = (alglib_impl::kdtreerequestbuffer *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::kdtreerequestbuffer), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::kdtreerequestbuffer));
-  alglib_impl::_kdtreerequestbuffer_init_copy(p_struct,
-                                              const_cast<alglib_impl::kdtreerequestbuffer *>(rhs.p_struct),
-                                              &_state,
-                                              ae_false);
+  alglib_impl::_kdtreerequestbuffer_init_copy(
+      p_struct, const_cast<alglib_impl::kdtreerequestbuffer *>(rhs.p_struct),
+      &_state, ae_false);
   ae_state_clear(&_state);
 }
 
-_kdtreerequestbuffer_owner &_kdtreerequestbuffer_owner::operator=(const _kdtreerequestbuffer_owner &rhs) {
+_kdtreerequestbuffer_owner &
+_kdtreerequestbuffer_owner::operator=(const _kdtreerequestbuffer_owner &rhs) {
   if (this == &rhs)
     return *this;
   jmp_buf _break_jump;
@@ -130,23 +131,24 @@ _kdtreerequestbuffer_owner &_kdtreerequestbuffer_owner::operator=(const _kdtreer
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return *this;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return *this;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   alglib_impl::ae_assert(p_struct != NULL,
-                         "ALGLIB: kdtreerequestbuffer assignment constructor failure (destination is not initialized)",
+                         "ALGLIB: kdtreerequestbuffer assignment constructor "
+                         "failure (destination is not initialized)",
                          &_state);
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: kdtreerequestbuffer assignment constructor failure (source is not initialized)",
+                         "ALGLIB: kdtreerequestbuffer assignment constructor "
+                         "failure (source is not initialized)",
                          &_state);
   alglib_impl::_kdtreerequestbuffer_destroy(p_struct);
   memset(p_struct, 0, sizeof(alglib_impl::kdtreerequestbuffer));
-  alglib_impl::_kdtreerequestbuffer_init_copy(p_struct,
-                                              const_cast<alglib_impl::kdtreerequestbuffer *>(rhs.p_struct),
-                                              &_state,
-                                              ae_false);
+  alglib_impl::_kdtreerequestbuffer_init_copy(
+      p_struct, const_cast<alglib_impl::kdtreerequestbuffer *>(rhs.p_struct),
+      &_state, ae_false);
   ae_state_clear(&_state);
   return *this;
 }
@@ -165,21 +167,20 @@ alglib_impl::kdtreerequestbuffer *_kdtreerequestbuffer_owner::c_ptr() {
 alglib_impl::kdtreerequestbuffer *_kdtreerequestbuffer_owner::c_ptr() const {
   return const_cast<alglib_impl::kdtreerequestbuffer *>(p_struct);
 }
-kdtreerequestbuffer::kdtreerequestbuffer() : _kdtreerequestbuffer_owner() {
-}
+kdtreerequestbuffer::kdtreerequestbuffer() : _kdtreerequestbuffer_owner() {}
 
-kdtreerequestbuffer::kdtreerequestbuffer(const kdtreerequestbuffer &rhs) : _kdtreerequestbuffer_owner(rhs) {
-}
+kdtreerequestbuffer::kdtreerequestbuffer(const kdtreerequestbuffer &rhs)
+    : _kdtreerequestbuffer_owner(rhs) {}
 
-kdtreerequestbuffer &kdtreerequestbuffer::operator=(const kdtreerequestbuffer &rhs) {
+kdtreerequestbuffer &
+kdtreerequestbuffer::operator=(const kdtreerequestbuffer &rhs) {
   if (this == &rhs)
     return *this;
   _kdtreerequestbuffer_owner::operator=(rhs);
   return *this;
 }
 
-kdtreerequestbuffer::~kdtreerequestbuffer() {
-}
+kdtreerequestbuffer::~kdtreerequestbuffer() {}
 
 /*************************************************************************
 KD-tree object.
@@ -198,13 +199,14 @@ _kdtree_owner::_kdtree_owner() {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  p_struct = (alglib_impl::kdtree *) alglib_impl::ae_malloc(sizeof(alglib_impl::kdtree), &_state);
+  p_struct = (alglib_impl::kdtree *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::kdtree), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::kdtree));
   alglib_impl::_kdtree_init(p_struct, &_state, ae_false);
   ae_state_clear(&_state);
@@ -224,18 +226,22 @@ _kdtree_owner::_kdtree_owner(const _kdtree_owner &rhs) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: kdtree copy constructor failure (source is not initialized)",
-                         &_state);
-  p_struct = (alglib_impl::kdtree *) alglib_impl::ae_malloc(sizeof(alglib_impl::kdtree), &_state);
+  alglib_impl::ae_assert(
+      rhs.p_struct != NULL,
+      "ALGLIB: kdtree copy constructor failure (source is not initialized)",
+      &_state);
+  p_struct = (alglib_impl::kdtree *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::kdtree), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::kdtree));
-  alglib_impl::_kdtree_init_copy(p_struct, const_cast<alglib_impl::kdtree *>(rhs.p_struct), &_state, ae_false);
+  alglib_impl::_kdtree_init_copy(
+      p_struct, const_cast<alglib_impl::kdtree *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
 }
 
@@ -250,20 +256,24 @@ _kdtree_owner &_kdtree_owner::operator=(const _kdtree_owner &rhs) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return *this;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return *this;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   alglib_impl::ae_assert(p_struct != NULL,
-                         "ALGLIB: kdtree assignment constructor failure (destination is not initialized)",
+                         "ALGLIB: kdtree assignment constructor failure "
+                         "(destination is not initialized)",
                          &_state);
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: kdtree assignment constructor failure (source is not initialized)",
+                         "ALGLIB: kdtree assignment constructor failure "
+                         "(source is not initialized)",
                          &_state);
   alglib_impl::_kdtree_destroy(p_struct);
   memset(p_struct, 0, sizeof(alglib_impl::kdtree));
-  alglib_impl::_kdtree_init_copy(p_struct, const_cast<alglib_impl::kdtree *>(rhs.p_struct), &_state, ae_false);
+  alglib_impl::_kdtree_init_copy(
+      p_struct, const_cast<alglib_impl::kdtree *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
   return *this;
 }
@@ -275,18 +285,14 @@ _kdtree_owner::~_kdtree_owner() {
   }
 }
 
-alglib_impl::kdtree *_kdtree_owner::c_ptr() {
-  return p_struct;
-}
+alglib_impl::kdtree *_kdtree_owner::c_ptr() { return p_struct; }
 
 alglib_impl::kdtree *_kdtree_owner::c_ptr() const {
   return const_cast<alglib_impl::kdtree *>(p_struct);
 }
-kdtree::kdtree() : _kdtree_owner() {
-}
+kdtree::kdtree() : _kdtree_owner() {}
 
-kdtree::kdtree(const kdtree &rhs) : _kdtree_owner(rhs) {
-}
+kdtree::kdtree(const kdtree &rhs) : _kdtree_owner(rhs) {}
 
 kdtree &kdtree::operator=(const kdtree &rhs) {
   if (this == &rhs)
@@ -295,8 +301,7 @@ kdtree &kdtree::operator=(const kdtree &rhs) {
   return *this;
 }
 
-kdtree::~kdtree() {
-}
+kdtree::~kdtree() {}
 
 /*************************************************************************
 This function serializes data structure to string.
@@ -329,8 +334,8 @@ void kdtreeserialize(kdtree &obj, std::string &s_out) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&state, &_break_jump);
@@ -339,11 +344,12 @@ void kdtreeserialize(kdtree &obj, std::string &s_out) {
   alglib_impl::kdtreealloc(&serializer, obj.c_ptr(), &state);
   ssize = alglib_impl::ae_serializer_get_alloc_size(&serializer);
   s_out.clear();
-  s_out.reserve((size_t) (ssize + 1));
+  s_out.reserve((size_t)(ssize + 1));
   alglib_impl::ae_serializer_sstart_str(&serializer, &s_out);
   alglib_impl::kdtreeserialize(&serializer, obj.c_ptr(), &state);
   alglib_impl::ae_serializer_stop(&serializer, &state);
-  alglib_impl::ae_assert(s_out.length() <= (size_t) ssize, "ALGLIB: serialization integrity error", &state);
+  alglib_impl::ae_assert(s_out.length() <= (size_t)ssize,
+                         "ALGLIB: serialization integrity error", &state);
   alglib_impl::ae_serializer_clear(&serializer);
   alglib_impl::ae_state_clear(&state);
 }
@@ -360,8 +366,8 @@ void kdtreeunserialize(const std::string &s_in, kdtree &obj) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&state, &_break_jump);
@@ -394,15 +400,16 @@ void kdtreeserialize(kdtree &obj, std::ostream &s_out) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&state, &_break_jump);
   alglib_impl::ae_serializer_init(&serializer);
   alglib_impl::ae_serializer_alloc_start(&serializer);
   alglib_impl::kdtreealloc(&serializer, obj.c_ptr(), &state);
-  alglib_impl::ae_serializer_get_alloc_size(&serializer); // not actually needed, but we have to ask
+  alglib_impl::ae_serializer_get_alloc_size(
+      &serializer); // not actually needed, but we have to ask
   alglib_impl::ae_serializer_sstart_stream(&serializer, &s_out);
   alglib_impl::kdtreeserialize(&serializer, obj.c_ptr(), &state);
   alglib_impl::ae_serializer_stop(&serializer, &state);
@@ -422,8 +429,8 @@ void kdtreeunserialize(const std::istream &s_in, kdtree &obj) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&state, &_break_jump);
@@ -470,12 +477,8 @@ NOTES
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreebuild(const real_2d_array &xy,
-                 const ae_int_t n,
-                 const ae_int_t nx,
-                 const ae_int_t ny,
-                 const ae_int_t normtype,
-                 kdtree &kdt,
+void kdtreebuild(const real_2d_array &xy, const ae_int_t n, const ae_int_t nx,
+                 const ae_int_t ny, const ae_int_t normtype, kdtree &kdt,
                  const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -484,20 +487,16 @@ void kdtreebuild(const real_2d_array &xy,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreebuild(const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                           n,
-                           nx,
-                           ny,
-                           normtype,
-                           const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                           &_alglib_env_state);
+  alglib_impl::kdtreebuild(
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()), n, nx, ny, normtype,
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -538,12 +537,8 @@ NOTES
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-void kdtreebuild(const real_2d_array &xy,
-                 const ae_int_t nx,
-                 const ae_int_t ny,
-                 const ae_int_t normtype,
-                 kdtree &kdt,
-                 const xparams _xparams) {
+void kdtreebuild(const real_2d_array &xy, const ae_int_t nx, const ae_int_t ny,
+                 const ae_int_t normtype, kdtree &kdt, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   ae_int_t n;
@@ -555,13 +550,9 @@ void kdtreebuild(const real_2d_array &xy,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreebuild(const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                           n,
-                           nx,
-                           ny,
-                           normtype,
-                           const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                           &_alglib_env_state);
+  alglib_impl::kdtreebuild(
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()), n, nx, ny, normtype,
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()), &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
@@ -605,13 +596,9 @@ NOTES
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreebuildtagged(const real_2d_array &xy,
-                       const integer_1d_array &tags,
-                       const ae_int_t n,
-                       const ae_int_t nx,
-                       const ae_int_t ny,
-                       const ae_int_t normtype,
-                       kdtree &kdt,
+void kdtreebuildtagged(const real_2d_array &xy, const integer_1d_array &tags,
+                       const ae_int_t n, const ae_int_t nx, const ae_int_t ny,
+                       const ae_int_t normtype, kdtree &kdt,
                        const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -620,21 +607,17 @@ void kdtreebuildtagged(const real_2d_array &xy,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreebuildtagged(const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                                 const_cast<alglib_impl::ae_vector *>(tags.c_ptr()),
-                                 n,
-                                 nx,
-                                 ny,
-                                 normtype,
-                                 const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                 &_alglib_env_state);
+  alglib_impl::kdtreebuildtagged(
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()), n, nx, ny, normtype,
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -677,18 +660,16 @@ NOTES
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-void kdtreebuildtagged(const real_2d_array &xy,
-                       const integer_1d_array &tags,
-                       const ae_int_t nx,
-                       const ae_int_t ny,
-                       const ae_int_t normtype,
-                       kdtree &kdt,
+void kdtreebuildtagged(const real_2d_array &xy, const integer_1d_array &tags,
+                       const ae_int_t nx, const ae_int_t ny,
+                       const ae_int_t normtype, kdtree &kdt,
                        const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   ae_int_t n;
   if ((xy.rows() != tags.length()))
-    _ALGLIB_CPP_EXCEPTION("Error while calling 'kdtreebuildtagged': looks like one of arguments has wrong size");
+    _ALGLIB_CPP_EXCEPTION("Error while calling 'kdtreebuildtagged': looks like "
+                          "one of arguments has wrong size");
   n = xy.rows();
   alglib_impl::ae_state_init(&_alglib_env_state);
   if (setjmp(_break_jump))
@@ -696,14 +677,10 @@ void kdtreebuildtagged(const real_2d_array &xy,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreebuildtagged(const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                                 const_cast<alglib_impl::ae_vector *>(tags.c_ptr()),
-                                 n,
-                                 nx,
-                                 ny,
-                                 normtype,
-                                 const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                 &_alglib_env_state);
+  alglib_impl::kdtreebuildtagged(
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()), n, nx, ny, normtype,
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()), &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
@@ -737,7 +714,8 @@ IMPORTANT: KD-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-void kdtreecreaterequestbuffer(const kdtree &kdt, kdtreerequestbuffer &buf, const xparams _xparams) {
+void kdtreecreaterequestbuffer(const kdtree &kdt, kdtreerequestbuffer &buf,
+                               const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -745,16 +723,17 @@ void kdtreecreaterequestbuffer(const kdtree &kdt, kdtreerequestbuffer &buf, cons
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreecreaterequestbuffer(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                         const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                         &_alglib_env_state);
+  alglib_impl::kdtreecreaterequestbuffer(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -793,10 +772,8 @@ these results:
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreequeryknn(const kdtree &kdt,
-                        const real_1d_array &x,
-                        const ae_int_t k,
-                        const bool selfmatch,
+ae_int_t kdtreequeryknn(const kdtree &kdt, const real_1d_array &x,
+                        const ae_int_t k, const bool selfmatch,
                         const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -805,18 +782,17 @@ ae_int_t kdtreequeryknn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                             k,
-                                                             selfmatch,
-                                                             &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -856,7 +832,8 @@ these results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreequeryknn(const kdtree &kdt, const real_1d_array &x, const ae_int_t k, const xparams _xparams) {
+ae_int_t kdtreequeryknn(const kdtree &kdt, const real_1d_array &x,
+                        const ae_int_t k, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   bool selfmatch;
@@ -868,11 +845,10 @@ ae_int_t kdtreequeryknn(const kdtree &kdt, const real_1d_array &x, const ae_int_
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                             k,
-                                                             selfmatch,
-                                                             &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -889,11 +865,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   kd-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -920,12 +895,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryknn(const kdtree &kdt,
-                          const kdtreerequestbuffer &buf,
-                          const real_1d_array &x,
-                          const ae_int_t k,
-                          const bool selfmatch,
-                          const xparams _xparams) {
+ae_int_t kdtreetsqueryknn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                          const real_1d_array &x, const ae_int_t k,
+                          const bool selfmatch, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -933,19 +905,18 @@ ae_int_t kdtreetsqueryknn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                               const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                               k,
-                                                               selfmatch,
-                                                               &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -960,11 +931,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   kd-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -992,10 +962,8 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreetsqueryknn(const kdtree &kdt,
-                          const kdtreerequestbuffer &buf,
-                          const real_1d_array &x,
-                          const ae_int_t k,
+ae_int_t kdtreetsqueryknn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                          const real_1d_array &x, const ae_int_t k,
                           const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1008,12 +976,11 @@ ae_int_t kdtreetsqueryknn(const kdtree &kdt,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                               const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                               k,
-                                                               selfmatch,
-                                                               &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1059,10 +1026,8 @@ actual results:
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreequeryrnn(const kdtree &kdt,
-                        const real_1d_array &x,
-                        const double r,
-                        const bool selfmatch,
+ae_int_t kdtreequeryrnn(const kdtree &kdt, const real_1d_array &x,
+                        const double r, const bool selfmatch,
                         const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1071,18 +1036,17 @@ ae_int_t kdtreequeryrnn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                             r,
-                                                             selfmatch,
-                                                             &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1127,7 +1091,8 @@ actual results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreequeryrnn(const kdtree &kdt, const real_1d_array &x, const double r, const xparams _xparams) {
+ae_int_t kdtreequeryrnn(const kdtree &kdt, const real_1d_array &x,
+                        const double r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   bool selfmatch;
@@ -1139,11 +1104,10 @@ ae_int_t kdtreequeryrnn(const kdtree &kdt, const real_1d_array &x, const double 
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                             r,
-                                                             selfmatch,
-                                                             &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1188,10 +1152,8 @@ As indicated by "U" suffix, this function returns unordered results.
   -- ALGLIB --
      Copyright 01.11.2018 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreequeryrnnu(const kdtree &kdt,
-                         const real_1d_array &x,
-                         const double r,
-                         const bool selfmatch,
+ae_int_t kdtreequeryrnnu(const kdtree &kdt, const real_1d_array &x,
+                         const double r, const bool selfmatch,
                          const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1200,18 +1162,17 @@ ae_int_t kdtreequeryrnnu(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnnu(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                              const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                              r,
-                                                              selfmatch,
-                                                              &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnnu(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1255,7 +1216,8 @@ As indicated by "U" suffix, this function returns unordered results.
      Copyright 01.11.2018 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreequeryrnnu(const kdtree &kdt, const real_1d_array &x, const double r, const xparams _xparams) {
+ae_int_t kdtreequeryrnnu(const kdtree &kdt, const real_1d_array &x,
+                         const double r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   bool selfmatch;
@@ -1267,11 +1229,10 @@ ae_int_t kdtreequeryrnnu(const kdtree &kdt, const real_1d_array &x, const double
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnnu(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                              const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                              r,
-                                                              selfmatch,
-                                                              &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryrnnu(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1293,11 +1254,10 @@ NOTE: it is also possible to perform undordered queries performed by means
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1324,12 +1284,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryrnn(const kdtree &kdt,
-                          const kdtreerequestbuffer &buf,
-                          const real_1d_array &x,
-                          const double r,
-                          const bool selfmatch,
-                          const xparams _xparams) {
+ae_int_t kdtreetsqueryrnn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                          const real_1d_array &x, const double r,
+                          const bool selfmatch, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1337,19 +1294,18 @@ ae_int_t kdtreetsqueryrnn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                               const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                               r,
-                                                               selfmatch,
-                                                               &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1369,11 +1325,10 @@ NOTE: it is also possible to perform undordered queries performed by means
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1401,10 +1356,8 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreetsqueryrnn(const kdtree &kdt,
-                          const kdtreerequestbuffer &buf,
-                          const real_1d_array &x,
-                          const double r,
+ae_int_t kdtreetsqueryrnn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                          const real_1d_array &x, const double r,
                           const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1417,12 +1370,11 @@ ae_int_t kdtreetsqueryrnn(const kdtree &kdt,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                               const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                               r,
-                                                               selfmatch,
-                                                               &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1441,11 +1393,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1474,12 +1425,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryrnnu(const kdtree &kdt,
-                           const kdtreerequestbuffer &buf,
-                           const real_1d_array &x,
-                           const double r,
-                           const bool selfmatch,
-                           const xparams _xparams) {
+ae_int_t kdtreetsqueryrnnu(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                           const real_1d_array &x, const double r,
+                           const bool selfmatch, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1487,19 +1435,18 @@ ae_int_t kdtreetsqueryrnnu(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnnu(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                                const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                                const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                                r,
-                                                                selfmatch,
-                                                                &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnnu(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1516,11 +1463,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1550,10 +1496,8 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreetsqueryrnnu(const kdtree &kdt,
-                           const kdtreerequestbuffer &buf,
-                           const real_1d_array &x,
-                           const double r,
+ae_int_t kdtreetsqueryrnnu(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                           const real_1d_array &x, const double r,
                            const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1566,12 +1510,11 @@ ae_int_t kdtreetsqueryrnnu(const kdtree &kdt,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnnu(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                                const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                                const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                                r,
-                                                                selfmatch,
-                                                                &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryrnnu(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), r, selfmatch,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1619,12 +1562,9 @@ these results:
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreequeryaknn(const kdtree &kdt,
-                         const real_1d_array &x,
-                         const ae_int_t k,
-                         const bool selfmatch,
-                         const double eps,
-                         const xparams _xparams) {
+ae_int_t kdtreequeryaknn(const kdtree &kdt, const real_1d_array &x,
+                         const ae_int_t k, const bool selfmatch,
+                         const double eps, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1632,19 +1572,17 @@ ae_int_t kdtreequeryaknn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryaknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                              const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                              k,
-                                                              selfmatch,
-                                                              eps,
-                                                              &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryaknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch, eps,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1691,10 +1629,8 @@ these results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreequeryaknn(const kdtree &kdt,
-                         const real_1d_array &x,
-                         const ae_int_t k,
-                         const double eps,
+ae_int_t kdtreequeryaknn(const kdtree &kdt, const real_1d_array &x,
+                         const ae_int_t k, const double eps,
                          const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1707,12 +1643,10 @@ ae_int_t kdtreequeryaknn(const kdtree &kdt,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryaknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                              const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                              k,
-                                                              selfmatch,
-                                                              eps,
-                                                              &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequeryaknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch, eps,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1729,11 +1663,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1767,12 +1700,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryaknn(const kdtree &kdt,
-                           const kdtreerequestbuffer &buf,
-                           const real_1d_array &x,
-                           const ae_int_t k,
-                           const bool selfmatch,
-                           const double eps,
+ae_int_t kdtreetsqueryaknn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                           const real_1d_array &x, const ae_int_t k,
+                           const bool selfmatch, const double eps,
                            const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
@@ -1781,20 +1711,18 @@ ae_int_t kdtreetsqueryaknn(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryaknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                                const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                                const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                                k,
-                                                                selfmatch,
-                                                                eps,
-                                                                &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryaknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch, eps,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1809,11 +1737,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -1848,12 +1775,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
 #if !defined(AE_NO_EXCEPTIONS)
-ae_int_t kdtreetsqueryaknn(const kdtree &kdt,
-                           const kdtreerequestbuffer &buf,
-                           const real_1d_array &x,
-                           const ae_int_t k,
-                           const double eps,
-                           const xparams _xparams) {
+ae_int_t kdtreetsqueryaknn(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                           const real_1d_array &x, const ae_int_t k,
+                           const double eps, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   bool selfmatch;
@@ -1865,13 +1789,11 @@ ae_int_t kdtreetsqueryaknn(const kdtree &kdt,
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryaknn(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                                const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                                const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                                                k,
-                                                                selfmatch,
-                                                                eps,
-                                                                &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsqueryaknn(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), k, selfmatch, eps,
+      &_alglib_env_state);
 
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
@@ -1912,10 +1834,8 @@ NOTE: this particular query returns unordered results, because there is no
   -- ALGLIB --
      Copyright 14.05.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreequerybox(const kdtree &kdt,
-                        const real_1d_array &boxmin,
-                        const real_1d_array &boxmax,
-                        const xparams _xparams) {
+ae_int_t kdtreequerybox(const kdtree &kdt, const real_1d_array &boxmin,
+                        const real_1d_array &boxmax, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1923,17 +1843,17 @@ ae_int_t kdtreequerybox(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreequerybox(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(boxmin.c_ptr()),
-                                                             const_cast<alglib_impl::ae_vector *>(boxmax.c_ptr()),
-                                                             &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreequerybox(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(boxmin.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(boxmax.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -1948,10 +1868,9 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    BoxMin      -   lower bounds, array[0..NX-1].
-    BoxMax      -   upper bounds, array[0..NX-1].
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. BoxMin      -   lower bounds,
+array[0..NX-1]. BoxMax      -   upper bounds, array[0..NX-1].
 
 RESULT
     number of actual neighbors found (in [0,N]).
@@ -1978,11 +1897,9 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 14.05.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsquerybox(const kdtree &kdt,
-                          const kdtreerequestbuffer &buf,
+ae_int_t kdtreetsquerybox(const kdtree &kdt, const kdtreerequestbuffer &buf,
                           const real_1d_array &boxmin,
-                          const real_1d_array &boxmax,
-                          const xparams _xparams) {
+                          const real_1d_array &boxmax, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -1990,18 +1907,18 @@ ae_int_t kdtreetsquerybox(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t result = alglib_impl::kdtreetsquerybox(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                                               const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(boxmin.c_ptr()),
-                                                               const_cast<alglib_impl::ae_vector *>(boxmax.c_ptr()),
-                                                               &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::kdtreetsquerybox(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(boxmin.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(boxmax.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -2040,7 +1957,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsx(const kdtree &kdt, real_2d_array &x, const xparams _xparams) {
+void kdtreequeryresultsx(const kdtree &kdt, real_2d_array &x,
+                         const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2048,16 +1966,16 @@ void kdtreequeryresultsx(const kdtree &kdt, real_2d_array &x, const xparams _xpa
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsx(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                   const_cast<alglib_impl::ae_matrix *>(x.c_ptr()),
-                                   &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsx(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(x.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2097,7 +2015,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsxy(const kdtree &kdt, real_2d_array &xy, const xparams _xparams) {
+void kdtreequeryresultsxy(const kdtree &kdt, real_2d_array &xy,
+                          const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2105,16 +2024,16 @@ void kdtreequeryresultsxy(const kdtree &kdt, real_2d_array &xy, const xparams _x
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsxy(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                    const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                                    &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsxy(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2154,7 +2073,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultstags(const kdtree &kdt, integer_1d_array &tags, const xparams _xparams) {
+void kdtreequeryresultstags(const kdtree &kdt, integer_1d_array &tags,
+                            const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2162,16 +2082,16 @@ void kdtreequeryresultstags(const kdtree &kdt, integer_1d_array &tags, const xpa
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultstags(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()),
-                                      &_alglib_env_state);
+  alglib_impl::kdtreequeryresultstags(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2210,7 +2130,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsdistances(const kdtree &kdt, real_1d_array &r, const xparams _xparams) {
+void kdtreequeryresultsdistances(const kdtree &kdt, real_1d_array &r,
+                                 const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2218,16 +2139,16 @@ void kdtreequeryresultsdistances(const kdtree &kdt, real_1d_array &r, const xpar
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsdistances(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                           const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                                           &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsdistances(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2263,10 +2184,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultsx(const kdtree &kdt,
-                           const kdtreerequestbuffer &buf,
-                           real_2d_array &x,
-                           const xparams _xparams) {
+void kdtreetsqueryresultsx(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                           real_2d_array &x, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2274,17 +2193,17 @@ void kdtreetsqueryresultsx(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreetsqueryresultsx(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                     const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                     const_cast<alglib_impl::ae_matrix *>(x.c_ptr()),
-                                     &_alglib_env_state);
+  alglib_impl::kdtreetsqueryresultsx(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(x.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2321,10 +2240,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultsxy(const kdtree &kdt,
-                            const kdtreerequestbuffer &buf,
-                            real_2d_array &xy,
-                            const xparams _xparams) {
+void kdtreetsqueryresultsxy(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                            real_2d_array &xy, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2332,17 +2249,17 @@ void kdtreetsqueryresultsxy(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreetsqueryresultsxy(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                                      &_alglib_env_state);
+  alglib_impl::kdtreetsqueryresultsxy(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2384,10 +2301,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultstags(const kdtree &kdt,
-                              const kdtreerequestbuffer &buf,
-                              integer_1d_array &tags,
-                              const xparams _xparams) {
+void kdtreetsqueryresultstags(const kdtree &kdt, const kdtreerequestbuffer &buf,
+                              integer_1d_array &tags, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2395,17 +2310,17 @@ void kdtreetsqueryresultstags(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreetsqueryresultstags(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                        const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                        const_cast<alglib_impl::ae_vector *>(tags.c_ptr()),
-                                        &_alglib_env_state);
+  alglib_impl::kdtreetsqueryresultstags(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2448,8 +2363,7 @@ SEE ALSO
 *************************************************************************/
 void kdtreetsqueryresultsdistances(const kdtree &kdt,
                                    const kdtreerequestbuffer &buf,
-                                   real_1d_array &r,
-                                   const xparams _xparams) {
+                                   real_1d_array &r, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2457,17 +2371,17 @@ void kdtreetsqueryresultsdistances(const kdtree &kdt,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreetsqueryresultsdistances(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                             const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
-                                             const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                                             &_alglib_env_state);
+  alglib_impl::kdtreetsqueryresultsdistances(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::kdtreerequestbuffer *>(buf.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2484,7 +2398,8 @@ when you call it from command line.
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsxi(const kdtree &kdt, real_2d_array &x, const xparams _xparams) {
+void kdtreequeryresultsxi(const kdtree &kdt, real_2d_array &x,
+                          const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2492,16 +2407,16 @@ void kdtreequeryresultsxi(const kdtree &kdt, real_2d_array &x, const xparams _xp
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsxi(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                    const_cast<alglib_impl::ae_matrix *>(x.c_ptr()),
-                                    &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsxi(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(x.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2518,7 +2433,8 @@ when you call it from command line.
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsxyi(const kdtree &kdt, real_2d_array &xy, const xparams _xparams) {
+void kdtreequeryresultsxyi(const kdtree &kdt, real_2d_array &xy,
+                           const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2526,16 +2442,16 @@ void kdtreequeryresultsxyi(const kdtree &kdt, real_2d_array &xy, const xparams _
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsxyi(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                     const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()),
-                                     &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsxyi(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(xy.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2552,7 +2468,8 @@ when you call it from command line.
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultstagsi(const kdtree &kdt, integer_1d_array &tags, const xparams _xparams) {
+void kdtreequeryresultstagsi(const kdtree &kdt, integer_1d_array &tags,
+                             const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2560,16 +2477,16 @@ void kdtreequeryresultstagsi(const kdtree &kdt, integer_1d_array &tags, const xp
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultstagsi(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                       const_cast<alglib_impl::ae_vector *>(tags.c_ptr()),
-                                       &_alglib_env_state);
+  alglib_impl::kdtreequeryresultstagsi(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(tags.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2586,7 +2503,8 @@ when you call it from command line.
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreequeryresultsdistancesi(const kdtree &kdt, real_1d_array &r, const xparams _xparams) {
+void kdtreequeryresultsdistancesi(const kdtree &kdt, real_1d_array &r,
+                                  const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2594,16 +2512,16 @@ void kdtreequeryresultsdistancesi(const kdtree &kdt, real_1d_array &r, const xpa
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::kdtreequeryresultsdistancesi(const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
-                                            const_cast<alglib_impl::ae_vector *>(r.c_ptr()),
-                                            &_alglib_env_state);
+  alglib_impl::kdtreequeryresultsdistancesi(
+      const_cast<alglib_impl::kdtree *>(kdt.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(r.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2634,13 +2552,14 @@ _hqrndstate_owner::_hqrndstate_owner() {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  p_struct = (alglib_impl::hqrndstate *) alglib_impl::ae_malloc(sizeof(alglib_impl::hqrndstate), &_state);
+  p_struct = (alglib_impl::hqrndstate *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::hqrndstate), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::hqrndstate));
   alglib_impl::_hqrndstate_init(p_struct, &_state, ae_false);
   ae_state_clear(&_state);
@@ -2660,18 +2579,22 @@ _hqrndstate_owner::_hqrndstate_owner(const _hqrndstate_owner &rhs) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: hqrndstate copy constructor failure (source is not initialized)",
-                         &_state);
-  p_struct = (alglib_impl::hqrndstate *) alglib_impl::ae_malloc(sizeof(alglib_impl::hqrndstate), &_state);
+  alglib_impl::ae_assert(
+      rhs.p_struct != NULL,
+      "ALGLIB: hqrndstate copy constructor failure (source is not initialized)",
+      &_state);
+  p_struct = (alglib_impl::hqrndstate *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::hqrndstate), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::hqrndstate));
-  alglib_impl::_hqrndstate_init_copy(p_struct, const_cast<alglib_impl::hqrndstate *>(rhs.p_struct), &_state, ae_false);
+  alglib_impl::_hqrndstate_init_copy(
+      p_struct, const_cast<alglib_impl::hqrndstate *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
 }
 
@@ -2686,20 +2609,24 @@ _hqrndstate_owner &_hqrndstate_owner::operator=(const _hqrndstate_owner &rhs) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return *this;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return *this;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   alglib_impl::ae_assert(p_struct != NULL,
-                         "ALGLIB: hqrndstate assignment constructor failure (destination is not initialized)",
+                         "ALGLIB: hqrndstate assignment constructor failure "
+                         "(destination is not initialized)",
                          &_state);
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: hqrndstate assignment constructor failure (source is not initialized)",
+                         "ALGLIB: hqrndstate assignment constructor failure "
+                         "(source is not initialized)",
                          &_state);
   alglib_impl::_hqrndstate_destroy(p_struct);
   memset(p_struct, 0, sizeof(alglib_impl::hqrndstate));
-  alglib_impl::_hqrndstate_init_copy(p_struct, const_cast<alglib_impl::hqrndstate *>(rhs.p_struct), &_state, ae_false);
+  alglib_impl::_hqrndstate_init_copy(
+      p_struct, const_cast<alglib_impl::hqrndstate *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
   return *this;
 }
@@ -2711,18 +2638,14 @@ _hqrndstate_owner::~_hqrndstate_owner() {
   }
 }
 
-alglib_impl::hqrndstate *_hqrndstate_owner::c_ptr() {
-  return p_struct;
-}
+alglib_impl::hqrndstate *_hqrndstate_owner::c_ptr() { return p_struct; }
 
 alglib_impl::hqrndstate *_hqrndstate_owner::c_ptr() const {
   return const_cast<alglib_impl::hqrndstate *>(p_struct);
 }
-hqrndstate::hqrndstate() : _hqrndstate_owner() {
-}
+hqrndstate::hqrndstate() : _hqrndstate_owner() {}
 
-hqrndstate::hqrndstate(const hqrndstate &rhs) : _hqrndstate_owner(rhs) {
-}
+hqrndstate::hqrndstate(const hqrndstate &rhs) : _hqrndstate_owner(rhs) {}
 
 hqrndstate &hqrndstate::operator=(const hqrndstate &rhs) {
   if (this == &rhs)
@@ -2731,8 +2654,7 @@ hqrndstate &hqrndstate::operator=(const hqrndstate &rhs) {
   return *this;
 }
 
-hqrndstate::~hqrndstate() {
-}
+hqrndstate::~hqrndstate() {}
 
 /*************************************************************************
 HQRNDState  initialization  with  random  values  which come from standard
@@ -2749,14 +2671,15 @@ void hqrndrandomize(hqrndstate &state, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::hqrndrandomize(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
+  alglib_impl::hqrndrandomize(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2767,7 +2690,8 @@ HQRNDState initialization with seed values
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-void hqrndseed(const ae_int_t s1, const ae_int_t s2, hqrndstate &state, const xparams _xparams) {
+void hqrndseed(const ae_int_t s1, const ae_int_t s2, hqrndstate &state,
+               const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2775,14 +2699,16 @@ void hqrndseed(const ae_int_t s1, const ae_int_t s2, hqrndstate &state, const xp
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::hqrndseed(s1, s2, const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
+  alglib_impl::hqrndseed(s1, s2,
+                         const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
+                         &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2804,14 +2730,15 @@ double hqrnduniformr(const hqrndstate &state, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::hqrnduniformr(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
+  double result = alglib_impl::hqrnduniformr(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -2828,7 +2755,8 @@ This function generates random integer number in [0, N)
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t hqrnduniformi(const hqrndstate &state, const ae_int_t n, const xparams _xparams) {
+ae_int_t hqrnduniformi(const hqrndstate &state, const ae_int_t n,
+                       const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2836,15 +2764,16 @@ ae_int_t hqrnduniformi(const hqrndstate &state, const ae_int_t n, const xparams 
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t
-      result = alglib_impl::hqrnduniformi(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), n, &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::hqrnduniformi(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), n,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -2868,14 +2797,15 @@ double hqrndnormal(const hqrndstate &state, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::hqrndnormal(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
+  double result = alglib_impl::hqrndnormal(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -2888,7 +2818,8 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-void hqrndunit2(const hqrndstate &state, double &x, double &y, const xparams _xparams) {
+void hqrndunit2(const hqrndstate &state, double &x, double &y,
+                const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2896,14 +2827,15 @@ void hqrndunit2(const hqrndstate &state, double &x, double &y, const xparams _xp
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::hqrndunit2(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &x, &y, &_alglib_env_state);
+  alglib_impl::hqrndunit2(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
+                          &x, &y, &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2919,7 +2851,8 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-void hqrndnormal2(const hqrndstate &state, double &x1, double &x2, const xparams _xparams) {
+void hqrndnormal2(const hqrndstate &state, double &x1, double &x2,
+                  const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2927,14 +2860,16 @@ void hqrndnormal2(const hqrndstate &state, double &x1, double &x2, const xparams
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::hqrndnormal2(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &x1, &x2, &_alglib_env_state);
+  alglib_impl::hqrndnormal2(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), &x1, &x2,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -2947,7 +2882,8 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
   -- ALGLIB --
      Copyright 11.08.2007 by Bochkanov Sergey
 *************************************************************************/
-double hqrndexponential(const hqrndstate &state, const double lambdav, const xparams _xparams) {
+double hqrndexponential(const hqrndstate &state, const double lambdav,
+                        const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2955,15 +2891,16 @@ double hqrndexponential(const hqrndstate &state, const double lambdav, const xpa
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result =
-      alglib_impl::hqrndexponential(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), lambdav, &_alglib_env_state);
+  double result = alglib_impl::hqrndexponential(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()), lambdav,
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -2984,7 +2921,8 @@ RESULT
   -- ALGLIB --
      Copyright 08.11.2011 by Bochkanov Sergey
 *************************************************************************/
-double hqrnddiscrete(const hqrndstate &state, const real_1d_array &x, const ae_int_t n, const xparams _xparams) {
+double hqrnddiscrete(const hqrndstate &state, const real_1d_array &x,
+                     const ae_int_t n, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -2992,17 +2930,16 @@ double hqrnddiscrete(const hqrndstate &state, const real_1d_array &x, const ae_i
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::hqrnddiscrete(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
-                                             const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                             n,
-                                             &_alglib_env_state);
+  double result = alglib_impl::hqrnddiscrete(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), n, &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -3026,7 +2963,8 @@ RESULT
   -- ALGLIB --
      Copyright 08.11.2011 by Bochkanov Sergey
 *************************************************************************/
-double hqrndcontinuous(const hqrndstate &state, const real_1d_array &x, const ae_int_t n, const xparams _xparams) {
+double hqrndcontinuous(const hqrndstate &state, const real_1d_array &x,
+                       const ae_int_t n, const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3034,17 +2972,16 @@ double hqrndcontinuous(const hqrndstate &state, const real_1d_array &x, const ae
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::hqrndcontinuous(const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
-                                               const_cast<alglib_impl::ae_vector *>(x.c_ptr()),
-                                               n,
-                                               &_alglib_env_state);
+  double result = alglib_impl::hqrndcontinuous(
+      const_cast<alglib_impl::hqrndstate *>(state.c_ptr()),
+      const_cast<alglib_impl::ae_vector *>(x.c_ptr()), n, &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -3068,13 +3005,14 @@ _xdebugrecord1_owner::_xdebugrecord1_owner() {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
-  p_struct = (alglib_impl::xdebugrecord1 *) alglib_impl::ae_malloc(sizeof(alglib_impl::xdebugrecord1), &_state);
+  p_struct = (alglib_impl::xdebugrecord1 *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::xdebugrecord1), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::xdebugrecord1));
   alglib_impl::_xdebugrecord1_init(p_struct, &_state, ae_false);
   ae_state_clear(&_state);
@@ -3094,25 +3032,27 @@ _xdebugrecord1_owner::_xdebugrecord1_owner(const _xdebugrecord1_owner &rhs) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   p_struct = NULL;
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: xdebugrecord1 copy constructor failure (source is not initialized)",
+                         "ALGLIB: xdebugrecord1 copy constructor failure "
+                         "(source is not initialized)",
                          &_state);
-  p_struct = (alglib_impl::xdebugrecord1 *) alglib_impl::ae_malloc(sizeof(alglib_impl::xdebugrecord1), &_state);
+  p_struct = (alglib_impl::xdebugrecord1 *)alglib_impl::ae_malloc(
+      sizeof(alglib_impl::xdebugrecord1), &_state);
   memset(p_struct, 0, sizeof(alglib_impl::xdebugrecord1));
-  alglib_impl::_xdebugrecord1_init_copy(p_struct,
-                                        const_cast<alglib_impl::xdebugrecord1 *>(rhs.p_struct),
-                                        &_state,
-                                        ae_false);
+  alglib_impl::_xdebugrecord1_init_copy(
+      p_struct, const_cast<alglib_impl::xdebugrecord1 *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
 }
 
-_xdebugrecord1_owner &_xdebugrecord1_owner::operator=(const _xdebugrecord1_owner &rhs) {
+_xdebugrecord1_owner &
+_xdebugrecord1_owner::operator=(const _xdebugrecord1_owner &rhs) {
   if (this == &rhs)
     return *this;
   jmp_buf _break_jump;
@@ -3123,23 +3063,24 @@ _xdebugrecord1_owner &_xdebugrecord1_owner::operator=(const _xdebugrecord1_owner
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
-        return *this;
+    _ALGLIB_SET_ERROR_FLAG(_state.error_msg);
+    return *this;
 #endif
   }
   alglib_impl::ae_state_set_break_jump(&_state, &_break_jump);
   alglib_impl::ae_assert(p_struct != NULL,
-                         "ALGLIB: xdebugrecord1 assignment constructor failure (destination is not initialized)",
+                         "ALGLIB: xdebugrecord1 assignment constructor failure "
+                         "(destination is not initialized)",
                          &_state);
   alglib_impl::ae_assert(rhs.p_struct != NULL,
-                         "ALGLIB: xdebugrecord1 assignment constructor failure (source is not initialized)",
+                         "ALGLIB: xdebugrecord1 assignment constructor failure "
+                         "(source is not initialized)",
                          &_state);
   alglib_impl::_xdebugrecord1_destroy(p_struct);
   memset(p_struct, 0, sizeof(alglib_impl::xdebugrecord1));
-  alglib_impl::_xdebugrecord1_init_copy(p_struct,
-                                        const_cast<alglib_impl::xdebugrecord1 *>(rhs.p_struct),
-                                        &_state,
-                                        ae_false);
+  alglib_impl::_xdebugrecord1_init_copy(
+      p_struct, const_cast<alglib_impl::xdebugrecord1 *>(rhs.p_struct), &_state,
+      ae_false);
   ae_state_clear(&_state);
   return *this;
 }
@@ -3151,20 +3092,18 @@ _xdebugrecord1_owner::~_xdebugrecord1_owner() {
   }
 }
 
-alglib_impl::xdebugrecord1 *_xdebugrecord1_owner::c_ptr() {
-  return p_struct;
-}
+alglib_impl::xdebugrecord1 *_xdebugrecord1_owner::c_ptr() { return p_struct; }
 
 alglib_impl::xdebugrecord1 *_xdebugrecord1_owner::c_ptr() const {
   return const_cast<alglib_impl::xdebugrecord1 *>(p_struct);
 }
 xdebugrecord1::xdebugrecord1()
-    : _xdebugrecord1_owner(), i(p_struct->i), c(*((alglib::complex *) (&p_struct->c))), a(&p_struct->a) {
-}
+    : _xdebugrecord1_owner(), i(p_struct->i),
+      c(*((alglib::complex *)(&p_struct->c))), a(&p_struct->a) {}
 
 xdebugrecord1::xdebugrecord1(const xdebugrecord1 &rhs)
-    : _xdebugrecord1_owner(rhs), i(p_struct->i), c(*((alglib::complex *) (&p_struct->c))), a(&p_struct->a) {
-}
+    : _xdebugrecord1_owner(rhs), i(p_struct->i),
+      c(*((alglib::complex *)(&p_struct->c))), a(&p_struct->a) {}
 
 xdebugrecord1 &xdebugrecord1::operator=(const xdebugrecord1 &rhs) {
   if (this == &rhs)
@@ -3173,8 +3112,7 @@ xdebugrecord1 &xdebugrecord1::operator=(const xdebugrecord1 &rhs) {
   return *this;
 }
 
-xdebugrecord1::~xdebugrecord1() {
-}
+xdebugrecord1::~xdebugrecord1() {}
 
 /*************************************************************************
 This is debug function intended for testing ALGLIB interface generator.
@@ -3195,14 +3133,16 @@ void xdebuginitrecord1(xdebugrecord1 &rec1, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebuginitrecord1(const_cast<alglib_impl::xdebugrecord1 *>(rec1.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebuginitrecord1(
+      const_cast<alglib_impl::xdebugrecord1 *>(rec1.c_ptr()),
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3224,15 +3164,15 @@ ae_int_t xdebugb1count(const boolean_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t
-      result = alglib_impl::xdebugb1count(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::xdebugb1count(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -3255,14 +3195,15 @@ void xdebugb1not(const boolean_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb1not(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb1not(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3285,14 +3226,15 @@ void xdebugb1appendcopy(boolean_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb1appendcopy(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb1appendcopy(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3307,7 +3249,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugb1outeven(const ae_int_t n, boolean_1d_array &a, const xparams _xparams) {
+void xdebugb1outeven(const ae_int_t n, boolean_1d_array &a,
+                     const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3315,14 +3258,15 @@ void xdebugb1outeven(const ae_int_t n, boolean_1d_array &a, const xparams _xpara
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb1outeven(n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb1outeven(
+      n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3344,15 +3288,15 @@ ae_int_t xdebugi1sum(const integer_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t
-      result = alglib_impl::xdebugi1sum(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::xdebugi1sum(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -3375,14 +3319,15 @@ void xdebugi1neg(const integer_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3405,14 +3350,15 @@ void xdebugi1appendcopy(integer_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi1appendcopy(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi1appendcopy(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3429,7 +3375,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugi1outeven(const ae_int_t n, integer_1d_array &a, const xparams _xparams) {
+void xdebugi1outeven(const ae_int_t n, integer_1d_array &a,
+                     const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3437,14 +3384,15 @@ void xdebugi1outeven(const ae_int_t n, integer_1d_array &a, const xparams _xpara
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi1outeven(n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi1outeven(
+      n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3466,14 +3414,15 @@ double xdebugr1sum(const real_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::xdebugr1sum(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  double result = alglib_impl::xdebugr1sum(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -3496,14 +3445,15 @@ void xdebugr1neg(const real_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3526,14 +3476,15 @@ void xdebugr1appendcopy(real_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr1appendcopy(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr1appendcopy(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3550,7 +3501,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugr1outeven(const ae_int_t n, real_1d_array &a, const xparams _xparams) {
+void xdebugr1outeven(const ae_int_t n, real_1d_array &a,
+                     const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3558,14 +3510,15 @@ void xdebugr1outeven(const ae_int_t n, real_1d_array &a, const xparams _xparams)
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr1outeven(n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr1outeven(
+      n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3587,15 +3540,15 @@ alglib::complex xdebugc1sum(const complex_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_complex
-      result = alglib_impl::xdebugc1sum(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_complex result = alglib_impl::xdebugc1sum(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<alglib::complex *>(&result));
 }
@@ -3618,14 +3571,15 @@ void xdebugc1neg(const complex_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc1neg(const_cast<alglib_impl::ae_vector *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3648,14 +3602,15 @@ void xdebugc1appendcopy(complex_1d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc1appendcopy(const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc1appendcopy(
+      const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3664,15 +3619,16 @@ void xdebugc1appendcopy(complex_1d_array &a, const xparams _xparams) {
 This is debug function intended for testing ALGLIB interface generator.
 Never use it in any real life project.
 
-Generate N-element array with even-numbered A[K] set to (x,y) = (K*0.25, K*0.125)
-and odd-numbered ones are set to 0.
+Generate N-element array with even-numbered A[K] set to (x,y) = (K*0.25,
+K*0.125) and odd-numbered ones are set to 0.
 
 Array is passed using "out" convention.
 
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugc1outeven(const ae_int_t n, complex_1d_array &a, const xparams _xparams) {
+void xdebugc1outeven(const ae_int_t n, complex_1d_array &a,
+                     const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3680,14 +3636,15 @@ void xdebugc1outeven(const ae_int_t n, complex_1d_array &a, const xparams _xpara
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc1outeven(n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc1outeven(
+      n, const_cast<alglib_impl::ae_vector *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3709,15 +3666,15 @@ ae_int_t xdebugb2count(const boolean_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t
-      result = alglib_impl::xdebugb2count(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::xdebugb2count(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -3740,14 +3697,15 @@ void xdebugb2not(const boolean_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb2not(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb2not(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3770,14 +3728,15 @@ void xdebugb2transpose(boolean_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb2transpose(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb2transpose(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3792,7 +3751,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugb2outsin(const ae_int_t m, const ae_int_t n, boolean_2d_array &a, const xparams _xparams) {
+void xdebugb2outsin(const ae_int_t m, const ae_int_t n, boolean_2d_array &a,
+                    const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3800,14 +3760,16 @@ void xdebugb2outsin(const ae_int_t m, const ae_int_t n, boolean_2d_array &a, con
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugb2outsin(m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugb2outsin(m, n,
+                              const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                              &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3829,15 +3791,15 @@ ae_int_t xdebugi2sum(const integer_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_int_t
-      result = alglib_impl::xdebugi2sum(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_int_t result = alglib_impl::xdebugi2sum(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<ae_int_t *>(&result));
 }
@@ -3860,14 +3822,15 @@ void xdebugi2neg(const integer_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3890,14 +3853,15 @@ void xdebugi2transpose(integer_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi2transpose(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi2transpose(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3912,7 +3876,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugi2outsin(const ae_int_t m, const ae_int_t n, integer_2d_array &a, const xparams _xparams) {
+void xdebugi2outsin(const ae_int_t m, const ae_int_t n, integer_2d_array &a,
+                    const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -3920,14 +3885,16 @@ void xdebugi2outsin(const ae_int_t m, const ae_int_t n, integer_2d_array &a, con
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugi2outsin(m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugi2outsin(m, n,
+                              const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                              &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -3949,14 +3916,15 @@ double xdebugr2sum(const real_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::xdebugr2sum(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  double result = alglib_impl::xdebugr2sum(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
@@ -3979,14 +3947,15 @@ void xdebugr2neg(const real_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4009,14 +3978,15 @@ void xdebugr2transpose(real_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr2transpose(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr2transpose(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4031,7 +4001,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugr2outsin(const ae_int_t m, const ae_int_t n, real_2d_array &a, const xparams _xparams) {
+void xdebugr2outsin(const ae_int_t m, const ae_int_t n, real_2d_array &a,
+                    const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -4039,14 +4010,16 @@ void xdebugr2outsin(const ae_int_t m, const ae_int_t n, real_2d_array &a, const 
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugr2outsin(m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugr2outsin(m, n,
+                              const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                              &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4068,15 +4041,15 @@ alglib::complex xdebugc2sum(const complex_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::ae_complex
-      result = alglib_impl::xdebugc2sum(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::ae_complex result = alglib_impl::xdebugc2sum(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<alglib::complex *>(&result));
 }
@@ -4099,14 +4072,15 @@ void xdebugc2neg(const complex_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc2neg(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+                           &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4129,14 +4103,15 @@ void xdebugc2transpose(complex_2d_array &a, const xparams _xparams) {
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc2transpose(const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc2transpose(
+      const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4151,7 +4126,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugc2outsincos(const ae_int_t m, const ae_int_t n, complex_2d_array &a, const xparams _xparams) {
+void xdebugc2outsincos(const ae_int_t m, const ae_int_t n, complex_2d_array &a,
+                       const xparams _xparams) {
   jmp_buf _break_jump;
   alglib_impl::ae_state _alglib_env_state;
   alglib_impl::ae_state_init(&_alglib_env_state);
@@ -4159,14 +4135,16 @@ void xdebugc2outsincos(const ae_int_t m, const ae_int_t n, complex_2d_array &a, 
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  alglib_impl::xdebugc2outsincos(m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()), &_alglib_env_state);
+  alglib_impl::xdebugc2outsincos(
+      m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+      &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return;
 }
@@ -4180,8 +4158,7 @@ Returns sum of a[i,j]*(1+b[i,j]) such that c[i,j] is True
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-double xdebugmaskedbiasedproductsum(const ae_int_t m,
-                                    const ae_int_t n,
+double xdebugmaskedbiasedproductsum(const ae_int_t m, const ae_int_t n,
                                     const real_2d_array &a,
                                     const real_2d_array &b,
                                     const boolean_2d_array &c,
@@ -4193,24 +4170,22 @@ double xdebugmaskedbiasedproductsum(const ae_int_t m,
 #if !defined(AE_NO_EXCEPTIONS)
     _ALGLIB_CPP_EXCEPTION(_alglib_env_state.error_msg);
 #else
-                                                                                                                            _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
-        return 0;
+    _ALGLIB_SET_ERROR_FLAG(_alglib_env_state.error_msg);
+    return 0;
 #endif
   }
   ae_state_set_break_jump(&_alglib_env_state, &_break_jump);
   if (_xparams.flags != 0x0)
     ae_state_set_flags(&_alglib_env_state, _xparams.flags);
-  double result = alglib_impl::xdebugmaskedbiasedproductsum(m,
-                                                            n,
-                                                            const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
-                                                            const_cast<alglib_impl::ae_matrix *>(b.c_ptr()),
-                                                            const_cast<alglib_impl::ae_matrix *>(c.c_ptr()),
-                                                            &_alglib_env_state);
+  double result = alglib_impl::xdebugmaskedbiasedproductsum(
+      m, n, const_cast<alglib_impl::ae_matrix *>(a.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(b.c_ptr()),
+      const_cast<alglib_impl::ae_matrix *>(c.c_ptr()), &_alglib_env_state);
   alglib_impl::ae_state_clear(&_alglib_env_state);
   return *(reinterpret_cast<double *>(&result));
 }
 #endif
-}
+} // namespace alglib
 
 /////////////////////////////////////////////////////////////////////////
 //
@@ -4223,49 +4198,36 @@ static ae_int_t nearestneighbor_splitnodesize = 6;
 static ae_int_t nearestneighbor_kdtreefirstversion = 0;
 static ae_int_t nearestneighbor_tsqueryrnn(kdtree *kdt,
                                            kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                                           double r,
+                                           /* Real    */ ae_vector *x, double r,
                                            ae_bool selfmatch,
                                            ae_bool orderedbydist,
                                            ae_state *_state);
-static void nearestneighbor_kdtreesplit(kdtree *kdt,
-                                        ae_int_t i1,
-                                        ae_int_t i2,
-                                        ae_int_t d,
-                                        double s,
-                                        ae_int_t *i3,
+static void nearestneighbor_kdtreesplit(kdtree *kdt, ae_int_t i1, ae_int_t i2,
+                                        ae_int_t d, double s, ae_int_t *i3,
                                         ae_state *_state);
-static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
-                                                  ae_int_t *nodesoffs,
-                                                  ae_int_t *splitsoffs,
-                                                  ae_int_t i1,
-                                                  ae_int_t i2,
-                                                  ae_int_t maxleafsize,
-                                                  ae_state *_state);
+static void nearestneighbor_kdtreegeneratetreerec(
+    kdtree *kdt, ae_int_t *nodesoffs, ae_int_t *splitsoffs, ae_int_t i1,
+    ae_int_t i2, ae_int_t maxleafsize, ae_state *_state);
 static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
                                              kdtreerequestbuffer *buf,
-                                             ae_int_t offs,
-                                             ae_state *_state);
+                                             ae_int_t offs, ae_state *_state);
 static void nearestneighbor_kdtreequeryboxrec(kdtree *kdt,
                                               kdtreerequestbuffer *buf,
-                                              ae_int_t offs,
-                                              ae_state *_state);
+                                              ae_int_t offs, ae_state *_state);
 static void nearestneighbor_kdtreeinitbox(kdtree *kdt,
-    /* Real    */ ae_vector *x,
+                                          /* Real    */ ae_vector *x,
                                           kdtreerequestbuffer *buf,
                                           ae_state *_state);
 static void nearestneighbor_kdtreeallocdatasetindependent(kdtree *kdt,
                                                           ae_int_t nx,
                                                           ae_int_t ny,
                                                           ae_state *_state);
-static void nearestneighbor_kdtreeallocdatasetdependent(kdtree *kdt,
-                                                        ae_int_t n,
+static void nearestneighbor_kdtreeallocdatasetdependent(kdtree *kdt, ae_int_t n,
                                                         ae_int_t nx,
                                                         ae_int_t ny,
                                                         ae_state *_state);
-static void nearestneighbor_checkrequestbufferconsistency(kdtree *kdt,
-                                                          kdtreerequestbuffer *buf,
-                                                          ae_state *_state);
+static void nearestneighbor_checkrequestbufferconsistency(
+    kdtree *kdt, kdtreerequestbuffer *buf, ae_state *_state);
 
 #endif
 #if defined(AE_COMPILE_HQRND) || !defined(AE_PARTIAL_BUILD)
@@ -4273,8 +4235,7 @@ static ae_int_t hqrnd_hqrndmax = 2147483561;
 static ae_int_t hqrnd_hqrndm1 = 2147483563;
 static ae_int_t hqrnd_hqrndm2 = 2147483399;
 static ae_int_t hqrnd_hqrndmagic = 1634357784;
-static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state,
-                                       ae_state *_state);
+static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state, ae_state *_state);
 
 #endif
 #if defined(AE_COMPILE_XDEBUG) || !defined(AE_PARTIAL_BUILD)
@@ -4318,13 +4279,9 @@ NOTES
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreebuild(/* Real    */ ae_matrix *xy,
-                               ae_int_t n,
-                               ae_int_t nx,
-                               ae_int_t ny,
-                               ae_int_t normtype,
-                               kdtree *kdt,
-                               ae_state *_state) {
+void kdtreebuild(/* Real    */ ae_matrix *xy, ae_int_t n, ae_int_t nx,
+                 ae_int_t ny, ae_int_t normtype, kdtree *kdt,
+                 ae_state *_state) {
   ae_frame _frame_block;
   ae_vector tags;
   ae_int_t i;
@@ -4337,10 +4294,13 @@ void kdtreebuild(/* Real    */ ae_matrix *xy,
   ae_assert(n >= 0, "KDTreeBuild: N<0", _state);
   ae_assert(nx >= 1, "KDTreeBuild: NX<1", _state);
   ae_assert(ny >= 0, "KDTreeBuild: NY<0", _state);
-  ae_assert(normtype >= 0 && normtype <= 2, "KDTreeBuild: incorrect NormType", _state);
+  ae_assert(normtype >= 0 && normtype <= 2, "KDTreeBuild: incorrect NormType",
+            _state);
   ae_assert(xy->rows >= n, "KDTreeBuild: rows(X)<N", _state);
-  ae_assert(xy->cols >= nx + ny || n == 0, "KDTreeBuild: cols(X)<NX+NY", _state);
-  ae_assert(apservisfinitematrix(xy, n, nx + ny, _state), "KDTreeBuild: XY contains infinite or NaN values", _state);
+  ae_assert(xy->cols >= nx + ny || n == 0, "KDTreeBuild: cols(X)<NX+NY",
+            _state);
+  ae_assert(apservisfinitematrix(xy, n, nx + ny, _state),
+            "KDTreeBuild: XY contains infinite or NaN values", _state);
   if (n > 0) {
     ae_vector_set_length(&tags, n, _state);
     for (i = 0; i <= n - 1; i++) {
@@ -4389,13 +4349,9 @@ NOTES
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreebuildtagged(/* Real    */ ae_matrix *xy,
-    /* Integer */ ae_vector *tags,
-                                     ae_int_t n,
-                                     ae_int_t nx,
-                                     ae_int_t ny,
-                                     ae_int_t normtype,
-                                     kdtree *kdt,
-                                     ae_state *_state) {
+                       /* Integer */ ae_vector *tags, ae_int_t n, ae_int_t nx,
+                       ae_int_t ny, ae_int_t normtype, kdtree *kdt,
+                       ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
   ae_int_t nodesoffs;
@@ -4406,16 +4362,17 @@ void kdtreebuildtagged(/* Real    */ ae_matrix *xy,
   ae_assert(n >= 0, "KDTreeBuildTagged: N<0", _state);
   ae_assert(nx >= 1, "KDTreeBuildTagged: NX<1", _state);
   ae_assert(ny >= 0, "KDTreeBuildTagged: NY<0", _state);
-  ae_assert(normtype >= 0 && normtype <= 2, "KDTreeBuildTagged: incorrect NormType", _state);
+  ae_assert(normtype >= 0 && normtype <= 2,
+            "KDTreeBuildTagged: incorrect NormType", _state);
   ae_assert(xy->rows >= n, "KDTreeBuildTagged: rows(X)<N", _state);
-  ae_assert(xy->cols >= nx + ny || n == 0, "KDTreeBuildTagged: cols(X)<NX+NY", _state);
-  ae_assert(apservisfinitematrix(xy, n, nx + ny, _state),
-            "KDTreeBuildTagged: XY contains infinite or NaN values",
+  ae_assert(xy->cols >= nx + ny || n == 0, "KDTreeBuildTagged: cols(X)<NX+NY",
             _state);
+  ae_assert(apservisfinitematrix(xy, n, nx + ny, _state),
+            "KDTreeBuildTagged: XY contains infinite or NaN values", _state);
 
   /*
-     * initialize
-     */
+   * initialize
+   */
   kdt->n = n;
   kdt->nx = nx;
   kdt->ny = ny;
@@ -4423,48 +4380,57 @@ void kdtreebuildtagged(/* Real    */ ae_matrix *xy,
   kdt->innerbuf.kcur = 0;
 
   /*
-     * N=0 => quick exit
-     */
+   * N=0 => quick exit
+   */
   if (n == 0) {
     return;
   }
 
   /*
-     * Allocate
-     */
+   * Allocate
+   */
   nearestneighbor_kdtreeallocdatasetindependent(kdt, nx, ny, _state);
   nearestneighbor_kdtreeallocdatasetdependent(kdt, n, nx, ny, _state);
   kdtreecreaterequestbuffer(kdt, &kdt->innerbuf, _state);
 
   /*
-     * Initial fill
-     */
+   * Initial fill
+   */
   for (i = 0; i <= n - 1; i++) {
-    ae_v_move(&kdt->xy.ptr.pp_double[i][0], 1, &xy->ptr.pp_double[i][0], 1, ae_v_len(0, nx - 1));
-    ae_v_move(&kdt->xy.ptr.pp_double[i][nx], 1, &xy->ptr.pp_double[i][0], 1, ae_v_len(nx, 2 * nx + ny - 1));
+    ae_v_move(&kdt->xy.ptr.pp_double[i][0], 1, &xy->ptr.pp_double[i][0], 1,
+              ae_v_len(0, nx - 1));
+    ae_v_move(&kdt->xy.ptr.pp_double[i][nx], 1, &xy->ptr.pp_double[i][0], 1,
+              ae_v_len(nx, 2 * nx + ny - 1));
     kdt->tags.ptr.p_int[i] = tags->ptr.p_int[i];
   }
 
   /*
-     * Determine bounding box
-     */
-  ae_v_move(&kdt->boxmin.ptr.p_double[0], 1, &kdt->xy.ptr.pp_double[0][0], 1, ae_v_len(0, nx - 1));
-  ae_v_move(&kdt->boxmax.ptr.p_double[0], 1, &kdt->xy.ptr.pp_double[0][0], 1, ae_v_len(0, nx - 1));
+   * Determine bounding box
+   */
+  ae_v_move(&kdt->boxmin.ptr.p_double[0], 1, &kdt->xy.ptr.pp_double[0][0], 1,
+            ae_v_len(0, nx - 1));
+  ae_v_move(&kdt->boxmax.ptr.p_double[0], 1, &kdt->xy.ptr.pp_double[0][0], 1,
+            ae_v_len(0, nx - 1));
   for (i = 1; i <= n - 1; i++) {
     for (j = 0; j <= nx - 1; j++) {
-      kdt->boxmin.ptr.p_double[j] = ae_minreal(kdt->boxmin.ptr.p_double[j], kdt->xy.ptr.pp_double[i][j], _state);
-      kdt->boxmax.ptr.p_double[j] = ae_maxreal(kdt->boxmax.ptr.p_double[j], kdt->xy.ptr.pp_double[i][j], _state);
+      kdt->boxmin.ptr.p_double[j] = ae_minreal(
+          kdt->boxmin.ptr.p_double[j], kdt->xy.ptr.pp_double[i][j], _state);
+      kdt->boxmax.ptr.p_double[j] = ae_maxreal(
+          kdt->boxmax.ptr.p_double[j], kdt->xy.ptr.pp_double[i][j], _state);
     }
   }
 
   /*
-     * Generate tree
-     */
+   * Generate tree
+   */
   nodesoffs = 0;
   splitsoffs = 0;
-  ae_v_move(&kdt->innerbuf.curboxmin.ptr.p_double[0], 1, &kdt->boxmin.ptr.p_double[0], 1, ae_v_len(0, nx - 1));
-  ae_v_move(&kdt->innerbuf.curboxmax.ptr.p_double[0], 1, &kdt->boxmax.ptr.p_double[0], 1, ae_v_len(0, nx - 1));
-  nearestneighbor_kdtreegeneratetreerec(kdt, &nodesoffs, &splitsoffs, 0, n, 8, _state);
+  ae_v_move(&kdt->innerbuf.curboxmin.ptr.p_double[0], 1,
+            &kdt->boxmin.ptr.p_double[0], 1, ae_v_len(0, nx - 1));
+  ae_v_move(&kdt->innerbuf.curboxmax.ptr.p_double[0], 1,
+            &kdt->boxmax.ptr.p_double[0], 1, ae_v_len(0, nx - 1));
+  nearestneighbor_kdtreegeneratetreerec(kdt, &nodesoffs, &splitsoffs, 0, n, 8,
+                                        _state);
   ivectorresize(&kdt->nodes, nodesoffs, _state);
   rvectorresize(&kdt->splits, splitsoffs, _state);
 }
@@ -4496,8 +4462,7 @@ IMPORTANT: KD-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-void kdtreecreaterequestbuffer(kdtree *kdt,
-                               kdtreerequestbuffer *buf,
+void kdtreecreaterequestbuffer(kdtree *kdt, kdtreerequestbuffer *buf,
                                ae_state *_state) {
 
   _kdtreerequestbuffer_clear(buf);
@@ -4548,15 +4513,14 @@ these results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t kdtreequeryknn(kdtree *kdt,
-    /* Real    */ ae_vector *x,
-                        ae_int_t k,
-                        ae_bool selfmatch,
-                        ae_state *_state) {
+                        /* Real    */ ae_vector *x, ae_int_t k,
+                        ae_bool selfmatch, ae_state *_state) {
   ae_int_t result;
 
   ae_assert(k >= 1, "KDTreeQueryKNN: K<1!", _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeQueryKNN: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeQueryKNN: X contains infinite or NaN values!", _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeQueryKNN: X contains infinite or NaN values!", _state);
   result = kdtreetsqueryaknn(kdt, &kdt->innerbuf, x, k, selfmatch, 0.0, _state);
   return result;
 }
@@ -4571,11 +4535,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   kd-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -4602,17 +4565,15 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryknn(kdtree *kdt,
-                          kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                          ae_int_t k,
-                          ae_bool selfmatch,
-                          ae_state *_state) {
+ae_int_t kdtreetsqueryknn(kdtree *kdt, kdtreerequestbuffer *buf,
+                          /* Real    */ ae_vector *x, ae_int_t k,
+                          ae_bool selfmatch, ae_state *_state) {
   ae_int_t result;
 
   ae_assert(k >= 1, "KDTreeTsQueryKNN: K<1!", _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeTsQueryKNN: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeTsQueryKNN: X contains infinite or NaN values!", _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeTsQueryKNN: X contains infinite or NaN values!", _state);
   result = kdtreetsqueryaknn(kdt, buf, x, k, selfmatch, 0.0, _state);
   return result;
 }
@@ -4657,15 +4618,15 @@ actual results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t kdtreequeryrnn(kdtree *kdt,
-    /* Real    */ ae_vector *x,
-                        double r,
-                        ae_bool selfmatch,
+                        /* Real    */ ae_vector *x, double r, ae_bool selfmatch,
                         ae_state *_state) {
   ae_int_t result;
 
-  ae_assert(ae_fp_greater(r, (double) (0)), "KDTreeQueryRNN: incorrect R!", _state);
+  ae_assert(ae_fp_greater(r, (double)(0)), "KDTreeQueryRNN: incorrect R!",
+            _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeQueryRNN: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeQueryRNN: X contains infinite or NaN values!", _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeQueryRNN: X contains infinite or NaN values!", _state);
   result = kdtreetsqueryrnn(kdt, &kdt->innerbuf, x, r, selfmatch, _state);
   return result;
 }
@@ -4709,15 +4670,15 @@ As indicated by "U" suffix, this function returns unordered results.
      Copyright 01.11.2018 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t kdtreequeryrnnu(kdtree *kdt,
-    /* Real    */ ae_vector *x,
-                         double r,
-                         ae_bool selfmatch,
-                         ae_state *_state) {
+                         /* Real    */ ae_vector *x, double r,
+                         ae_bool selfmatch, ae_state *_state) {
   ae_int_t result;
 
-  ae_assert(ae_fp_greater(r, (double) (0)), "KDTreeQueryRNNU: incorrect R!", _state);
+  ae_assert(ae_fp_greater(r, (double)(0)), "KDTreeQueryRNNU: incorrect R!",
+            _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeQueryRNNU: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeQueryRNNU: X contains infinite or NaN values!", _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeQueryRNNU: X contains infinite or NaN values!", _state);
   result = kdtreetsqueryrnnu(kdt, &kdt->innerbuf, x, r, selfmatch, _state);
   return result;
 }
@@ -4737,11 +4698,10 @@ NOTE: it is also possible to perform undordered queries performed by means
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -4768,18 +4728,18 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryrnn(kdtree *kdt,
-                          kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                          double r,
-                          ae_bool selfmatch,
-                          ae_state *_state) {
+ae_int_t kdtreetsqueryrnn(kdtree *kdt, kdtreerequestbuffer *buf,
+                          /* Real    */ ae_vector *x, double r,
+                          ae_bool selfmatch, ae_state *_state) {
   ae_int_t result;
 
-  ae_assert(ae_isfinite(r, _state) && ae_fp_greater(r, (double) (0)), "KDTreeTsQueryRNN: incorrect R!", _state);
+  ae_assert(ae_isfinite(r, _state) && ae_fp_greater(r, (double)(0)),
+            "KDTreeTsQueryRNN: incorrect R!", _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeTsQueryRNN: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeTsQueryRNN: X contains infinite or NaN values!", _state);
-  result = nearestneighbor_tsqueryrnn(kdt, buf, x, r, selfmatch, ae_true, _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeTsQueryRNN: X contains infinite or NaN values!", _state);
+  result =
+      nearestneighbor_tsqueryrnn(kdt, buf, x, r, selfmatch, ae_true, _state);
   return result;
 }
 
@@ -4795,11 +4755,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -4828,18 +4787,18 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryrnnu(kdtree *kdt,
-                           kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                           double r,
-                           ae_bool selfmatch,
-                           ae_state *_state) {
+ae_int_t kdtreetsqueryrnnu(kdtree *kdt, kdtreerequestbuffer *buf,
+                           /* Real    */ ae_vector *x, double r,
+                           ae_bool selfmatch, ae_state *_state) {
   ae_int_t result;
 
-  ae_assert(ae_isfinite(r, _state) && ae_fp_greater(r, (double) (0)), "KDTreeTsQueryRNNU: incorrect R!", _state);
+  ae_assert(ae_isfinite(r, _state) && ae_fp_greater(r, (double)(0)),
+            "KDTreeTsQueryRNNU: incorrect R!", _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeTsQueryRNNU: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeTsQueryRNNU: X contains infinite or NaN values!", _state);
-  result = nearestneighbor_tsqueryrnn(kdt, buf, x, r, selfmatch, ae_false, _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeTsQueryRNNU: X contains infinite or NaN values!", _state);
+  result =
+      nearestneighbor_tsqueryrnn(kdt, buf, x, r, selfmatch, ae_false, _state);
   return result;
 }
 
@@ -4885,11 +4844,8 @@ these results:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t kdtreequeryaknn(kdtree *kdt,
-    /* Real    */ ae_vector *x,
-                         ae_int_t k,
-                         ae_bool selfmatch,
-                         double eps,
-                         ae_state *_state) {
+                         /* Real    */ ae_vector *x, ae_int_t k,
+                         ae_bool selfmatch, double eps, ae_state *_state) {
   ae_int_t result;
 
   result = kdtreetsqueryaknn(kdt, &kdt->innerbuf, x, k, selfmatch, eps, _state);
@@ -4906,11 +4862,10 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    K           -   number of neighbors to return, K>=1
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. K
+-   number of neighbors to return, K>=1 SelfMatch   -   whether self-matches are
+allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -4944,25 +4899,23 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 18.03.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsqueryaknn(kdtree *kdt,
-                           kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                           ae_int_t k,
-                           ae_bool selfmatch,
-                           double eps,
-                           ae_state *_state) {
+ae_int_t kdtreetsqueryaknn(kdtree *kdt, kdtreerequestbuffer *buf,
+                           /* Real    */ ae_vector *x, ae_int_t k,
+                           ae_bool selfmatch, double eps, ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
   ae_int_t result;
 
   ae_assert(k > 0, "KDTreeTsQueryAKNN: incorrect K!", _state);
-  ae_assert(ae_fp_greater_eq(eps, (double) (0)), "KDTreeTsQueryAKNN: incorrect Eps!", _state);
+  ae_assert(ae_fp_greater_eq(eps, (double)(0)),
+            "KDTreeTsQueryAKNN: incorrect Eps!", _state);
   ae_assert(x->cnt >= kdt->nx, "KDTreeTsQueryAKNN: Length(X)<NX!", _state);
-  ae_assert(isfinitevector(x, kdt->nx, _state), "KDTreeTsQueryAKNN: X contains infinite or NaN values!", _state);
+  ae_assert(isfinitevector(x, kdt->nx, _state),
+            "KDTreeTsQueryAKNN: X contains infinite or NaN values!", _state);
 
   /*
-     * Handle special case: KDT.N=0
-     */
+   * Handle special case: KDT.N=0
+   */
   if (kdt->n == 0) {
     buf->kcur = 0;
     result = 0;
@@ -4970,16 +4923,16 @@ ae_int_t kdtreetsqueryaknn(kdtree *kdt,
   }
 
   /*
-     * Check consistency of request buffer
-     */
+   * Check consistency of request buffer
+   */
   nearestneighbor_checkrequestbufferconsistency(kdt, buf, _state);
 
   /*
-     * Prepare parameters
-     */
+   * Prepare parameters
+   */
   k = ae_minint(k, kdt->n, _state);
   buf->kneeded = k;
-  buf->rneeded = (double) (0);
+  buf->rneeded = (double)(0);
   buf->selfmatch = selfmatch;
   if (kdt->normtype == 2) {
     buf->approxf = 1 / ae_sqr(1 + eps, _state);
@@ -4989,22 +4942,22 @@ ae_int_t kdtreetsqueryaknn(kdtree *kdt,
   buf->kcur = 0;
 
   /*
-     * calculate distance from point to current bounding box
-     */
+   * calculate distance from point to current bounding box
+   */
   nearestneighbor_kdtreeinitbox(kdt, x, buf, _state);
 
   /*
-     * call recursive search
-     * results are returned as heap
-     */
+   * call recursive search
+   * results are returned as heap
+   */
   nearestneighbor_kdtreequerynnrec(kdt, buf, 0, _state);
 
   /*
-     * pop from heap to generate ordered representation
-     *
-     * last element is non pop'ed because it is already in
-     * its place
-     */
+   * pop from heap to generate ordered representation
+   *
+   * last element is non pop'ed because it is already in
+   * its place
+   */
   result = buf->kcur;
   j = buf->kcur;
   for (i = buf->kcur; i >= 2; i--) {
@@ -5048,9 +5001,8 @@ NOTE: this particular query returns unordered results, because there is no
      Copyright 14.05.2016 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t kdtreequerybox(kdtree *kdt,
-    /* Real    */ ae_vector *boxmin,
-    /* Real    */ ae_vector *boxmax,
-                        ae_state *_state) {
+                        /* Real    */ ae_vector *boxmin,
+                        /* Real    */ ae_vector *boxmax, ae_state *_state) {
   ae_int_t result;
 
   result = kdtreetsquerybox(kdt, &kdt->innerbuf, boxmin, boxmax, _state);
@@ -5067,10 +5019,9 @@ threads.
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    BoxMin      -   lower bounds, array[0..NX-1].
-    BoxMax      -   upper bounds, array[0..NX-1].
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. BoxMin      -   lower bounds,
+array[0..NX-1]. BoxMax      -   upper bounds, array[0..NX-1].
 
 RESULT
     number of actual neighbors found (in [0,N]).
@@ -5097,16 +5048,16 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
   -- ALGLIB --
      Copyright 14.05.2016 by Bochkanov Sergey
 *************************************************************************/
-ae_int_t kdtreetsquerybox(kdtree *kdt,
-                          kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *boxmin,
-    /* Real    */ ae_vector *boxmax,
-                          ae_state *_state) {
+ae_int_t kdtreetsquerybox(kdtree *kdt, kdtreerequestbuffer *buf,
+                          /* Real    */ ae_vector *boxmin,
+                          /* Real    */ ae_vector *boxmax, ae_state *_state) {
   ae_int_t j;
   ae_int_t result;
 
-  ae_assert(boxmin->cnt >= kdt->nx, "KDTreeTsQueryBox: Length(BoxMin)<NX!", _state);
-  ae_assert(boxmax->cnt >= kdt->nx, "KDTreeTsQueryBox: Length(BoxMax)<NX!", _state);
+  ae_assert(boxmin->cnt >= kdt->nx, "KDTreeTsQueryBox: Length(BoxMin)<NX!",
+            _state);
+  ae_assert(boxmax->cnt >= kdt->nx, "KDTreeTsQueryBox: Length(BoxMax)<NX!",
+            _state);
   ae_assert(isfinitevector(boxmin, kdt->nx, _state),
             "KDTreeTsQueryBox: BoxMin contains infinite or NaN values!",
             _state);
@@ -5115,13 +5066,13 @@ ae_int_t kdtreetsquerybox(kdtree *kdt,
             _state);
 
   /*
-     * Check consistency of request buffer
-     */
+   * Check consistency of request buffer
+   */
   nearestneighbor_checkrequestbufferconsistency(kdt, buf, _state);
 
   /*
-     * Quick exit for degenerate boxes
-     */
+   * Quick exit for degenerate boxes
+   */
   for (j = 0; j <= kdt->nx - 1; j++) {
     if (ae_fp_greater(boxmin->ptr.p_double[j], boxmax->ptr.p_double[j])) {
       buf->kcur = 0;
@@ -5131,8 +5082,8 @@ ae_int_t kdtreetsquerybox(kdtree *kdt,
   }
 
   /*
-     * Prepare parameters
-     */
+   * Prepare parameters
+   */
   for (j = 0; j <= kdt->nx - 1; j++) {
     buf->boxmin.ptr.p_double[j] = boxmin->ptr.p_double[j];
     buf->boxmax.ptr.p_double[j] = boxmax->ptr.p_double[j];
@@ -5142,8 +5093,8 @@ ae_int_t kdtreetsquerybox(kdtree *kdt,
   buf->kcur = 0;
 
   /*
-     * call recursive search
-     */
+   * call recursive search
+   */
   nearestneighbor_kdtreequeryboxrec(kdt, buf, 0, _state);
   result = buf->kcur;
   return result;
@@ -5184,8 +5135,7 @@ SEE ALSO
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsx(kdtree *kdt,
-    /* Real    */ ae_matrix *x,
-                         ae_state *_state) {
+                         /* Real    */ ae_matrix *x, ae_state *_state) {
 
   kdtreetsqueryresultsx(kdt, &kdt->innerbuf, x, _state);
 }
@@ -5226,8 +5176,7 @@ SEE ALSO
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsxy(kdtree *kdt,
-    /* Real    */ ae_matrix *xy,
-                          ae_state *_state) {
+                          /* Real    */ ae_matrix *xy, ae_state *_state) {
 
   kdtreetsqueryresultsxy(kdt, &kdt->innerbuf, xy, _state);
 }
@@ -5268,8 +5217,7 @@ SEE ALSO
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultstags(kdtree *kdt,
-    /* Integer */ ae_vector *tags,
-                            ae_state *_state) {
+                            /* Integer */ ae_vector *tags, ae_state *_state) {
 
   kdtreetsqueryresultstags(kdt, &kdt->innerbuf, tags, _state);
 }
@@ -5309,8 +5257,7 @@ SEE ALSO
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsdistances(kdtree *kdt,
-    /* Real    */ ae_vector *r,
-                                 ae_state *_state) {
+                                 /* Real    */ ae_vector *r, ae_state *_state) {
 
   kdtreetsqueryresultsdistances(kdt, &kdt->innerbuf, r, _state);
 }
@@ -5346,10 +5293,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultsx(kdtree *kdt,
-                           kdtreerequestbuffer *buf,
-    /* Real    */ ae_matrix *x,
-                           ae_state *_state) {
+void kdtreetsqueryresultsx(kdtree *kdt, kdtreerequestbuffer *buf,
+                           /* Real    */ ae_matrix *x, ae_state *_state) {
   ae_int_t i;
   ae_int_t k;
 
@@ -5361,10 +5306,8 @@ void kdtreetsqueryresultsx(kdtree *kdt,
   }
   k = buf->kcur;
   for (i = 0; i <= k - 1; i++) {
-    ae_v_move(&x->ptr.pp_double[i][0],
-              1,
-              &kdt->xy.ptr.pp_double[buf->idx.ptr.p_int[i]][kdt->nx],
-              1,
+    ae_v_move(&x->ptr.pp_double[i][0], 1,
+              &kdt->xy.ptr.pp_double[buf->idx.ptr.p_int[i]][kdt->nx], 1,
               ae_v_len(0, kdt->nx - 1));
   }
 }
@@ -5401,10 +5344,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultsxy(kdtree *kdt,
-                            kdtreerequestbuffer *buf,
-    /* Real    */ ae_matrix *xy,
-                            ae_state *_state) {
+void kdtreetsqueryresultsxy(kdtree *kdt, kdtreerequestbuffer *buf,
+                            /* Real    */ ae_matrix *xy, ae_state *_state) {
   ae_int_t i;
   ae_int_t k;
 
@@ -5416,10 +5357,8 @@ void kdtreetsqueryresultsxy(kdtree *kdt,
   }
   k = buf->kcur;
   for (i = 0; i <= k - 1; i++) {
-    ae_v_move(&xy->ptr.pp_double[i][0],
-              1,
-              &kdt->xy.ptr.pp_double[buf->idx.ptr.p_int[i]][kdt->nx],
-              1,
+    ae_v_move(&xy->ptr.pp_double[i][0], 1,
+              &kdt->xy.ptr.pp_double[buf->idx.ptr.p_int[i]][kdt->nx], 1,
               ae_v_len(0, kdt->nx + kdt->ny - 1));
   }
 }
@@ -5461,10 +5400,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultstags(kdtree *kdt,
-                              kdtreerequestbuffer *buf,
-    /* Integer */ ae_vector *tags,
-                              ae_state *_state) {
+void kdtreetsqueryresultstags(kdtree *kdt, kdtreerequestbuffer *buf,
+                              /* Integer */ ae_vector *tags, ae_state *_state) {
   ae_int_t i;
   ae_int_t k;
 
@@ -5516,9 +5453,8 @@ SEE ALSO
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-void kdtreetsqueryresultsdistances(kdtree *kdt,
-                                   kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *r,
+void kdtreetsqueryresultsdistances(kdtree *kdt, kdtreerequestbuffer *buf,
+                                   /* Real    */ ae_vector *r,
                                    ae_state *_state) {
   ae_int_t i;
   ae_int_t k;
@@ -5532,11 +5468,11 @@ void kdtreetsqueryresultsdistances(kdtree *kdt,
   k = buf->kcur;
 
   /*
-     * unload norms
-     *
-     * Abs() call is used to handle cases with negative norms
-     * (generated during KFN requests)
-     */
+   * unload norms
+   *
+   * Abs() call is used to handle cases with negative norms
+   * (generated during KFN requests)
+   */
   if (kdt->normtype == 0) {
     for (i = 0; i <= k - 1; i++) {
       r->ptr.p_double[i] = ae_fabs(buf->r.ptr.p_double[i], _state);
@@ -5549,7 +5485,8 @@ void kdtreetsqueryresultsdistances(kdtree *kdt,
   }
   if (kdt->normtype == 2) {
     for (i = 0; i <= k - 1; i++) {
-      r->ptr.p_double[i] = ae_sqrt(ae_fabs(buf->r.ptr.p_double[i], _state), _state);
+      r->ptr.p_double[i] =
+          ae_sqrt(ae_fabs(buf->r.ptr.p_double[i], _state), _state);
     }
   }
 }
@@ -5567,8 +5504,7 @@ when you call it from command line.
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsxi(kdtree *kdt,
-    /* Real    */ ae_matrix *x,
-                          ae_state *_state) {
+                          /* Real    */ ae_matrix *x, ae_state *_state) {
 
   ae_matrix_clear(x);
 
@@ -5588,8 +5524,7 @@ when you call it from command line.
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsxyi(kdtree *kdt,
-    /* Real    */ ae_matrix *xy,
-                           ae_state *_state) {
+                           /* Real    */ ae_matrix *xy, ae_state *_state) {
 
   ae_matrix_clear(xy);
 
@@ -5609,8 +5544,7 @@ when you call it from command line.
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultstagsi(kdtree *kdt,
-    /* Integer */ ae_vector *tags,
-                             ae_state *_state) {
+                             /* Integer */ ae_vector *tags, ae_state *_state) {
 
   ae_vector_clear(tags);
 
@@ -5630,7 +5564,7 @@ when you call it from command line.
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void kdtreequeryresultsdistancesi(kdtree *kdt,
-    /* Real    */ ae_vector *r,
+                                  /* Real    */ ae_vector *r,
                                   ae_state *_state) {
 
   ae_vector_clear(r);
@@ -5649,9 +5583,8 @@ This function assumes that output buffers are preallocated by caller.
      Copyright 20.06.2016 by Bochkanov Sergey
 *************************************************************************/
 void kdtreeexplorebox(kdtree *kdt,
-    /* Real    */ ae_vector *boxmin,
-    /* Real    */ ae_vector *boxmax,
-                      ae_state *_state) {
+                      /* Real    */ ae_vector *boxmin,
+                      /* Real    */ ae_vector *boxmax, ae_state *_state) {
   ae_int_t i;
 
   rvectorsetlengthatleast(boxmin, kdt->nx, _state);
@@ -5681,28 +5614,27 @@ OUTPUT VALUES:
   -- ALGLIB --
      Copyright 20.06.2016 by Bochkanov Sergey
 *************************************************************************/
-void kdtreeexplorenodetype(kdtree *kdt,
-                           ae_int_t node,
-                           ae_int_t *nodetype,
+void kdtreeexplorenodetype(kdtree *kdt, ae_int_t node, ae_int_t *nodetype,
                            ae_state *_state) {
 
   *nodetype = 0;
 
   ae_assert(node >= 0, "KDTreeExploreNodeType: incorrect node", _state);
-  ae_assert(node < kdt->nodes.cnt, "KDTreeExploreNodeType: incorrect node", _state);
+  ae_assert(node < kdt->nodes.cnt, "KDTreeExploreNodeType: incorrect node",
+            _state);
   if (kdt->nodes.ptr.p_int[node] > 0) {
 
     /*
-         * Leaf node
-         */
+     * Leaf node
+     */
     *nodetype = 0;
     return;
   }
   if (kdt->nodes.ptr.p_int[node] == 0) {
 
     /*
-         * Split node
-         */
+     * Split node
+     */
     *nodetype = 1;
     return;
   }
@@ -5726,10 +5658,8 @@ OUTPUT VALUES:
   -- ALGLIB --
      Copyright 20.06.2016 by Bochkanov Sergey
 *************************************************************************/
-void kdtreeexploreleaf(kdtree *kdt,
-                       ae_int_t node,
-    /* Real    */ ae_matrix *xy,
-                       ae_int_t *k,
+void kdtreeexploreleaf(kdtree *kdt, ae_int_t node,
+                       /* Real    */ ae_matrix *xy, ae_int_t *k,
                        ae_state *_state) {
   ae_int_t offs;
   ae_int_t i;
@@ -5738,12 +5668,15 @@ void kdtreeexploreleaf(kdtree *kdt,
   *k = 0;
 
   ae_assert(node >= 0, "KDTreeExploreLeaf: incorrect node index", _state);
-  ae_assert(node + 1 < kdt->nodes.cnt, "KDTreeExploreLeaf: incorrect node index", _state);
-  ae_assert(kdt->nodes.ptr.p_int[node] > 0, "KDTreeExploreLeaf: incorrect node index", _state);
+  ae_assert(node + 1 < kdt->nodes.cnt,
+            "KDTreeExploreLeaf: incorrect node index", _state);
+  ae_assert(kdt->nodes.ptr.p_int[node] > 0,
+            "KDTreeExploreLeaf: incorrect node index", _state);
   *k = kdt->nodes.ptr.p_int[node];
   offs = kdt->nodes.ptr.p_int[node + 1];
   ae_assert(offs >= 0, "KDTreeExploreLeaf: integrity error", _state);
-  ae_assert(offs + (*k) - 1 < kdt->xy.rows, "KDTreeExploreLeaf: integrity error", _state);
+  ae_assert(offs + (*k) - 1 < kdt->xy.rows,
+            "KDTreeExploreLeaf: integrity error", _state);
   rmatrixsetlengthatleast(xy, *k, kdt->nx + kdt->ny, _state);
   for (i = 0; i <= *k - 1; i++) {
     for (j = 0; j <= kdt->nx + kdt->ny - 1; j++) {
@@ -5774,13 +5707,8 @@ OUTPUT VALUES:
   -- ALGLIB --
      Copyright 20.06.2016 by Bochkanov Sergey
 *************************************************************************/
-void kdtreeexploresplit(kdtree *kdt,
-                        ae_int_t node,
-                        ae_int_t *d,
-                        double *s,
-                        ae_int_t *nodele,
-                        ae_int_t *nodege,
-                        ae_state *_state) {
+void kdtreeexploresplit(kdtree *kdt, ae_int_t node, ae_int_t *d, double *s,
+                        ae_int_t *nodele, ae_int_t *nodege, ae_state *_state) {
 
   *d = 0;
   *s = 0;
@@ -5788,19 +5716,24 @@ void kdtreeexploresplit(kdtree *kdt,
   *nodege = 0;
 
   ae_assert(node >= 0, "KDTreeExploreSplit: incorrect node index", _state);
-  ae_assert(node + 4 < kdt->nodes.cnt, "KDTreeExploreSplit: incorrect node index", _state);
-  ae_assert(kdt->nodes.ptr.p_int[node] == 0, "KDTreeExploreSplit: incorrect node index", _state);
+  ae_assert(node + 4 < kdt->nodes.cnt,
+            "KDTreeExploreSplit: incorrect node index", _state);
+  ae_assert(kdt->nodes.ptr.p_int[node] == 0,
+            "KDTreeExploreSplit: incorrect node index", _state);
   *d = kdt->nodes.ptr.p_int[node + 1];
   *s = kdt->splits.ptr.p_double[kdt->nodes.ptr.p_int[node + 2]];
   *nodele = kdt->nodes.ptr.p_int[node + 3];
   *nodege = kdt->nodes.ptr.p_int[node + 4];
   ae_assert(*d >= 0, "KDTreeExploreSplit: integrity failure", _state);
   ae_assert(*d < kdt->nx, "KDTreeExploreSplit: integrity failure", _state);
-  ae_assert(ae_isfinite(*s, _state), "KDTreeExploreSplit: integrity failure", _state);
+  ae_assert(ae_isfinite(*s, _state), "KDTreeExploreSplit: integrity failure",
+            _state);
   ae_assert(*nodele >= 0, "KDTreeExploreSplit: integrity failure", _state);
-  ae_assert(*nodele < kdt->nodes.cnt, "KDTreeExploreSplit: integrity failure", _state);
+  ae_assert(*nodele < kdt->nodes.cnt, "KDTreeExploreSplit: integrity failure",
+            _state);
   ae_assert(*nodege >= 0, "KDTreeExploreSplit: integrity failure", _state);
-  ae_assert(*nodege < kdt->nodes.cnt, "KDTreeExploreSplit: integrity failure", _state);
+  ae_assert(*nodege < kdt->nodes.cnt, "KDTreeExploreSplit: integrity failure",
+            _state);
 }
 
 /*************************************************************************
@@ -5811,17 +5744,15 @@ Serializer: allocation
 *************************************************************************/
 void kdtreealloc(ae_serializer *s, kdtree *tree, ae_state *_state) {
 
-
-
   /*
-     * Header
-     */
+   * Header
+   */
   ae_serializer_alloc_entry(s);
   ae_serializer_alloc_entry(s);
 
   /*
-     * Data
-     */
+   * Data
+   */
   ae_serializer_alloc_entry(s);
   ae_serializer_alloc_entry(s);
   ae_serializer_alloc_entry(s);
@@ -5842,17 +5773,15 @@ Serializer: serialization
 *************************************************************************/
 void kdtreeserialize(ae_serializer *s, kdtree *tree, ae_state *_state) {
 
-
-
   /*
-     * Header
-     */
+   * Header
+   */
   ae_serializer_serialize_int(s, getkdtreeserializationcode(_state), _state);
   ae_serializer_serialize_int(s, nearestneighbor_kdtreefirstversion, _state);
 
   /*
-     * Data
-     */
+   * Data
+   */
   ae_serializer_serialize_int(s, tree->n, _state);
   ae_serializer_serialize_int(s, tree->nx, _state);
   ae_serializer_serialize_int(s, tree->ny, _state);
@@ -5877,18 +5806,19 @@ void kdtreeunserialize(ae_serializer *s, kdtree *tree, ae_state *_state) {
 
   _kdtree_clear(tree);
 
-
   /*
-     * check correctness of header
-     */
+   * check correctness of header
+   */
   ae_serializer_unserialize_int(s, &i0, _state);
-  ae_assert(i0 == getkdtreeserializationcode(_state), "KDTreeUnserialize: stream header corrupted", _state);
+  ae_assert(i0 == getkdtreeserializationcode(_state),
+            "KDTreeUnserialize: stream header corrupted", _state);
   ae_serializer_unserialize_int(s, &i1, _state);
-  ae_assert(i1 == nearestneighbor_kdtreefirstversion, "KDTreeUnserialize: stream header corrupted", _state);
+  ae_assert(i1 == nearestneighbor_kdtreefirstversion,
+            "KDTreeUnserialize: stream header corrupted", _state);
 
   /*
-     * Unserialize data
-     */
+   * Unserialize data
+   */
   ae_serializer_unserialize_int(s, &tree->n, _state);
   ae_serializer_unserialize_int(s, &tree->nx, _state);
   ae_serializer_unserialize_int(s, &tree->ny, _state);
@@ -5917,11 +5847,10 @@ NOTE: it is also possible to perform undordered queries performed by means
 INPUT PARAMETERS
     KDT         -   KD-tree
     Buf         -   request buffer  object  created  for  this  particular
-                    instance of kd-tree structure with kdtreecreaterequestbuffer()
-                    function.
-    X           -   point, array[0..NX-1].
-    R           -   radius of sphere (in corresponding norm), R>0
-    SelfMatch   -   whether self-matches are allowed:
+                    instance of kd-tree structure with
+kdtreecreaterequestbuffer() function. X           -   point, array[0..NX-1]. R
+-   radius of sphere (in corresponding norm), R>0 SelfMatch   -   whether
+self-matches are allowed:
                     * if True, nearest neighbor may be the point itself
                       (if it exists in original dataset)
                     * if False, then only points with non-zero distance
@@ -5950,8 +5879,7 @@ IMPORTANT: kd-tree buffer should be used only with  KD-tree  object  which
 *************************************************************************/
 static ae_int_t nearestneighbor_tsqueryrnn(kdtree *kdt,
                                            kdtreerequestbuffer *buf,
-    /* Real    */ ae_vector *x,
-                                           double r,
+                                           /* Real    */ ae_vector *x, double r,
                                            ae_bool selfmatch,
                                            ae_bool orderedbydist,
                                            ae_state *_state) {
@@ -5959,11 +5887,9 @@ static ae_int_t nearestneighbor_tsqueryrnn(kdtree *kdt,
   ae_int_t j;
   ae_int_t result;
 
-
-
   /*
-     * Handle special case: KDT.N=0
-     */
+   * Handle special case: KDT.N=0
+   */
   if (kdt->n == 0) {
     buf->kcur = 0;
     result = 0;
@@ -5971,13 +5897,13 @@ static ae_int_t nearestneighbor_tsqueryrnn(kdtree *kdt,
   }
 
   /*
-     * Check consistency of request buffer
-     */
+   * Check consistency of request buffer
+   */
   nearestneighbor_checkrequestbufferconsistency(kdt, buf, _state);
 
   /*
-     * Prepare parameters
-     */
+   * Prepare parameters
+   */
   buf->kneeded = 0;
   if (kdt->normtype != 2) {
     buf->rneeded = r;
@@ -5985,27 +5911,27 @@ static ae_int_t nearestneighbor_tsqueryrnn(kdtree *kdt,
     buf->rneeded = ae_sqr(r, _state);
   }
   buf->selfmatch = selfmatch;
-  buf->approxf = (double) (1);
+  buf->approxf = (double)(1);
   buf->kcur = 0;
 
   /*
-     * calculate distance from point to current bounding box
-     */
+   * calculate distance from point to current bounding box
+   */
   nearestneighbor_kdtreeinitbox(kdt, x, buf, _state);
 
   /*
-     * call recursive search
-     * results are returned as heap
-     */
+   * call recursive search
+   * results are returned as heap
+   */
   nearestneighbor_kdtreequerynnrec(kdt, buf, 0, _state);
   result = buf->kcur;
 
   /*
-     * pop from heap to generate ordered representation
-     *
-     * last element is not pop'ed because it is already in
-     * its place
-     */
+   * pop from heap to generate ordered representation
+   *
+   * last element is not pop'ed because it is already in
+   * its place
+   */
   if (orderedbydist) {
     j = buf->kcur;
     for (i = buf->kcur; i >= 2; i--) {
@@ -6021,12 +5947,8 @@ Returns split position I3: [I1,I3) and [I3,I2) are created as result.
 
 This subroutine doesn't create tree structures, just rearranges nodes.
 *************************************************************************/
-static void nearestneighbor_kdtreesplit(kdtree *kdt,
-                                        ae_int_t i1,
-                                        ae_int_t i2,
-                                        ae_int_t d,
-                                        double s,
-                                        ae_int_t *i3,
+static void nearestneighbor_kdtreesplit(kdtree *kdt, ae_int_t i1, ae_int_t i2,
+                                        ae_int_t d, double s, ae_int_t *i3,
                                         ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
@@ -6039,31 +5961,31 @@ static void nearestneighbor_kdtreesplit(kdtree *kdt,
   ae_assert(kdt->n > 0, "KDTreeSplit: internal error", _state);
 
   /*
-     * split XY/Tags in two parts:
-     * * [ILeft,IRight] is non-processed part of XY/Tags
-     *
-     * After cycle is done, we have Ileft=IRight. We deal with
-     * this element separately.
-     *
-     * After this, [I1,ILeft) contains left part, and [ILeft,I2)
-     * contains right part.
-     */
+   * split XY/Tags in two parts:
+   * * [ILeft,IRight] is non-processed part of XY/Tags
+   *
+   * After cycle is done, we have Ileft=IRight. We deal with
+   * this element separately.
+   *
+   * After this, [I1,ILeft) contains left part, and [ILeft,I2)
+   * contains right part.
+   */
   ileft = i1;
   iright = i2 - 1;
   while (ileft < iright) {
     if (kdt->xy.ptr.pp_double[ileft][d] <= s) {
 
       /*
-             * XY[ILeft] is on its place.
-             * Advance ILeft.
-             */
+       * XY[ILeft] is on its place.
+       * Advance ILeft.
+       */
       ileft = ileft + 1;
     } else {
 
       /*
-             * XY[ILeft,..] must be at IRight.
-             * Swap and advance IRight.
-             */
+       * XY[ILeft,..] must be at IRight.
+       * Swap and advance IRight.
+       */
       for (i = 0; i <= 2 * kdt->nx + kdt->ny - 1; i++) {
         v = kdt->xy.ptr.pp_double[ileft][i];
         kdt->xy.ptr.pp_double[ileft][i] = kdt->xy.ptr.pp_double[iright][i];
@@ -6097,13 +6019,9 @@ NodesOffs[] and SplitsOffs[] must be large enough.
   -- ALGLIB --
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
-static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
-                                                  ae_int_t *nodesoffs,
-                                                  ae_int_t *splitsoffs,
-                                                  ae_int_t i1,
-                                                  ae_int_t i2,
-                                                  ae_int_t maxleafsize,
-                                                  ae_state *_state) {
+static void nearestneighbor_kdtreegeneratetreerec(
+    kdtree *kdt, ae_int_t *nodesoffs, ae_int_t *splitsoffs, ae_int_t i1,
+    ae_int_t i2, ae_int_t maxleafsize, ae_state *_state) {
   ae_int_t n;
   ae_int_t nx;
   ae_int_t ny;
@@ -6128,8 +6046,8 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   ae_assert(i2 > i1, "KDTreeGenerateTreeRec: internal error", _state);
 
   /*
-     * Generate leaf if needed
-     */
+   * Generate leaf if needed
+   */
   if (i2 - i1 <= maxleafsize) {
     kdt->nodes.ptr.p_int[*nodesoffs + 0] = i2 - i1;
     kdt->nodes.ptr.p_int[*nodesoffs + 1] = i1;
@@ -6138,26 +6056,28 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   }
 
   /*
-     * Load values for easier access
-     */
+   * Load values for easier access
+   */
   nx = kdt->nx;
   ny = kdt->ny;
 
   /*
-     * Select dimension to split:
-     * * D is a dimension number
-     * In case bounding box has zero size, we enforce creation of the leaf node.
-     */
+   * Select dimension to split:
+   * * D is a dimension number
+   * In case bounding box has zero size, we enforce creation of the leaf node.
+   */
   d = 0;
-  ds = kdt->innerbuf.curboxmax.ptr.p_double[0] - kdt->innerbuf.curboxmin.ptr.p_double[0];
+  ds = kdt->innerbuf.curboxmax.ptr.p_double[0] -
+       kdt->innerbuf.curboxmin.ptr.p_double[0];
   for (i = 1; i <= nx - 1; i++) {
-    v = kdt->innerbuf.curboxmax.ptr.p_double[i] - kdt->innerbuf.curboxmin.ptr.p_double[i];
+    v = kdt->innerbuf.curboxmax.ptr.p_double[i] -
+        kdt->innerbuf.curboxmin.ptr.p_double[i];
     if (v > ds) {
       ds = v;
       d = i;
     }
   }
-  if (ae_fp_eq(ds, (double) (0))) {
+  if (ae_fp_eq(ds, (double)(0))) {
     kdt->nodes.ptr.p_int[*nodesoffs + 0] = i2 - i1;
     kdt->nodes.ptr.p_int[*nodesoffs + 1] = i1;
     *nodesoffs = *nodesoffs + 2;
@@ -6165,18 +6085,16 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   }
 
   /*
-     * Select split position S using sliding midpoint rule,
-     * rearrange points into [I1,I3) and [I3,I2).
-     *
-     * In case all points has same value of D-th component
-     * (MinV=MaxV) we enforce D-th dimension of bounding
-     * box to become exactly zero and repeat tree construction.
-     */
+   * Select split position S using sliding midpoint rule,
+   * rearrange points into [I1,I3) and [I3,I2).
+   *
+   * In case all points has same value of D-th component
+   * (MinV=MaxV) we enforce D-th dimension of bounding
+   * box to become exactly zero and repeat tree construction.
+   */
   s = kdt->innerbuf.curboxmin.ptr.p_double[d] + 0.5 * ds;
-  ae_v_move(&kdt->innerbuf.buf.ptr.p_double[0],
-            1,
-            &kdt->xy.ptr.pp_double[i1][d],
-            kdt->xy.stride,
+  ae_v_move(&kdt->innerbuf.buf.ptr.p_double[0], 1,
+            &kdt->xy.ptr.pp_double[i1][d], kdt->xy.stride,
             ae_v_len(0, i2 - i1 - 1));
   n = i2 - i1;
   cntless = 0;
@@ -6205,15 +6123,16 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   if (minv == maxv) {
 
     /*
-         * In case all points has same value of D-th component
-         * (MinV=MaxV) we enforce D-th dimension of bounding
-         * box to become exactly zero and repeat tree construction.
-         */
+     * In case all points has same value of D-th component
+     * (MinV=MaxV) we enforce D-th dimension of bounding
+     * box to become exactly zero and repeat tree construction.
+     */
     v0 = kdt->innerbuf.curboxmin.ptr.p_double[d];
     v1 = kdt->innerbuf.curboxmax.ptr.p_double[d];
     kdt->innerbuf.curboxmin.ptr.p_double[d] = minv;
     kdt->innerbuf.curboxmax.ptr.p_double[d] = maxv;
-    nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i1, i2, maxleafsize, _state);
+    nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i1, i2,
+                                          maxleafsize, _state);
     kdt->innerbuf.curboxmin.ptr.p_double[d] = v0;
     kdt->innerbuf.curboxmax.ptr.p_double[d] = v1;
     return;
@@ -6221,21 +6140,21 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   if (cntless > 0 && cntgreater > 0) {
 
     /*
-         * normal midpoint split
-         */
+     * normal midpoint split
+     */
     nearestneighbor_kdtreesplit(kdt, i1, i2, d, s, &i3, _state);
   } else {
 
     /*
-         * sliding midpoint
-         */
+     * sliding midpoint
+     */
     if (cntless == 0) {
 
       /*
-             * 1. move split to MinV,
-             * 2. place one point to the left bin (move to I1),
-             *    others - to the right bin
-             */
+       * 1. move split to MinV,
+       * 2. place one point to the left bin (move to I1),
+       *    others - to the right bin
+       */
       s = minv;
       if (minidx != i1) {
         for (i = 0; i <= 2 * nx + ny - 1; i++) {
@@ -6251,10 +6170,10 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
     } else {
 
       /*
-             * 1. move split to MaxV,
-             * 2. place one point to the right bin (move to I2-1),
-             *    others - to the left bin
-             */
+       * 1. move split to MaxV,
+       * 2. place one point to the right bin (move to I2-1),
+       *    others - to the left bin
+       */
       s = maxv;
       if (maxidx != i2 - 1) {
         for (i = 0; i <= 2 * nx + ny - 1; i++) {
@@ -6271,8 +6190,8 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   }
 
   /*
-     * Generate 'split' node
-     */
+   * Generate 'split' node
+   */
   kdt->nodes.ptr.p_int[*nodesoffs + 0] = 0;
   kdt->nodes.ptr.p_int[*nodesoffs + 1] = d;
   kdt->nodes.ptr.p_int[*nodesoffs + 2] = *splitsoffs;
@@ -6282,27 +6201,31 @@ static void nearestneighbor_kdtreegeneratetreerec(kdtree *kdt,
   *splitsoffs = *splitsoffs + 1;
 
   /*
-     * Recursive generation:
-     * * update CurBox
-     * * call subroutine
-     * * restore CurBox
-     */
+   * Recursive generation:
+   * * update CurBox
+   * * call subroutine
+   * * restore CurBox
+   */
   kdt->nodes.ptr.p_int[oldoffs + 3] = *nodesoffs;
   v = kdt->innerbuf.curboxmax.ptr.p_double[d];
   kdt->innerbuf.curboxmax.ptr.p_double[d] = s;
-  nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i1, i3, maxleafsize, _state);
+  nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i1, i3,
+                                        maxleafsize, _state);
   kdt->innerbuf.curboxmax.ptr.p_double[d] = v;
   kdt->nodes.ptr.p_int[oldoffs + 4] = *nodesoffs;
   v = kdt->innerbuf.curboxmin.ptr.p_double[d];
   kdt->innerbuf.curboxmin.ptr.p_double[d] = s;
-  nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i3, i2, maxleafsize, _state);
+  nearestneighbor_kdtreegeneratetreerec(kdt, nodesoffs, splitsoffs, i3, i2,
+                                        maxleafsize, _state);
   kdt->innerbuf.curboxmin.ptr.p_double[d] = v;
 
   /*
-     * Zero-fill unused portions of the node (avoid false warnings by Valgrind
-     * about attempt to serialize uninitialized values)
-     */
-  ae_assert(nearestneighbor_splitnodesize == 6, "KDTreeGenerateTreeRec: node size has unexpectedly changed", _state);
+   * Zero-fill unused portions of the node (avoid false warnings by Valgrind
+   * about attempt to serialize uninitialized values)
+   */
+  ae_assert(nearestneighbor_splitnodesize == 6,
+            "KDTreeGenerateTreeRec: node size has unexpectedly changed",
+            _state);
   kdt->nodes.ptr.p_int[oldoffs + 5] = 0;
 }
 
@@ -6314,8 +6237,7 @@ Recursive subroutine for NN queries.
 *************************************************************************/
 static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
                                              kdtreerequestbuffer *buf,
-                                             ae_int_t offs,
-                                             ae_state *_state) {
+                                             ae_int_t offs, ae_state *_state) {
   double ptdist;
   ae_int_t i;
   ae_int_t j;
@@ -6337,72 +6259,81 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
   ae_assert(kdt->n > 0, "KDTreeQueryNNRec: internal error", _state);
 
   /*
-     * Leaf node.
-     * Process points.
-     */
+   * Leaf node.
+   * Process points.
+   */
   if (kdt->nodes.ptr.p_int[offs] > 0) {
     i1 = kdt->nodes.ptr.p_int[offs + 1];
     i2 = i1 + kdt->nodes.ptr.p_int[offs];
     for (i = i1; i <= i2 - 1; i++) {
 
       /*
-             * Calculate distance
-             */
-      ptdist = (double) (0);
+       * Calculate distance
+       */
+      ptdist = (double)(0);
       nx = kdt->nx;
       if (kdt->normtype == 0) {
         for (j = 0; j <= nx - 1; j++) {
-          ptdist = ae_maxreal(ptdist, ae_fabs(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j], _state), _state);
+          ptdist = ae_maxreal(
+              ptdist,
+              ae_fabs(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j],
+                      _state),
+              _state);
         }
       }
       if (kdt->normtype == 1) {
         for (j = 0; j <= nx - 1; j++) {
-          ptdist = ptdist + ae_fabs(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j], _state);
+          ptdist = ptdist +
+                   ae_fabs(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j],
+                           _state);
         }
       }
       if (kdt->normtype == 2) {
         for (j = 0; j <= nx - 1; j++) {
-          ptdist = ptdist + ae_sqr(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j], _state);
+          ptdist = ptdist +
+                   ae_sqr(kdt->xy.ptr.pp_double[i][j] - buf->x.ptr.p_double[j],
+                          _state);
         }
       }
 
       /*
-             * Skip points with zero distance if self-matches are turned off
-             */
+       * Skip points with zero distance if self-matches are turned off
+       */
       if (ptdist == 0 && !buf->selfmatch) {
         continue;
       }
 
       /*
-             * We CAN'T process point if R-criterion isn't satisfied,
-             * i.e. (RNeeded<>0) AND (PtDist>R).
-             */
+       * We CAN'T process point if R-criterion isn't satisfied,
+       * i.e. (RNeeded<>0) AND (PtDist>R).
+       */
       if (buf->rneeded == 0 || ptdist <= buf->rneeded) {
 
         /*
-                 * R-criterion is satisfied, we must either:
-                 * * replace worst point, if (KNeeded<>0) AND (KCur=KNeeded)
-                 *   (or skip, if worst point is better)
-                 * * add point without replacement otherwise
-                 */
+         * R-criterion is satisfied, we must either:
+         * * replace worst point, if (KNeeded<>0) AND (KCur=KNeeded)
+         *   (or skip, if worst point is better)
+         * * add point without replacement otherwise
+         */
         if (buf->kcur < buf->kneeded || buf->kneeded == 0) {
 
           /*
-                     * add current point to heap without replacement
-                     */
+           * add current point to heap without replacement
+           */
           tagheappushi(&buf->r, &buf->idx, &buf->kcur, ptdist, i, _state);
         } else {
 
           /*
-                     * New points are added or not, depending on their distance.
-                     * If added, they replace element at the top of the heap
-                     */
+           * New points are added or not, depending on their distance.
+           * If added, they replace element at the top of the heap
+           */
           if (ptdist < buf->r.ptr.p_double[0]) {
             if (buf->kneeded == 1) {
               buf->idx.ptr.p_int[0] = i;
               buf->r.ptr.p_double[0] = ptdist;
             } else {
-              tagheapreplacetopi(&buf->r, &buf->idx, buf->kneeded, ptdist, i, _state);
+              tagheapreplacetopi(&buf->r, &buf->idx, buf->kneeded, ptdist, i,
+                                 _state);
             }
           }
         }
@@ -6412,23 +6343,23 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
   }
 
   /*
-     * Simple split
-     */
+   * Simple split
+   */
   if (kdt->nodes.ptr.p_int[offs] == 0) {
 
     /*
-         * Load:
-         * * D  dimension to split
-         * * S  split position
-         */
+     * Load:
+     * * D  dimension to split
+     * * S  split position
+     */
     d = kdt->nodes.ptr.p_int[offs + 1];
     s = kdt->splits.ptr.p_double[kdt->nodes.ptr.p_int[offs + 2]];
 
     /*
-         * Calculate:
-         * * ChildBestOffs      child box with best chances
-         * * ChildWorstOffs     child box with worst chances
-         */
+     * Calculate:
+     * * ChildBestOffs      child box with best chances
+     * * ChildWorstOffs     child box with worst chances
+     */
     if (buf->x.ptr.p_double[d] <= s) {
       childbestoffs = kdt->nodes.ptr.p_int[offs + 3];
       childworstoffs = kdt->nodes.ptr.p_int[offs + 4];
@@ -6440,16 +6371,16 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
     }
 
     /*
-         * Navigate through childs
-         */
+     * Navigate through childs
+     */
     for (i = 0; i <= 1; i++) {
 
       /*
-             * Select child to process:
-             * * ChildOffs      current child offset in Nodes[]
-             * * UpdateMin      whether minimum or maximum value
-             *                  of bounding box is changed on update
-             */
+       * Select child to process:
+       * * ChildOffs      current child offset in Nodes[]
+       * * UpdateMin      whether minimum or maximum value
+       *                  of bounding box is changed on update
+       */
       if (i == 0) {
         childoffs = childbestoffs;
         updatemin = !bestisleft;
@@ -6459,8 +6390,8 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
       }
 
       /*
-             * Update bounding box and current distance
-             */
+       * Update bounding box and current distance
+       */
       if (updatemin) {
         prevdist = buf->curdist;
         t1 = buf->x.ptr.p_double[d];
@@ -6470,11 +6401,14 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
             buf->curdist = ae_maxreal(buf->curdist, s - t1, _state);
           }
           if (kdt->normtype == 1) {
-            buf->curdist = buf->curdist - ae_maxreal(v - t1, (double) (0), _state) + s - t1;
+            buf->curdist =
+                buf->curdist - ae_maxreal(v - t1, (double)(0), _state) + s - t1;
           }
           if (kdt->normtype == 2) {
             buf->curdist =
-                buf->curdist - ae_sqr(ae_maxreal(v - t1, (double) (0), _state), _state) + ae_sqr(s - t1, _state);
+                buf->curdist -
+                ae_sqr(ae_maxreal(v - t1, (double)(0), _state), _state) +
+                ae_sqr(s - t1, _state);
           }
         }
         buf->curboxmin.ptr.p_double[d] = s;
@@ -6487,34 +6421,37 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
             buf->curdist = ae_maxreal(buf->curdist, t1 - s, _state);
           }
           if (kdt->normtype == 1) {
-            buf->curdist = buf->curdist - ae_maxreal(t1 - v, (double) (0), _state) + t1 - s;
+            buf->curdist =
+                buf->curdist - ae_maxreal(t1 - v, (double)(0), _state) + t1 - s;
           }
           if (kdt->normtype == 2) {
             buf->curdist =
-                buf->curdist - ae_sqr(ae_maxreal(t1 - v, (double) (0), _state), _state) + ae_sqr(t1 - s, _state);
+                buf->curdist -
+                ae_sqr(ae_maxreal(t1 - v, (double)(0), _state), _state) +
+                ae_sqr(t1 - s, _state);
           }
         }
         buf->curboxmax.ptr.p_double[d] = s;
       }
 
       /*
-             * Decide: to dive into cell or not to dive
-             */
+       * Decide: to dive into cell or not to dive
+       */
       if (buf->rneeded != 0 && buf->curdist > buf->rneeded) {
         todive = ae_false;
       } else {
         if (buf->kcur < buf->kneeded || buf->kneeded == 0) {
 
           /*
-                     * KCur<KNeeded (i.e. not all points are found)
-                     */
+           * KCur<KNeeded (i.e. not all points are found)
+           */
           todive = ae_true;
         } else {
 
           /*
-                     * KCur=KNeeded, decide to dive or not to dive
-                     * using point position relative to bounding box.
-                     */
+           * KCur=KNeeded, decide to dive or not to dive
+           * using point position relative to bounding box.
+           */
           todive = buf->curdist <= buf->r.ptr.p_double[0] * buf->approxf;
         }
       }
@@ -6523,8 +6460,8 @@ static void nearestneighbor_kdtreequerynnrec(kdtree *kdt,
       }
 
       /*
-             * Restore bounding box and distance
-             */
+       * Restore bounding box and distance
+       */
       if (updatemin) {
         buf->curboxmin.ptr.p_double[d] = v;
       } else {
@@ -6544,8 +6481,7 @@ Recursive subroutine for box queries.
 *************************************************************************/
 static void nearestneighbor_kdtreequeryboxrec(kdtree *kdt,
                                               kdtreerequestbuffer *buf,
-                                              ae_int_t offs,
-                                              ae_state *_state) {
+                                              ae_int_t offs, ae_state *_state) {
   ae_bool inbox;
   ae_int_t nx;
   ae_int_t i1;
@@ -6560,9 +6496,9 @@ static void nearestneighbor_kdtreequeryboxrec(kdtree *kdt,
   nx = kdt->nx;
 
   /*
-     * Check that intersection of query box with bounding box is non-empty.
-     * This check is performed once for Offs=0 (tree root).
-     */
+   * Check that intersection of query box with bounding box is non-empty.
+   * This check is performed once for Offs=0 (tree root).
+   */
   if (offs == 0) {
     for (j = 0; j <= nx - 1; j++) {
       if (buf->boxmin.ptr.p_double[j] > buf->curboxmax.ptr.p_double[j]) {
@@ -6575,29 +6511,31 @@ static void nearestneighbor_kdtreequeryboxrec(kdtree *kdt,
   }
 
   /*
-     * Leaf node.
-     * Process points.
-     */
+   * Leaf node.
+   * Process points.
+   */
   if (kdt->nodes.ptr.p_int[offs] > 0) {
     i1 = kdt->nodes.ptr.p_int[offs + 1];
     i2 = i1 + kdt->nodes.ptr.p_int[offs];
     for (i = i1; i <= i2 - 1; i++) {
 
       /*
-             * Check whether point is in box or not
-             */
+       * Check whether point is in box or not
+       */
       inbox = ae_true;
       for (j = 0; j <= nx - 1; j++) {
-        inbox = inbox && kdt->xy.ptr.pp_double[i][j] >= buf->boxmin.ptr.p_double[j];
-        inbox = inbox && kdt->xy.ptr.pp_double[i][j] <= buf->boxmax.ptr.p_double[j];
+        inbox =
+            inbox && kdt->xy.ptr.pp_double[i][j] >= buf->boxmin.ptr.p_double[j];
+        inbox =
+            inbox && kdt->xy.ptr.pp_double[i][j] <= buf->boxmax.ptr.p_double[j];
       }
       if (!inbox) {
         continue;
       }
 
       /*
-             * Add point to unordered list
-             */
+       * Add point to unordered list
+       */
       buf->r.ptr.p_double[buf->kcur] = 0.0;
       buf->idx.ptr.p_int[buf->kcur] = i;
       buf->kcur = buf->kcur + 1;
@@ -6606,35 +6544,37 @@ static void nearestneighbor_kdtreequeryboxrec(kdtree *kdt,
   }
 
   /*
-     * Simple split
-     */
+   * Simple split
+   */
   if (kdt->nodes.ptr.p_int[offs] == 0) {
 
     /*
-         * Load:
-         * * D  dimension to split
-         * * S  split position
-         */
+     * Load:
+     * * D  dimension to split
+     * * S  split position
+     */
     d = kdt->nodes.ptr.p_int[offs + 1];
     s = kdt->splits.ptr.p_double[kdt->nodes.ptr.p_int[offs + 2]];
 
     /*
-         * Check lower split (S is upper bound of new bounding box)
-         */
+     * Check lower split (S is upper bound of new bounding box)
+     */
     if (s >= buf->boxmin.ptr.p_double[d]) {
       v = buf->curboxmax.ptr.p_double[d];
       buf->curboxmax.ptr.p_double[d] = s;
-      nearestneighbor_kdtreequeryboxrec(kdt, buf, kdt->nodes.ptr.p_int[offs + 3], _state);
+      nearestneighbor_kdtreequeryboxrec(kdt, buf,
+                                        kdt->nodes.ptr.p_int[offs + 3], _state);
       buf->curboxmax.ptr.p_double[d] = v;
     }
 
     /*
-         * Check upper split (S is lower bound of new bounding box)
-         */
+     * Check upper split (S is lower bound of new bounding box)
+     */
     if (s <= buf->boxmax.ptr.p_double[d]) {
       v = buf->curboxmin.ptr.p_double[d];
       buf->curboxmin.ptr.p_double[d] = s;
-      nearestneighbor_kdtreequeryboxrec(kdt, buf, kdt->nodes.ptr.p_int[offs + 4], _state);
+      nearestneighbor_kdtreequeryboxrec(kdt, buf,
+                                        kdt->nodes.ptr.p_int[offs + 4], _state);
       buf->curboxmin.ptr.p_double[d] = v;
     }
     return;
@@ -6650,7 +6590,7 @@ Initializes Buf.CurBox[].
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 static void nearestneighbor_kdtreeinitbox(kdtree *kdt,
-    /* Real    */ ae_vector *x,
+                                          /* Real    */ ae_vector *x,
                                           kdtreerequestbuffer *buf,
                                           ae_state *_state) {
   ae_int_t i;
@@ -6661,9 +6601,9 @@ static void nearestneighbor_kdtreeinitbox(kdtree *kdt,
   ae_assert(kdt->n > 0, "KDTreeInitBox: internal error", _state);
 
   /*
-     * calculate distance from point to current bounding box
-     */
-  buf->curdist = (double) (0);
+   * calculate distance from point to current bounding box
+   */
+  buf->curdist = (double)(0);
   if (kdt->normtype == 0) {
     for (i = 0; i <= kdt->nx - 1; i++) {
       vx = x->ptr.p_double[i];
@@ -6732,7 +6672,8 @@ static void nearestneighbor_kdtreeallocdatasetindependent(kdtree *kdt,
                                                           ae_int_t ny,
                                                           ae_state *_state) {
 
-  ae_assert(kdt->n > 0, "KDTreeAllocDatasetIndependent: internal error", _state);
+  ae_assert(kdt->n > 0, "KDTreeAllocDatasetIndependent: internal error",
+            _state);
   ae_vector_set_length(&kdt->boxmin, nx, _state);
   ae_vector_set_length(&kdt->boxmax, nx, _state);
 }
@@ -6747,8 +6688,7 @@ it just allocates arrays.
   -- ALGLIB --
      Copyright 14.03.2011 by Bochkanov Sergey
 *************************************************************************/
-static void nearestneighbor_kdtreeallocdatasetdependent(kdtree *kdt,
-                                                        ae_int_t n,
+static void nearestneighbor_kdtreeallocdatasetdependent(kdtree *kdt, ae_int_t n,
                                                         ae_int_t nx,
                                                         ae_int_t ny,
                                                         ae_state *_state) {
@@ -6756,7 +6696,8 @@ static void nearestneighbor_kdtreeallocdatasetdependent(kdtree *kdt,
   ae_assert(n > 0, "KDTreeAllocDatasetDependent: internal error", _state);
   ae_matrix_set_length(&kdt->xy, n, 2 * nx + ny, _state);
   ae_vector_set_length(&kdt->tags, n, _state);
-  ae_vector_set_length(&kdt->nodes, nearestneighbor_splitnodesize * 2 * n, _state);
+  ae_vector_set_length(&kdt->nodes, nearestneighbor_splitnodesize * 2 * n,
+                       _state);
   ae_vector_set_length(&kdt->splits, 2 * n, _state);
 }
 
@@ -6767,33 +6708,39 @@ dimensions of kd-tree object.
   -- ALGLIB --
      Copyright 02.04.2016 by Bochkanov Sergey
 *************************************************************************/
-static void nearestneighbor_checkrequestbufferconsistency(kdtree *kdt,
-                                                          kdtreerequestbuffer *buf,
-                                                          ae_state *_state) {
+static void nearestneighbor_checkrequestbufferconsistency(
+    kdtree *kdt, kdtreerequestbuffer *buf, ae_state *_state) {
 
   ae_assert(buf->x.cnt >= kdt->nx,
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
   ae_assert(buf->idx.cnt >= kdt->n,
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
   ae_assert(buf->r.cnt >= kdt->n,
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
   ae_assert(buf->buf.cnt >= ae_maxint(kdt->n, kdt->nx, _state),
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
   ae_assert(buf->curboxmin.cnt >= kdt->nx,
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
   ae_assert(buf->curboxmax.cnt >= kdt->nx,
-            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with kdtree structure",
+            "KDTree: dimensions of kdtreerequestbuffer are inconsistent with "
+            "kdtree structure",
             _state);
 }
 
-void _kdtreerequestbuffer_init(void *_p, ae_state *_state, ae_bool make_automatic) {
-  kdtreerequestbuffer *p = (kdtreerequestbuffer *) _p;
-  ae_touch_ptr((void *) p);
+void _kdtreerequestbuffer_init(void *_p, ae_state *_state,
+                               ae_bool make_automatic) {
+  kdtreerequestbuffer *p = (kdtreerequestbuffer *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_init(&p->x, 0, DT_REAL, _state, make_automatic);
   ae_vector_init(&p->boxmin, 0, DT_REAL, _state, make_automatic);
   ae_vector_init(&p->boxmax, 0, DT_REAL, _state, make_automatic);
@@ -6804,9 +6751,10 @@ void _kdtreerequestbuffer_init(void *_p, ae_state *_state, ae_bool make_automati
   ae_vector_init(&p->curboxmax, 0, DT_REAL, _state, make_automatic);
 }
 
-void _kdtreerequestbuffer_init_copy(void *_dst, void *_src, ae_state *_state, ae_bool make_automatic) {
-  kdtreerequestbuffer *dst = (kdtreerequestbuffer *) _dst;
-  kdtreerequestbuffer *src = (kdtreerequestbuffer *) _src;
+void _kdtreerequestbuffer_init_copy(void *_dst, void *_src, ae_state *_state,
+                                    ae_bool make_automatic) {
+  kdtreerequestbuffer *dst = (kdtreerequestbuffer *)_dst;
+  kdtreerequestbuffer *src = (kdtreerequestbuffer *)_src;
   ae_vector_init_copy(&dst->x, &src->x, _state, make_automatic);
   ae_vector_init_copy(&dst->boxmin, &src->boxmin, _state, make_automatic);
   ae_vector_init_copy(&dst->boxmax, &src->boxmax, _state, make_automatic);
@@ -6824,8 +6772,8 @@ void _kdtreerequestbuffer_init_copy(void *_dst, void *_src, ae_state *_state, ae
 }
 
 void _kdtreerequestbuffer_clear(void *_p) {
-  kdtreerequestbuffer *p = (kdtreerequestbuffer *) _p;
-  ae_touch_ptr((void *) p);
+  kdtreerequestbuffer *p = (kdtreerequestbuffer *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_clear(&p->x);
   ae_vector_clear(&p->boxmin);
   ae_vector_clear(&p->boxmax);
@@ -6837,8 +6785,8 @@ void _kdtreerequestbuffer_clear(void *_p) {
 }
 
 void _kdtreerequestbuffer_destroy(void *_p) {
-  kdtreerequestbuffer *p = (kdtreerequestbuffer *) _p;
-  ae_touch_ptr((void *) p);
+  kdtreerequestbuffer *p = (kdtreerequestbuffer *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_destroy(&p->x);
   ae_vector_destroy(&p->boxmin);
   ae_vector_destroy(&p->boxmax);
@@ -6850,8 +6798,8 @@ void _kdtreerequestbuffer_destroy(void *_p) {
 }
 
 void _kdtree_init(void *_p, ae_state *_state, ae_bool make_automatic) {
-  kdtree *p = (kdtree *) _p;
-  ae_touch_ptr((void *) p);
+  kdtree *p = (kdtree *)_p;
+  ae_touch_ptr((void *)p);
   ae_matrix_init(&p->xy, 0, 0, DT_REAL, _state, make_automatic);
   ae_vector_init(&p->tags, 0, DT_INT, _state, make_automatic);
   ae_vector_init(&p->boxmin, 0, DT_REAL, _state, make_automatic);
@@ -6861,9 +6809,10 @@ void _kdtree_init(void *_p, ae_state *_state, ae_bool make_automatic) {
   _kdtreerequestbuffer_init(&p->innerbuf, _state, make_automatic);
 }
 
-void _kdtree_init_copy(void *_dst, void *_src, ae_state *_state, ae_bool make_automatic) {
-  kdtree *dst = (kdtree *) _dst;
-  kdtree *src = (kdtree *) _src;
+void _kdtree_init_copy(void *_dst, void *_src, ae_state *_state,
+                       ae_bool make_automatic) {
+  kdtree *dst = (kdtree *)_dst;
+  kdtree *src = (kdtree *)_src;
   dst->n = src->n;
   dst->nx = src->nx;
   dst->ny = src->ny;
@@ -6874,13 +6823,14 @@ void _kdtree_init_copy(void *_dst, void *_src, ae_state *_state, ae_bool make_au
   ae_vector_init_copy(&dst->boxmax, &src->boxmax, _state, make_automatic);
   ae_vector_init_copy(&dst->nodes, &src->nodes, _state, make_automatic);
   ae_vector_init_copy(&dst->splits, &src->splits, _state, make_automatic);
-  _kdtreerequestbuffer_init_copy(&dst->innerbuf, &src->innerbuf, _state, make_automatic);
+  _kdtreerequestbuffer_init_copy(&dst->innerbuf, &src->innerbuf, _state,
+                                 make_automatic);
   dst->debugcounter = src->debugcounter;
 }
 
 void _kdtree_clear(void *_p) {
-  kdtree *p = (kdtree *) _p;
-  ae_touch_ptr((void *) p);
+  kdtree *p = (kdtree *)_p;
+  ae_touch_ptr((void *)p);
   ae_matrix_clear(&p->xy);
   ae_vector_clear(&p->tags);
   ae_vector_clear(&p->boxmin);
@@ -6891,8 +6841,8 @@ void _kdtree_clear(void *_p) {
 }
 
 void _kdtree_destroy(void *_p) {
-  kdtree *p = (kdtree *) _p;
-  ae_touch_ptr((void *) p);
+  kdtree *p = (kdtree *)_p;
+  ae_touch_ptr((void *)p);
   ae_matrix_destroy(&p->xy);
   ae_vector_destroy(&p->tags);
   ae_vector_destroy(&p->boxmin);
@@ -6929,24 +6879,20 @@ HQRNDState initialization with seed values
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-void hqrndseed(ae_int_t s1,
-               ae_int_t s2,
-               hqrndstate *state,
-               ae_state *_state) {
+void hqrndseed(ae_int_t s1, ae_int_t s2, hqrndstate *state, ae_state *_state) {
 
   _hqrndstate_clear(state);
 
-
   /*
-     * Protection against negative seeds:
-     *
-     *     SEED := -(SEED+1)
-     *
-     * We can use just "-SEED" because there exists such integer number  N
-     * that N<0, -N=N<0 too. (This number is equal to 0x800...000).   Need
-     * to handle such seed correctly forces us to use  a  bit  complicated
-     * formula.
-     */
+   * Protection against negative seeds:
+   *
+   *     SEED := -(SEED+1)
+   *
+   * We can use just "-SEED" because there exists such integer number  N
+   * that N<0, -N=N<0 too. (This number is equal to 0x800...000).   Need
+   * to handle such seed correctly forces us to use  a  bit  complicated
+   * formula.
+   */
   if (s1 < 0) {
     s1 = -(s1 + 1);
   }
@@ -6970,7 +6916,8 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
 double hqrnduniformr(hqrndstate *state, ae_state *_state) {
   double result;
 
-  result = (double) (hqrnd_hqrndintegerbase(state, _state) + 1) / (double) (hqrnd_hqrndmax + 2);
+  result = (double)(hqrnd_hqrndintegerbase(state, _state) + 1) /
+           (double)(hqrnd_hqrndmax + 2);
   return result;
 }
 
@@ -6997,36 +6944,36 @@ ae_int_t hqrnduniformi(hqrndstate *state, ae_int_t n, ae_state *_state) {
   maxcnt = hqrnd_hqrndmax + 1;
 
   /*
-     * Two branches: one for N<=MaxCnt, another for N>MaxCnt.
-     */
+   * Two branches: one for N<=MaxCnt, another for N>MaxCnt.
+   */
   if (n > maxcnt) {
 
     /*
-         * N>=MaxCnt.
-         *
-         * We have two options here:
-         * a) N is exactly divisible by MaxCnt
-         * b) N is not divisible by MaxCnt
-         *
-         * In both cases we reduce problem on interval spanning [0,N)
-         * to several subproblems on intervals spanning [0,MaxCnt).
-         */
+     * N>=MaxCnt.
+     *
+     * We have two options here:
+     * a) N is exactly divisible by MaxCnt
+     * b) N is not divisible by MaxCnt
+     *
+     * In both cases we reduce problem on interval spanning [0,N)
+     * to several subproblems on intervals spanning [0,MaxCnt).
+     */
     if (n % maxcnt == 0) {
 
       /*
-             * N is exactly divisible by MaxCnt.
-             *
-             * [0,N) range is dividided into N/MaxCnt bins,
-             * each of them having length equal to MaxCnt.
-             *
-             * We generate:
-             * * random bin number B
-             * * random offset within bin A
-             * Both random numbers are generated by recursively
-             * calling HQRNDUniformI().
-             *
-             * Result is equal to A+MaxCnt*B.
-             */
+       * N is exactly divisible by MaxCnt.
+       *
+       * [0,N) range is dividided into N/MaxCnt bins,
+       * each of them having length equal to MaxCnt.
+       *
+       * We generate:
+       * * random bin number B
+       * * random offset within bin A
+       * Both random numbers are generated by recursively
+       * calling HQRNDUniformI().
+       *
+       * Result is equal to A+MaxCnt*B.
+       */
       ae_assert(n / maxcnt <= maxcnt, "HQRNDUniformI: N is too large", _state);
       a = hqrnduniformi(state, maxcnt, _state);
       b = hqrnduniformi(state, n / maxcnt, _state);
@@ -7034,22 +6981,23 @@ ae_int_t hqrnduniformi(hqrndstate *state, ae_int_t n, ae_state *_state) {
     } else {
 
       /*
-             * N is NOT exactly divisible by MaxCnt.
-             *
-             * [0,N) range is dividided into Ceil(N/MaxCnt) bins,
-             * each of them having length equal to MaxCnt.
-             *
-             * We generate:
-             * * random bin number B in [0, Ceil(N/MaxCnt)-1]
-             * * random offset within bin A
-             * * if both of what is below is true
-             *   1) bin number B is that of the last bin
-             *   2) A >= N mod MaxCnt
-             *   then we repeat generation of A/B.
-             *   This stage is essential in order to avoid bias in the result.
-             * * otherwise, we return A*MaxCnt+N
-             */
-      ae_assert(n / maxcnt + 1 <= maxcnt, "HQRNDUniformI: N is too large", _state);
+       * N is NOT exactly divisible by MaxCnt.
+       *
+       * [0,N) range is dividided into Ceil(N/MaxCnt) bins,
+       * each of them having length equal to MaxCnt.
+       *
+       * We generate:
+       * * random bin number B in [0, Ceil(N/MaxCnt)-1]
+       * * random offset within bin A
+       * * if both of what is below is true
+       *   1) bin number B is that of the last bin
+       *   2) A >= N mod MaxCnt
+       *   then we repeat generation of A/B.
+       *   This stage is essential in order to avoid bias in the result.
+       * * otherwise, we return A*MaxCnt+N
+       */
+      ae_assert(n / maxcnt + 1 <= maxcnt, "HQRNDUniformI: N is too large",
+                _state);
       result = -1;
       do {
         a = hqrnduniformi(state, maxcnt, _state);
@@ -7063,12 +7011,12 @@ ae_int_t hqrnduniformi(hqrndstate *state, ae_int_t n, ae_state *_state) {
   } else {
 
     /*
-         * N<=MaxCnt
-         *
-         * Code below is a bit complicated because we can not simply
-         * return "HQRNDIntegerBase() mod N" - it will be skewed for
-         * large N's in [0.1*HQRNDMax...HQRNDMax].
-         */
+     * N<=MaxCnt
+     *
+     * Code below is a bit complicated because we can not simply
+     * return "HQRNDIntegerBase() mod N" - it will be skewed for
+     * large N's in [0.1*HQRNDMax...HQRNDMax].
+     */
     mx = maxcnt - maxcnt % n;
     do {
       result = hqrnd_hqrndintegerbase(state, _state);
@@ -7117,7 +7065,7 @@ void hqrndunit2(hqrndstate *state, double *x, double *y, ae_state *_state) {
 
   do {
     hqrndnormal2(state, x, y, _state);
-  } while (!(ae_fp_neq(*x, (double) (0)) || ae_fp_neq(*y, (double) (0))));
+  } while (!(ae_fp_neq(*x, (double)(0)) || ae_fp_neq(*y, (double)(0))));
   mx = ae_maxreal(ae_fabs(*x, _state), ae_fabs(*y, _state), _state);
   mn = ae_minreal(ae_fabs(*x, _state), ae_fabs(*y, _state), _state);
   v = mx * ae_sqrt(1 + ae_sqr(mn / mx, _state), _state);
@@ -7136,10 +7084,7 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
-void hqrndnormal2(hqrndstate *state,
-                  double *x1,
-                  double *x2,
-                  ae_state *_state) {
+void hqrndnormal2(hqrndstate *state, double *x1, double *x2, ae_state *_state) {
   double u;
   double v;
   double s;
@@ -7151,12 +7096,12 @@ void hqrndnormal2(hqrndstate *state,
     u = 2 * hqrnduniformr(state, _state) - 1;
     v = 2 * hqrnduniformr(state, _state) - 1;
     s = ae_sqr(u, _state) + ae_sqr(v, _state);
-    if (ae_fp_greater(s, (double) (0)) && ae_fp_less(s, (double) (1))) {
+    if (ae_fp_greater(s, (double)(0)) && ae_fp_less(s, (double)(1))) {
 
       /*
-             * two Sqrt's instead of one to
-             * avoid overflow when S is too small
-             */
+       * two Sqrt's instead of one to
+       * avoid overflow when S is too small
+       */
       s = ae_sqrt(-2 * ae_log(s, _state), _state) / ae_sqrt(s, _state);
       *x1 = u * s;
       *x2 = v * s;
@@ -7173,12 +7118,11 @@ State structure must be initialized with HQRNDRandomize() or HQRNDSeed().
   -- ALGLIB --
      Copyright 11.08.2007 by Bochkanov Sergey
 *************************************************************************/
-double hqrndexponential(hqrndstate *state,
-                        double lambdav,
-                        ae_state *_state) {
+double hqrndexponential(hqrndstate *state, double lambdav, ae_state *_state) {
   double result;
 
-  ae_assert(ae_fp_greater(lambdav, (double) (0)), "HQRNDExponential: LambdaV<=0!", _state);
+  ae_assert(ae_fp_greater(lambdav, (double)(0)),
+            "HQRNDExponential: LambdaV<=0!", _state);
   result = -ae_log(hqrnduniformr(state, _state), _state) / lambdav;
   return result;
 }
@@ -7200,9 +7144,7 @@ RESULT
      Copyright 08.11.2011 by Bochkanov Sergey
 *************************************************************************/
 double hqrnddiscrete(hqrndstate *state,
-    /* Real    */ ae_vector *x,
-                     ae_int_t n,
-                     ae_state *_state) {
+                     /* Real    */ ae_vector *x, ae_int_t n, ae_state *_state) {
   double result;
 
   ae_assert(n > 0, "HQRNDDiscrete: N<=0", _state);
@@ -7231,8 +7173,7 @@ RESULT
      Copyright 08.11.2011 by Bochkanov Sergey
 *************************************************************************/
 double hqrndcontinuous(hqrndstate *state,
-    /* Real    */ ae_vector *x,
-                       ae_int_t n,
+                       /* Real    */ ae_vector *x, ae_int_t n,
                        ae_state *_state) {
   double mx;
   double mn;
@@ -7248,7 +7189,8 @@ double hqrndcontinuous(hqrndstate *state,
   i = hqrnduniformi(state, n - 1, _state);
   mn = x->ptr.p_double[i];
   mx = x->ptr.p_double[i + 1];
-  ae_assert(ae_fp_greater_eq(mx, mn), "HQRNDDiscrete: X is not sorted by ascending", _state);
+  ae_assert(ae_fp_greater_eq(mx, mn),
+            "HQRNDDiscrete: X is not sorted by ascending", _state);
   if (ae_fp_neq(mx, mn)) {
     result = (mx - mn) * hqrnduniformr(state, _state) + mn;
   } else {
@@ -7262,12 +7204,12 @@ This function returns random integer in [0,HQRNDMax]
 
 L'Ecuyer, Efficient and portable combined random number generators
 *************************************************************************/
-static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state,
-                                       ae_state *_state) {
+static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state, ae_state *_state) {
   ae_int_t k;
   ae_int_t result;
 
-  ae_assert(state->magicv == hqrnd_hqrndmagic, "HQRNDIntegerBase: State is not correctly initialized!", _state);
+  ae_assert(state->magicv == hqrnd_hqrndmagic,
+            "HQRNDIntegerBase: State is not correctly initialized!", _state);
   k = state->s1 / 53668;
   state->s1 = 40014 * (state->s1 - k * 53668) - k * 12211;
   if (state->s1 < 0) {
@@ -7280,8 +7222,8 @@ static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state,
   }
 
   /*
-     * Result
-     */
+   * Result
+   */
   result = state->s1 - state->s2;
   if (result < 1) {
     result = result + 2147483562;
@@ -7291,26 +7233,27 @@ static ae_int_t hqrnd_hqrndintegerbase(hqrndstate *state,
 }
 
 void _hqrndstate_init(void *_p, ae_state *_state, ae_bool make_automatic) {
-  hqrndstate *p = (hqrndstate *) _p;
-  ae_touch_ptr((void *) p);
+  hqrndstate *p = (hqrndstate *)_p;
+  ae_touch_ptr((void *)p);
 }
 
-void _hqrndstate_init_copy(void *_dst, void *_src, ae_state *_state, ae_bool make_automatic) {
-  hqrndstate *dst = (hqrndstate *) _dst;
-  hqrndstate *src = (hqrndstate *) _src;
+void _hqrndstate_init_copy(void *_dst, void *_src, ae_state *_state,
+                           ae_bool make_automatic) {
+  hqrndstate *dst = (hqrndstate *)_dst;
+  hqrndstate *src = (hqrndstate *)_src;
   dst->s1 = src->s1;
   dst->s2 = src->s2;
   dst->magicv = src->magicv;
 }
 
 void _hqrndstate_clear(void *_p) {
-  hqrndstate *p = (hqrndstate *) _p;
-  ae_touch_ptr((void *) p);
+  hqrndstate *p = (hqrndstate *)_p;
+  ae_touch_ptr((void *)p);
 }
 
 void _hqrndstate_destroy(void *_p) {
-  hqrndstate *p = (hqrndstate *) _p;
-  ae_touch_ptr((void *) p);
+  hqrndstate *p = (hqrndstate *)_p;
+  ae_touch_ptr((void *)p);
 }
 
 #endif
@@ -7332,11 +7275,11 @@ void xdebuginitrecord1(xdebugrecord1 *rec1, ae_state *_state) {
   _xdebugrecord1_clear(rec1);
 
   rec1->i = 1;
-  rec1->c.x = (double) (1);
-  rec1->c.y = (double) (1);
+  rec1->c.x = (double)(1);
+  rec1->c.y = (double)(1);
   ae_vector_set_length(&rec1->a, 2, _state);
-  rec1->a.ptr.p_double[0] = (double) (2);
-  rec1->a.ptr.p_double[1] = (double) (3);
+  rec1->a.ptr.p_double[0] = (double)(2);
+  rec1->a.ptr.p_double[1] = (double)(3);
 }
 
 /*************************************************************************
@@ -7420,8 +7363,7 @@ Array is passed using "out" convention.
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
 void xdebugb1outeven(ae_int_t n,
-    /* Boolean */ ae_vector *a,
-                     ae_state *_state) {
+                     /* Boolean */ ae_vector *a, ae_state *_state) {
   ae_int_t i;
 
   ae_vector_clear(a);
@@ -7513,8 +7455,7 @@ Array is passed using "out" convention.
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
 void xdebugi1outeven(ae_int_t n,
-    /* Integer */ ae_vector *a,
-                     ae_state *_state) {
+                     /* Integer */ ae_vector *a, ae_state *_state) {
   ae_int_t i;
 
   ae_vector_clear(a);
@@ -7542,7 +7483,7 @@ double xdebugr1sum(/* Real    */ ae_vector *a, ae_state *_state) {
   ae_int_t i;
   double result;
 
-  result = (double) (0);
+  result = (double)(0);
   for (i = 0; i <= a->cnt - 1; i++) {
     result = result + a->ptr.p_double[i];
   }
@@ -7610,8 +7551,7 @@ Array is passed using "out" convention.
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
 void xdebugr1outeven(ae_int_t n,
-    /* Real    */ ae_vector *a,
-                     ae_state *_state) {
+                     /* Real    */ ae_vector *a, ae_state *_state) {
   ae_int_t i;
 
   ae_vector_clear(a);
@@ -7621,7 +7561,7 @@ void xdebugr1outeven(ae_int_t n,
     if (i % 2 == 0) {
       a->ptr.p_double[i] = i * 0.25;
     } else {
-      a->ptr.p_double[i] = (double) (0);
+      a->ptr.p_double[i] = (double)(0);
     }
   }
 }
@@ -7698,8 +7638,8 @@ void xdebugc1appendcopy(/* Complex */ ae_vector *a, ae_state *_state) {
 This is debug function intended for testing ALGLIB interface generator.
 Never use it in any real life project.
 
-Generate N-element array with even-numbered A[K] set to (x,y) = (K*0.25, K*0.125)
-and odd-numbered ones are set to 0.
+Generate N-element array with even-numbered A[K] set to (x,y) = (K*0.25,
+K*0.125) and odd-numbered ones are set to 0.
 
 Array is passed using "out" convention.
 
@@ -7707,8 +7647,7 @@ Array is passed using "out" convention.
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
 void xdebugc1outeven(ae_int_t n,
-    /* Complex */ ae_vector *a,
-                     ae_state *_state) {
+                     /* Complex */ ae_vector *a, ae_state *_state) {
   ae_int_t i;
 
   ae_vector_clear(a);
@@ -7815,10 +7754,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugb2outsin(ae_int_t m,
-                    ae_int_t n,
-    /* Boolean */ ae_matrix *a,
-                    ae_state *_state) {
+void xdebugb2outsin(ae_int_t m, ae_int_t n,
+                    /* Boolean */ ae_matrix *a, ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
 
@@ -7827,7 +7764,8 @@ void xdebugb2outsin(ae_int_t m,
   ae_matrix_set_length(a, m, n, _state);
   for (i = 0; i <= a->rows - 1; i++) {
     for (j = 0; j <= a->cols - 1; j++) {
-      a->ptr.pp_bool[i][j] = ae_fp_greater(ae_sin((double) (3 * i + 5 * j), _state), (double) (0));
+      a->ptr.pp_bool[i][j] =
+          ae_fp_greater(ae_sin((double)(3 * i + 5 * j), _state), (double)(0));
     }
   }
 }
@@ -7921,10 +7859,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugi2outsin(ae_int_t m,
-                    ae_int_t n,
-    /* Integer */ ae_matrix *a,
-                    ae_state *_state) {
+void xdebugi2outsin(ae_int_t m, ae_int_t n,
+                    /* Integer */ ae_matrix *a, ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
 
@@ -7933,7 +7869,8 @@ void xdebugi2outsin(ae_int_t m,
   ae_matrix_set_length(a, m, n, _state);
   for (i = 0; i <= a->rows - 1; i++) {
     for (j = 0; j <= a->cols - 1; j++) {
-      a->ptr.pp_int[i][j] = ae_sign(ae_sin((double) (3 * i + 5 * j), _state), _state);
+      a->ptr.pp_int[i][j] =
+          ae_sign(ae_sin((double)(3 * i + 5 * j), _state), _state);
     }
   }
 }
@@ -7952,7 +7889,7 @@ double xdebugr2sum(/* Real    */ ae_matrix *a, ae_state *_state) {
   ae_int_t j;
   double result;
 
-  result = (double) (0);
+  result = (double)(0);
   for (i = 0; i <= a->rows - 1; i++) {
     for (j = 0; j <= a->cols - 1; j++) {
       result = result + a->ptr.pp_double[i][j];
@@ -8027,10 +7964,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugr2outsin(ae_int_t m,
-                    ae_int_t n,
-    /* Real    */ ae_matrix *a,
-                    ae_state *_state) {
+void xdebugr2outsin(ae_int_t m, ae_int_t n,
+                    /* Real    */ ae_matrix *a, ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
 
@@ -8039,7 +7974,7 @@ void xdebugr2outsin(ae_int_t m,
   ae_matrix_set_length(a, m, n, _state);
   for (i = 0; i <= a->rows - 1; i++) {
     for (j = 0; j <= a->cols - 1; j++) {
-      a->ptr.pp_double[i][j] = ae_sin((double) (3 * i + 5 * j), _state);
+      a->ptr.pp_double[i][j] = ae_sin((double)(3 * i + 5 * j), _state);
     }
   }
 }
@@ -8133,10 +8068,8 @@ Array is passed using "out" convention.
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-void xdebugc2outsincos(ae_int_t m,
-                       ae_int_t n,
-    /* Complex */ ae_matrix *a,
-                       ae_state *_state) {
+void xdebugc2outsincos(ae_int_t m, ae_int_t n,
+                       /* Complex */ ae_matrix *a, ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
 
@@ -8145,8 +8078,8 @@ void xdebugc2outsincos(ae_int_t m,
   ae_matrix_set_length(a, m, n, _state);
   for (i = 0; i <= a->rows - 1; i++) {
     for (j = 0; j <= a->cols - 1; j++) {
-      a->ptr.pp_complex[i][j].x = ae_sin((double) (3 * i + 5 * j), _state);
-      a->ptr.pp_complex[i][j].y = ae_cos((double) (3 * i + 5 * j), _state);
+      a->ptr.pp_complex[i][j].x = ae_sin((double)(3 * i + 5 * j), _state);
+      a->ptr.pp_complex[i][j].y = ae_cos((double)(3 * i + 5 * j), _state);
     }
   }
 }
@@ -8160,11 +8093,10 @@ Returns sum of a[i,j]*(1+b[i,j]) such that c[i,j] is True
   -- ALGLIB --
      Copyright 11.10.2013 by Bochkanov Sergey
 *************************************************************************/
-double xdebugmaskedbiasedproductsum(ae_int_t m,
-                                    ae_int_t n,
-    /* Real    */ ae_matrix *a,
-    /* Real    */ ae_matrix *b,
-    /* Boolean */ ae_matrix *c,
+double xdebugmaskedbiasedproductsum(ae_int_t m, ae_int_t n,
+                                    /* Real    */ ae_matrix *a,
+                                    /* Real    */ ae_matrix *b,
+                                    /* Boolean */ ae_matrix *c,
                                     ae_state *_state) {
   ae_int_t i;
   ae_int_t j;
@@ -8188,32 +8120,32 @@ double xdebugmaskedbiasedproductsum(ae_int_t m,
 }
 
 void _xdebugrecord1_init(void *_p, ae_state *_state, ae_bool make_automatic) {
-  xdebugrecord1 *p = (xdebugrecord1 *) _p;
-  ae_touch_ptr((void *) p);
+  xdebugrecord1 *p = (xdebugrecord1 *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_init(&p->a, 0, DT_REAL, _state, make_automatic);
 }
 
-void _xdebugrecord1_init_copy(void *_dst, void *_src, ae_state *_state, ae_bool make_automatic) {
-  xdebugrecord1 *dst = (xdebugrecord1 *) _dst;
-  xdebugrecord1 *src = (xdebugrecord1 *) _src;
+void _xdebugrecord1_init_copy(void *_dst, void *_src, ae_state *_state,
+                              ae_bool make_automatic) {
+  xdebugrecord1 *dst = (xdebugrecord1 *)_dst;
+  xdebugrecord1 *src = (xdebugrecord1 *)_src;
   dst->i = src->i;
   dst->c = src->c;
   ae_vector_init_copy(&dst->a, &src->a, _state, make_automatic);
 }
 
 void _xdebugrecord1_clear(void *_p) {
-  xdebugrecord1 *p = (xdebugrecord1 *) _p;
-  ae_touch_ptr((void *) p);
+  xdebugrecord1 *p = (xdebugrecord1 *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_clear(&p->a);
 }
 
 void _xdebugrecord1_destroy(void *_p) {
-  xdebugrecord1 *p = (xdebugrecord1 *) _p;
-  ae_touch_ptr((void *) p);
+  xdebugrecord1 *p = (xdebugrecord1 *)_p;
+  ae_touch_ptr((void *)p);
   ae_vector_destroy(&p->a);
 }
 
 #endif
 
-}
-
+} // namespace alglib_impl

@@ -15,7 +15,7 @@ CFLAGS     += `pkg-config --cflags flann`
 LDFLAGS    += -lflann_cpp
 
 all: $(SOURCES) $(EXECUTABLE)
-	
+
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
@@ -24,4 +24,3 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	rm $(OBJECTS) $(EXECUTABLE)
-	

@@ -38,13 +38,12 @@
 
 \**************************************************************************/
 
-#include "Tri.h"
 #include "BV.h"
-//#include "..\..\PolygonalMesh.h"
-//#define MODEL_MESH
+#include "Tri.h"
+// #include "..\..\PolygonalMesh.h"
+// #define MODEL_MESH
 
-class PQP_Model
-{
+class PQP_Model {
 
 public:
   int build_state;
@@ -82,14 +81,12 @@ public:
   // prints message to stderr if msg == TRUE
 };
 
-struct CollisionPair
-{
+struct CollisionPair {
   int id1;
   int id2;
 };
 
-struct PQP_CollideResult
-{
+struct PQP_CollideResult {
   // stats
 
   int num_bv_tests;
@@ -132,8 +129,7 @@ struct PQP_CollideResult
 
 #if PQP_BV_TYPE & RSS_TYPE // distance/tolerance are only available with RSS
 
-struct PQP_DistanceResult
-{
+struct PQP_DistanceResult {
   int pos_flag;  // the closest point in which field of the closest triangle
   Tri *last_tri; // the last test triangle
 
@@ -171,8 +167,7 @@ struct PQP_DistanceResult
   const PQP_REAL *P2() { return p2; }
 };
 
-struct PQP_ToleranceResult
-{
+struct PQP_ToleranceResult {
   int num_tri;   // the closest point in which field of the closest triangle
   Tri *last_tri; // the last test triangle
   // stats

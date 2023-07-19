@@ -203,9 +203,8 @@ const int PQP_ERR_BUILD_EMPTY_MODEL = -5;
 const int PQP_ALL_CONTACTS = 1;  // find all pairwise intersecting triangles
 const int PQP_FIRST_CONTACT = 2; // report first intersecting tri pair found
 
-int PQP_Collide(PQP_CollideResult *result,
-                PQP_REAL R1[3][3], PQP_REAL T1[3], PQP_Model *o1,
-                PQP_REAL R2[3][3], PQP_REAL T2[3], PQP_Model *o2,
+int PQP_Collide(PQP_CollideResult *result, PQP_REAL R1[3][3], PQP_REAL T1[3],
+                PQP_Model *o1, PQP_REAL R2[3][3], PQP_REAL T2[3], PQP_Model *o2,
                 int flag = PQP_ALL_CONTACTS);
 
 #if PQP_BV_TYPE & RSS_TYPE // this is true by default,
@@ -262,13 +261,11 @@ int PQP_Collide(PQP_CollideResult *result,
 //
 //----------------------------------------------------------------------------
 int PQP_Distance(PQP_DistanceResult *result, PQP_Model *o, PQP_REAL p[3],
-                 PQP_REAL rel_err, PQP_REAL abs_err,
-                 int qsize = 2);
+                 PQP_REAL rel_err, PQP_REAL abs_err, int qsize = 2);
 
-int PQP_Distance(PQP_DistanceResult *result,
-                 PQP_REAL R1[3][3], PQP_REAL T1[3], PQP_Model *o1,
-                 PQP_REAL R2[3][3], PQP_REAL T2[3], PQP_Model *o2,
-                 PQP_REAL rel_err, PQP_REAL abs_err,
+int PQP_Distance(PQP_DistanceResult *result, PQP_REAL R1[3][3], PQP_REAL T1[3],
+                 PQP_Model *o1, PQP_REAL R2[3][3], PQP_REAL T2[3],
+                 PQP_Model *o2, PQP_REAL rel_err, PQP_REAL abs_err,
                  int qsize = 2);
 
 //----------------------------------------------------------------------------
@@ -321,11 +318,9 @@ int PQP_Distance(PQP_DistanceResult *result,
 //
 //----------------------------------------------------------------------------
 
-int PQP_Tolerance(PQP_ToleranceResult *res,
-                  PQP_REAL R1[3][3], PQP_REAL T1[3], PQP_Model *o1,
-                  PQP_REAL R2[3][3], PQP_REAL T2[3], PQP_Model *o2,
-                  PQP_REAL tolerance,
-                  int qsize = 2);
+int PQP_Tolerance(PQP_ToleranceResult *res, PQP_REAL R1[3][3], PQP_REAL T1[3],
+                  PQP_Model *o1, PQP_REAL R2[3][3], PQP_REAL T2[3],
+                  PQP_Model *o2, PQP_REAL tolerance, int qsize = 2);
 
 #endif
 #endif

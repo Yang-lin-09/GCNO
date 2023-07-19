@@ -5,7 +5,7 @@ Copyright (c) Sergey Bochkanov (ALGLIB project).
 >>> SOURCE LICENSE >>>
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation (www.fsf.org); either version 2 of the 
+the Free Software Foundation (www.fsf.org); either version 2 of the
 License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -19,17 +19,16 @@ http://www.fsf.org/licensing/licenses
 *************************************************************************/
 #ifndef _specialfunctions_pkg_h
 #define _specialfunctions_pkg_h
-#include "ap.h"
 #include "alglibinternal.h"
 #include "alglibmisc.h"
+#include "ap.h"
 
 /////////////////////////////////////////////////////////////////////////
 //
 // THIS SECTION CONTAINS COMPUTATIONAL CORE DECLARATIONS (DATATYPES)
 //
 /////////////////////////////////////////////////////////////////////////
-namespace alglib_impl
-{
+namespace alglib_impl {
 #if defined(AE_COMPILE_GAMMAFUNC) || !defined(AE_PARTIAL_BUILD)
 #endif
 #if defined(AE_COMPILE_NORMALDISTR) || !defined(AE_PARTIAL_BUILD)
@@ -84,8 +83,7 @@ namespace alglib_impl
 // THIS SECTION CONTAINS C++ INTERFACE
 //
 /////////////////////////////////////////////////////////////////////////
-namespace alglib
-{
+namespace alglib {
 
 #if defined(AE_COMPILE_GAMMAFUNC) || !defined(AE_PARTIAL_BUILD)
 
@@ -180,76 +178,77 @@ namespace alglib
 #endif
 
 #if defined(AE_COMPILE_GAMMAFUNC) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Gamma function
 
 Input parameters:
-    X   -   argument
+ X   -   argument
 
 Domain:
-    0 < X < 171.6
-    -170 < X < 0, X is not an integer.
+ 0 < X < 171.6
+ -170 < X < 0, X is not an integer.
 
 Relative error:
- arithmetic   domain     # trials      peak         rms
-    IEEE    -170,-33      20000       2.3e-15     3.3e-16
-    IEEE     -33,  33     20000       9.4e-16     2.2e-16
-    IEEE      33, 171.6   20000       2.3e-15     3.2e-16
+arithmetic   domain     # trials      peak         rms
+ IEEE    -170,-33      20000       2.3e-15     3.3e-16
+ IEEE     -33,  33     20000       9.4e-16     2.2e-16
+ IEEE      33, 171.6   20000       2.3e-15     3.2e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Original copyright 1984, 1987, 1989, 1992, 2000 by Stephen L. Moshier
 Translated to AlgoPascal by Bochkanov Sergey (2005, 2006, 2007).
 *************************************************************************/
-   double gammafunction(const double x, const xparams _xparams = alglib::xdefault);
+double gammafunction(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Natural logarithm of gamma function
 
 Input parameters:
-    X       -   argument
+ X       -   argument
 
 Result:
-    logarithm of the absolute value of the Gamma(X).
+ logarithm of the absolute value of the Gamma(X).
 
 Output parameters:
-    SgnGam  -   sign(Gamma(X))
+ SgnGam  -   sign(Gamma(X))
 
 Domain:
-    0 < X < 2.55e305
-    -2.55e305 < X < 0, X is not an integer.
+ 0 < X < 2.55e305
+ -2.55e305 < X < 0, X is not an integer.
 
 ACCURACY:
 arithmetic      domain        # trials     peak         rms
-   IEEE    0, 3                 28000     5.4e-16     1.1e-16
-   IEEE    2.718, 2.556e305     40000     3.5e-16     8.3e-17
+IEEE    0, 3                 28000     5.4e-16     1.1e-16
+IEEE    2.718, 2.556e305     40000     3.5e-16     8.3e-17
 The error criterion was relative when the function magnitude
 was greater than one but absolute when it was less than one.
 
 The following test used the relative error criterion, though
 at certain points the relative error could be much higher than
 indicated.
-   IEEE    -200, -4             10000     4.8e-16     1.3e-16
+IEEE    -200, -4             10000     4.8e-16     1.3e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 1992, 2000 by Stephen L. Moshier
 Translated to AlgoPascal by Bochkanov Sergey (2005, 2006, 2007).
 *************************************************************************/
-   double lngamma(const double x, double &sgngam, const xparams _xparams = alglib::xdefault);
+double lngamma(const double x, double &sgngam,
+               const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_NORMALDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Error function
 
 The integral is
 
-                          x
-                           -
-                2         | |          2
-  erf(x)  =  --------     |    exp( - t  ) dt.
-             sqrt(pi)   | |
-                         -
-                          0
+                       x
+                        -
+             2         | |          2
+erf(x)  =  --------     |    exp( - t  ) dt.
+          sqrt(pi)   | |
+                      -
+                       0
 
 For 0 <= |x| < 1, erf(x) = x * P4(x**2)/Q5(x**2); otherwise
 erf(x) = 1 - erfc(x).
@@ -257,27 +256,27 @@ erf(x) = 1 - erfc(x).
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,1         30000       3.7e-16     1.0e-16
+IEEE      0,1         30000       3.7e-16     1.0e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double errorfunction(const double x, const xparams _xparams = alglib::xdefault);
+double errorfunction(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complementary error function
 
- 1 - erf(x) =
+1 - erf(x) =
 
-                          inf.
-                            -
-                 2         | |          2
-  erfc(x)  =  --------     |    exp( - t  ) dt
-              sqrt(pi)   | |
-                          -
-                           x
+                       inf.
+                         -
+              2         | |          2
+erfc(x)  =  --------     |    exp( - t  ) dt
+           sqrt(pi)   | |
+                       -
+                        x
 
 
 For small x, erfc(x) = 1 - erf(x); otherwise rational
@@ -286,50 +285,52 @@ approximations are computed.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,26.6417   30000       5.7e-14     1.5e-14
+IEEE      0,26.6417   30000       5.7e-14     1.5e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double errorfunctionc(const double x, const xparams _xparams = alglib::xdefault);
+double errorfunctionc(const double x,
+                      const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Same as normalcdf(), obsolete name.
 *************************************************************************/
-   double normaldistribution(const double x, const xparams _xparams = alglib::xdefault);
+double normaldistribution(const double x,
+                          const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Normal distribution PDF
 
 Returns Gaussian probability density function:
 
-               1
-   f(x)  = --------- * exp(-x^2/2)
-           sqrt(2pi)
+            1
+f(x)  = --------- * exp(-x^2/2)
+        sqrt(2pi)
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double normalpdf(const double x, const xparams _xparams = alglib::xdefault);
+double normalpdf(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Normal distribution CDF
 
 Returns the area under the Gaussian probability density
 function, integrated from minus infinity to x:
 
-                           x
-                            -
-                  1        | |          2
-   ndtr(x)  = ---------    |    exp( - t /2 ) dt
-              sqrt(2pi)  | |
-                          -
-                         -inf.
+                        x
+                         -
+               1        | |          2
+ndtr(x)  = ---------    |    exp( - t /2 ) dt
+           sqrt(2pi)  | |
+                       -
+                      -inf.
 
-            =  ( 1 + erf(z) ) / 2
-            =  erfc(z) / 2
+         =  ( 1 + erf(z) ) / 2
+         =  erfc(z) / 2
 
 where z = x/sqrt(2). Computation is via the functions
 erf and erfc.
@@ -337,29 +338,30 @@ erf and erfc.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE     -13,0        30000       3.4e-14     6.7e-15
+IEEE     -13,0        30000       3.4e-14     6.7e-15
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double normalcdf(const double x, const xparams _xparams = alglib::xdefault);
+double normalcdf(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of the error function
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double inverf(const double e, const xparams _xparams = alglib::xdefault);
+double inverf(const double e, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Same as invnormalcdf(), deprecated name
 *************************************************************************/
-   double invnormaldistribution(const double y0, const xparams _xparams = alglib::xdefault);
+double invnormaldistribution(const double y0,
+                             const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of Normal CDF
 
 Returns the argument, x, for which the area under the
@@ -376,57 +378,58 @@ w = y - 0.5, and  x/sqrt(2pi) = w + w**3 R(w**2)/S(w**2)).
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain        # trials      peak         rms
-   IEEE     0.125, 1        20000       7.2e-16     1.3e-16
-   IEEE     3e-308, 0.135   50000       4.6e-16     9.8e-17
+IEEE     0.125, 1        20000       7.2e-16     1.3e-16
+IEEE     3e-308, 0.135   50000       4.6e-16     9.8e-17
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invnormalcdf(const double y0, const xparams _xparams = alglib::xdefault);
+double invnormalcdf(const double y0, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bivariate normal PDF
 
 Returns probability density function of the bivariate  Gaussian  with
 correlation parameter equal to Rho:
 
-                         1              (    x^2 - 2*rho*x*y + y^2  )
-    f(x,y,rho) = ----------------- * exp( - ----------------------- )
-                 2pi*sqrt(1-rho^2)      (        2*(1-rho^2)        )
+                      1              (    x^2 - 2*rho*x*y + y^2  )
+ f(x,y,rho) = ----------------- * exp( - ----------------------- )
+              2pi*sqrt(1-rho^2)      (        2*(1-rho^2)        )
 
 
 with -1<rho<+1 and arbitrary x, y.
 
 This function won't fail as long as Rho is in (-1,+1) range.
 
-  -- ALGLIB --
-     Copyright 15.11.2019 by Bochkanov Sergey
+-- ALGLIB --
+  Copyright 15.11.2019 by Bochkanov Sergey
 *************************************************************************/
-   double bivariatenormalpdf(const double x, const double y, const double rho, const xparams _xparams = alglib::xdefault);
+double bivariatenormalpdf(const double x, const double y, const double rho,
+                          const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bivariate normal CDF
 
 Returns the area under the bivariate Gaussian  PDF  with  correlation
 parameter equal to Rho, integrated from minus infinity to (x,y):
 
 
-                                          x      y
-                                          -      -
-                            1            | |    | |
-    bvn(x,y,rho) = -------------------   |      |   f(u,v,rho)*du*dv
-                    2pi*sqrt(1-rho^2)  | |    | |
-                                        -      -
-                                       -INF   -INF
+                                       x      y
+                                       -      -
+                         1            | |    | |
+ bvn(x,y,rho) = -------------------   |      |   f(u,v,rho)*du*dv
+                 2pi*sqrt(1-rho^2)  | |    | |
+                                     -      -
+                                    -INF   -INF
 
 
 where
 
-                      (    u^2 - 2*rho*u*v + v^2  )
-    f(u,v,rho)   = exp( - ----------------------- )
-                      (        2*(1-rho^2)        )
+                   (    u^2 - 2*rho*u*v + v^2  )
+ f(u,v,rho)   = exp( - ----------------------- )
+                   (        2*(1-rho^2)        )
 
 
 with -1<rho<+1 and arbitrary x, y.
@@ -438,25 +441,26 @@ absolute error roughly equal to 1e-14.
 
 This function won't fail as long as Rho is in (-1,+1) range.
 
-  -- ALGLIB --
-     Copyright 15.11.2019 by Bochkanov Sergey
+-- ALGLIB --
+  Copyright 15.11.2019 by Bochkanov Sergey
 *************************************************************************/
-   double bivariatenormalcdf(const double x, const double y, const double rho, const xparams _xparams = alglib::xdefault);
+double bivariatenormalcdf(const double x, const double y, const double rho,
+                          const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_IGAMMAF) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Incomplete gamma integral
 
 The function is defined by
 
-                          x
-                           -
-                  1       | |  -t  a-1
- igam(a,x)  =   -----     |   e   t   dt.
-                 -      | |
-                | (a)    -
-                          0
+                       x
+                        -
+               1       | |  -t  a-1
+igam(a,x)  =   -----     |   e   t   dt.
+              -      | |
+             | (a)    -
+                       0
 
 
 In this implementation both arguments must be positive.
@@ -466,31 +470,32 @@ values of a and x.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,30       200000       3.6e-14     2.9e-15
-   IEEE      0,100      300000       9.9e-14     1.5e-14
+IEEE      0,30       200000       3.6e-14     2.9e-15
+IEEE      0,100      300000       9.9e-14     1.5e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1985, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double incompletegamma(const double a, const double x, const xparams _xparams = alglib::xdefault);
+double incompletegamma(const double a, const double x,
+                       const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complemented incomplete gamma integral
 
 The function is defined by
 
 
- igamc(a,x)   =   1 - igam(a,x)
+igamc(a,x)   =   1 - igam(a,x)
 
-                           inf.
-                             -
-                    1       | |  -t  a-1
-              =   -----     |   e   t   dt.
-                   -      | |
-                  | (a)    -
-                            x
+                        inf.
+                          -
+                 1       | |  -t  a-1
+           =   -----     |   e   t   dt.
+                -      | |
+               | (a)    -
+                         x
 
 
 In this implementation both arguments must be positive.
@@ -501,35 +506,36 @@ values of a and x.
 ACCURACY:
 
 Tested at random a, x.
-               a         x                      Relative error:
+            a         x                      Relative error:
 arithmetic   domain   domain     # trials      peak         rms
-   IEEE     0.5,100   0,100      200000       1.9e-14     1.7e-15
-   IEEE     0.01,0.5  0,100      200000       1.4e-13     1.6e-15
+IEEE     0.5,100   0,100      200000       1.9e-14     1.7e-15
+IEEE     0.01,0.5  0,100      200000       1.4e-13     1.6e-15
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1985, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double incompletegammac(const double a, const double x, const xparams _xparams = alglib::xdefault);
+double incompletegammac(const double a, const double x,
+                        const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of complemented imcomplete gamma integral
 
 Given p, the function finds x such that
 
- igamc( a, x ) = p.
+igamc( a, x ) = p.
 
 Starting with the approximate value
 
-        3
- x = a t
+     3
+x = a t
 
- where
+where
 
- t = 1 - d - ndtri(p) sqrt(d)
+t = 1 - d - ndtri(p) sqrt(d)
 
 and
 
- d = 1/9a,
+d = 1/9a,
 
 the routine performs up to 10 Newton iterations to find the
 root of igamc(a,x) - p = 0.
@@ -538,71 +544,73 @@ ACCURACY:
 
 Tested at random a, p in the intervals indicated.
 
-               a        p                      Relative error:
+            a        p                      Relative error:
 arithmetic   domain   domain     # trials      peak         rms
-   IEEE     0.5,100   0,0.5       100000       1.0e-14     1.7e-15
-   IEEE     0.01,0.5  0,0.5       100000       9.0e-14     3.4e-15
-   IEEE    0.5,10000  0,0.5        20000       2.3e-13     3.8e-14
+IEEE     0.5,100   0,0.5       100000       1.0e-14     1.7e-15
+IEEE     0.01,0.5  0,0.5       100000       9.0e-14     3.4e-15
+IEEE    0.5,10000  0,0.5        20000       2.3e-13     3.8e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invincompletegammac(const double a, const double y0, const xparams _xparams = alglib::xdefault);
+double invincompletegammac(const double a, const double y0,
+                           const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_ELLIPTIC) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Complete elliptic integral of the first kind
 
 Approximates the integral
 
 
 
-           pi/2
-            -
-           | |
-           |           dt
+        pi/2
+         -
+        | |
+        |           dt
 K(m)  =    |    ------------------
-           |                   2
-         | |    sqrt( 1 - m sin t )
-          -
-           0
+        |                   2
+      | |    sqrt( 1 - m sin t )
+       -
+        0
 
 using the approximation
 
-    P(x)  -  log x Q(x).
+ P(x)  -  log x Q(x).
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE       0,1        30000       2.5e-16     6.8e-17
+IEEE       0,1        30000       2.5e-16     6.8e-17
 
 Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double ellipticintegralk(const double m, const xparams _xparams = alglib::xdefault);
+double ellipticintegralk(const double m,
+                         const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complete elliptic integral of the first kind
 
 Approximates the integral
 
 
 
-           pi/2
-            -
-           | |
-           |           dt
+        pi/2
+         -
+        | |
+        |           dt
 K(m)  =    |    ------------------
-           |                   2
-         | |    sqrt( 1 - m sin t )
-          -
-           0
+        |                   2
+      | |    sqrt( 1 - m sin t )
+       -
+        0
 
 where m = 1 - m1, using the approximation
 
-    P(x)  -  log x Q(x).
+ P(x)  -  log x Q(x).
 
 The argument m1 is used rather than m so that the logarithmic
 singularity at m = 1 will be shifted to the origin; this
@@ -612,31 +620,33 @@ K(0) = pi/2.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE       0,1        30000       2.5e-16     6.8e-17
+IEEE       0,1        30000       2.5e-16     6.8e-17
 
 Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double ellipticintegralkhighprecision(const double m1, const xparams _xparams = alglib::xdefault);
+double
+ellipticintegralkhighprecision(const double m1,
+                               const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Incomplete elliptic integral of the first kind F(phi|m)
 
 Approximates the integral
 
 
 
-               phi
-                -
-               | |
-               |           dt
+            phi
+             -
+            | |
+            |           dt
 F(phi_\m)  =    |    ------------------
-               |                   2
-             | |    sqrt( 1 - m sin t )
-              -
-               0
+            |                   2
+          | |    sqrt( 1 - m sin t )
+           -
+            0
 
 of amplitude phi and modulus m, using the arithmetic -
 geometric mean algorithm.
@@ -648,59 +658,61 @@ ACCURACY:
 
 Tested at random points with m in [0, 1] and phi as indicated.
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE     -10,10       200000      7.4e-16     1.0e-16
+IEEE     -10,10       200000      7.4e-16     1.0e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double incompleteellipticintegralk(const double phi, const double m, const xparams _xparams = alglib::xdefault);
+double incompleteellipticintegralk(const double phi, const double m,
+                                   const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complete elliptic integral of the second kind
 
 Approximates the integral
 
 
-           pi/2
-            -
-           | |                 2
+        pi/2
+         -
+        | |                 2
 E(m)  =    |    sqrt( 1 - m sin t ) dt
-         | |
-          -
-           0
+      | |
+       -
+        0
 
 using the approximation
 
-     P(x)  -  x log x Q(x).
+  P(x)  -  x log x Q(x).
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE       0, 1       10000       2.1e-16     7.3e-17
+IEEE       0, 1       10000       2.1e-16     7.3e-17
 
 Cephes Math Library, Release 2.8: June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double ellipticintegrale(const double m, const xparams _xparams = alglib::xdefault);
+double ellipticintegrale(const double m,
+                         const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Incomplete elliptic integral of the second kind
 
 Approximates the integral
 
 
-               phi
-                -
-               | |
-               |                   2
+            phi
+             -
+            | |
+            |                   2
 E(phi_\m)  =    |    sqrt( 1 - m sin t ) dt
-               |
-             | |
-              -
-               0
+            |
+          | |
+           -
+            0
 
 of amplitude phi and modulus m, using the arithmetic -
 geometric mean algorithm.
@@ -709,105 +721,110 @@ ACCURACY:
 
 Tested at random arguments with phi in [-10, 10] and m in
 [0, 1].
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE     -10,10      150000       3.3e-15     1.4e-16
+IEEE     -10,10      150000       3.3e-15     1.4e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1993, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double incompleteellipticintegrale(const double phi, const double m, const xparams _xparams = alglib::xdefault);
+double incompleteellipticintegrale(const double phi, const double m,
+                                   const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_HERMITE) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Calculation of the value of the Hermite polynomial.
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Hermite polynomial Hn at x
+ the value of the Hermite polynomial Hn at x
 *************************************************************************/
-   double hermitecalculate(const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double hermitecalculate(const ae_int_t n, const double x,
+                        const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Summation of Hermite polynomials using Clenshaw's recurrence formula.
 
 This routine calculates
-    c[0]*H0(x) + c[1]*H1(x) + ... + c[N]*HN(x)
+ c[0]*H0(x) + c[1]*H1(x) + ... + c[N]*HN(x)
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Hermite polynomial at x
+ the value of the Hermite polynomial at x
 *************************************************************************/
-   double hermitesum(const real_1d_array &c, const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double hermitesum(const real_1d_array &c, const ae_int_t n, const double x,
+                  const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Representation of Hn as C[0] + C[1]*X + ... + C[N]*X^N
 
 Input parameters:
-    N   -   polynomial degree, n>=0
+ N   -   polynomial degree, n>=0
 
 Output parameters:
-    C   -   coefficients
+ C   -   coefficients
 *************************************************************************/
-   void hermitecoefficients(const ae_int_t n, real_1d_array &c, const xparams _xparams = alglib::xdefault);
+void hermitecoefficients(const ae_int_t n, real_1d_array &c,
+                         const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_DAWSON) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Dawson's Integral
 
 Approximates the integral
 
-                            x
-                            -
-                     2     | |        2
- dawsn(x)  =  exp( -x  )   |    exp( t  ) dt
-                         | |
-                          -
-                          0
+                         x
+                         -
+                  2     | |        2
+dawsn(x)  =  exp( -x  )   |    exp( t  ) dt
+                      | |
+                       -
+                       0
 
 Three different rational approximations are employed, for
 the intervals 0 to 3.25; 3.25 to 6.25; and 6.25 up.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,10        10000       6.9e-16     1.0e-16
+IEEE      0,10        10000       6.9e-16     1.0e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double dawsonintegral(const double x, const xparams _xparams = alglib::xdefault);
+double dawsonintegral(const double x,
+                      const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_TRIGINTEGRALS) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Sine and cosine integrals
 
 Evaluates the integrals
 
-                         x
-                         -
-                        |  cos t - 1
-  Ci(x) = eul + ln x +  |  --------- dt,
-                        |      t
-                       -
-                        0
-            x
-            -
-           |  sin t
-  Si(x) =  |  ----- dt
-           |    t
-          -
-           0
+                      x
+                      -
+                     |  cos t - 1
+Ci(x) = eul + ln x +  |  --------- dt,
+                     |      t
+                    -
+                     0
+         x
+         -
+        |  sin t
+Si(x) =  |  ----- dt
+        |    t
+       -
+        0
 
 where eul = 0.57721566490153286061 is Euler's constant.
 The integrals are approximated by rational functions.
@@ -819,37 +836,38 @@ Si(x) = pi/2 - f(x) cos(x) - g(x) sin(x)
 
 
 ACCURACY:
-   Test interval = [0,50].
+Test interval = [0,50].
 Absolute error, except relative when > 1:
 arithmetic   function   # trials      peak         rms
-   IEEE        Si        30000       4.4e-16     7.3e-17
-   IEEE        Ci        30000       6.9e-16     5.1e-17
+IEEE        Si        30000       4.4e-16     7.3e-17
+IEEE        Ci        30000       6.9e-16     5.1e-17
 
 Cephes Math Library Release 2.1:  January, 1989
 Copyright 1984, 1987, 1989 by Stephen L. Moshier
 *************************************************************************/
-   void sinecosineintegrals(const double x, double &si, double &ci, const xparams _xparams = alglib::xdefault);
+void sinecosineintegrals(const double x, double &si, double &ci,
+                         const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Hyperbolic sine and cosine integrals
 
 Approximates the integrals
 
-                           x
-                           -
-                          | |   cosh t - 1
-  Chi(x) = eul + ln x +   |    -----------  dt,
-                        | |          t
-                         -
-                         0
+                        x
+                        -
+                       | |   cosh t - 1
+Chi(x) = eul + ln x +   |    -----------  dt,
+                     | |          t
+                      -
+                      0
 
-              x
-              -
-             | |  sinh t
-  Shi(x) =   |    ------  dt
-           | |       t
-            -
-            0
+           x
+           -
+          | |  sinh t
+Shi(x) =   |    ------  dt
+        | |       t
+         -
+         0
 
 where eul = 0.57721566490153286061 is Euler's constant.
 The integrals are evaluated by power series for x < 8
@@ -861,30 +879,31 @@ Arguments greater than 88 in magnitude return MAXNUM.
 ACCURACY:
 
 Test interval 0 to 88.
-                     Relative error:
+                  Relative error:
 arithmetic   function  # trials      peak         rms
-   IEEE         Shi      30000       6.9e-16     1.6e-16
-       Absolute error, except relative when |Chi| > 1:
-   IEEE         Chi      30000       8.4e-16     1.4e-16
+IEEE         Shi      30000       6.9e-16     1.6e-16
+    Absolute error, except relative when |Chi| > 1:
+IEEE         Chi      30000       8.4e-16     1.4e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   void hyperbolicsinecosineintegrals(const double x, double &shi, double &chi, const xparams _xparams = alglib::xdefault);
+void hyperbolicsinecosineintegrals(const double x, double &shi, double &chi,
+                                   const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_POISSONDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Poisson distribution
 
 Returns the sum of the first k+1 terms of the Poisson
 distribution:
 
-  k         j
-  --   -m  m
-  >   e    --
-  --       j!
- j=0
+k         j
+--   -m  m
+>   e    --
+--       j!
+j=0
 
 The terms are not summed directly; instead the incomplete
 gamma integral is employed, according to the relation
@@ -899,19 +918,20 @@ See incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double poissondistribution(const ae_int_t k, const double m, const xparams _xparams = alglib::xdefault);
+double poissondistribution(const ae_int_t k, const double m,
+                           const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complemented Poisson distribution
 
 Returns the sum of the terms k+1 to infinity of the Poisson
 distribution:
 
- inf.       j
-  --   -m  m
-  >   e    --
-  --       j!
- j=k+1
+inf.       j
+--   -m  m
+>   e    --
+--       j!
+j=k+1
 
 The terms are not summed directly; instead the incomplete
 gamma integral is employed, according to the formula
@@ -927,9 +947,10 @@ See incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double poissoncdistribution(const ae_int_t k, const double m, const xparams _xparams = alglib::xdefault);
+double poissoncdistribution(const ae_int_t k, const double m,
+                            const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse Poisson distribution
 
 Finds the Poisson variable x such that the integral
@@ -939,7 +960,7 @@ given probability y.
 This is accomplished using the inverse gamma integral
 function and the relation
 
-   m = igami( k+1, y ).
+m = igami( k+1, y ).
 
 ACCURACY:
 
@@ -948,11 +969,12 @@ See inverse incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invpoissondistribution(const ae_int_t k, const double y, const xparams _xparams = alglib::xdefault);
+double invpoissondistribution(const ae_int_t k, const double y,
+                              const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_BESSEL) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Bessel function of order zero
 
 Returns Bessel function of order zero of the argument.
@@ -962,11 +984,11 @@ The domain is divided into the intervals [0, 5] and
 approximation is used:
 
 
-       2         2
+    2         2
 (w - r  ) (w - r  ) P (w) / Q (w)
-      1         2    3       8
+   1         2    3       8
 
-           2
+        2
 where w = x  and the two r's are zeros of the function.
 
 In the second interval, the Hankel asymptotic expansion
@@ -975,16 +997,16 @@ and 7/7.
 
 ACCURACY:
 
-                     Absolute error:
+                  Absolute error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       60000       4.2e-16     1.1e-16
+IEEE      0, 30       60000       4.2e-16     1.1e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselj0(const double x, const xparams _xparams = alglib::xdefault);
+double besselj0(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bessel function of order one
 
 Returns Bessel function of order one of the argument.
@@ -997,16 +1019,16 @@ rational functions of degree 5/5.
 
 ACCURACY:
 
-                     Absolute error:
+                  Absolute error:
 arithmetic   domain      # trials      peak         rms
-   IEEE      0, 30       30000       2.6e-16     1.1e-16
+IEEE      0, 30       30000       2.6e-16     1.1e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselj1(const double x, const xparams _xparams = alglib::xdefault);
+double besselj1(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bessel function of integer order
 
 Returns Bessel function of order n, where n is a
@@ -1023,9 +1045,9 @@ directly.
 
 ACCURACY:
 
-                     Absolute error:
+                  Absolute error:
 arithmetic   range      # trials      peak         rms
-   IEEE      0, 30        5000       4.4e-16     7.9e-17
+IEEE      0, 30        5000       4.4e-16     7.9e-17
 
 
 Not suitable for large n or x. Use jv() (fractional order) instead.
@@ -1033,9 +1055,10 @@ Not suitable for large n or x. Use jv() (fractional order) instead.
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besseljn(const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double besseljn(const ae_int_t n, const double x,
+                const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bessel function of the second kind, order zero
 
 Returns Bessel function of the second kind, of order
@@ -1044,7 +1067,7 @@ zero, of the argument.
 The domain is divided into the intervals [0, 5] and
 (5, infinity). In the first interval a rational approximation
 R(x) is employed to compute
-  y0(x)  = R(x)  +   2 * log(x) * j0(x) / PI.
+y0(x)  = R(x)  +   2 * log(x) * j0(x) / PI.
 Thus a call to j0() is required.
 
 In the second interval, the Hankel asymptotic expansion
@@ -1055,17 +1078,17 @@ and 7/7.
 
 ACCURACY:
 
- Absolute error, when y0(x) < 1; else relative error:
+Absolute error, when y0(x) < 1; else relative error:
 
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       30000       1.3e-15     1.6e-16
+IEEE      0, 30       30000       1.3e-15     1.6e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double bessely0(const double x, const xparams _xparams = alglib::xdefault);
+double bessely0(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bessel function of second kind of order one
 
 Returns Bessel function of the second kind of order one
@@ -1079,16 +1102,16 @@ is employed using two rational functions of degree 5/5.
 
 ACCURACY:
 
-                     Absolute error:
+                  Absolute error:
 arithmetic   domain      # trials      peak         rms
-   IEEE      0, 30       30000       1.0e-15     1.3e-16
+IEEE      0, 30       30000       1.0e-15     1.3e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double bessely1(const double x, const xparams _xparams = alglib::xdefault);
+double bessely1(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Bessel function of second kind of integer order
 
 Returns Bessel function of order n, where n is a
@@ -1102,17 +1125,18 @@ If n = 0 or 1 the routine for y0 or y1 is called
 directly.
 
 ACCURACY:
-                     Absolute error, except relative
-                     when y > 1:
+                  Absolute error, except relative
+                  when y > 1:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       30000       3.4e-15     4.3e-16
+IEEE      0, 30       30000       3.4e-15     4.3e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselyn(const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double besselyn(const ae_int_t n, const double x,
+                const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Modified Bessel function of order zero
 
 Returns modified Bessel function of order zero of the
@@ -1126,16 +1150,16 @@ in each interval.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,30        30000       5.8e-16     1.4e-16
+IEEE      0,30        30000       5.8e-16     1.4e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besseli0(const double x, const xparams _xparams = alglib::xdefault);
+double besseli0(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Modified Bessel function of order one
 
 Returns modified Bessel function of order one of the
@@ -1149,16 +1173,16 @@ in each interval.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       30000       1.9e-15     2.1e-16
+IEEE      0, 30       30000       1.9e-15     2.1e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1985, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besseli1(const double x, const xparams _xparams = alglib::xdefault);
+double besseli1(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Modified Bessel function, second kind, order zero
 
 Returns modified Bessel function of the second kind
@@ -1172,16 +1196,16 @@ ACCURACY:
 
 Tested at 2000 random points between 0 and 8.  Peak absolute
 error (relative when K0 > 1) was 1.46e-14; rms, 4.26e-15.
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       30000       1.2e-15     1.6e-16
+IEEE      0, 30       30000       1.2e-15     1.6e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselk0(const double x, const xparams _xparams = alglib::xdefault);
+double besselk0(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Modified Bessel function, second kind, order one
 
 Computes the modified Bessel function of the second kind
@@ -1193,16 +1217,16 @@ in each interval.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       30000       1.2e-15     1.6e-16
+IEEE      0, 30       30000       1.2e-15     1.6e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselk1(const double x, const xparams _xparams = alglib::xdefault);
+double besselk1(const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Modified Bessel function, second kind, integer order
 
 Returns modified Bessel function of the second kind
@@ -1214,9 +1238,9 @@ low range, and an asymptotic expansion in the high range.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,30        90000       1.8e-8      3.0e-10
+IEEE      0,30        90000       1.8e-8      3.0e-10
 
 Error is high only near the crossover point x = 9.55
 between the two expansions used.
@@ -1224,30 +1248,31 @@ between the two expansions used.
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1988, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double besselkn(const ae_int_t nn, const double x, const xparams _xparams = alglib::xdefault);
+double besselkn(const ae_int_t nn, const double x,
+                const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_IBETAF) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Incomplete beta integral
 
 Returns incomplete beta integral of the arguments, evaluated
 from zero to x.  The function is defined as
 
-                 x
-    -            -
-   | (a+b)      | |  a-1     b-1
- -----------    |   t   (1-t)   dt.
-  -     -     | |
- | (a) | (b)   -
-                0
+              x
+ -            -
+| (a+b)      | |  a-1     b-1
+-----------    |   t   (1-t)   dt.
+-     -     | |
+| (a) | (b)   -
+             0
 
 The domain of definition is 0 <= x <= 1.  In this
 implementation a and b are restricted to positive values.
 The integral from x to 1 may be obtained by the symmetry
 relation
 
-   1 - incbet( a, b, x )  =  incbet( b, a, 1-x ).
+1 - incbet( a, b, x )  =  incbet( b, a, 1-x ).
 
 The integral is evaluated by a continued fraction expansion
 or, when b*x is small, by a power series.
@@ -1256,27 +1281,28 @@ ACCURACY:
 
 Tested at uniformly distributed random points (a,b,x) with a and b
 in "domain" and x between 0 and 1.
-                                       Relative error
+                                    Relative error
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,5         10000       6.9e-15     4.5e-16
-   IEEE      0,85       250000       2.2e-13     1.7e-14
-   IEEE      0,1000      30000       5.3e-12     6.3e-13
-   IEEE      0,10000    250000       9.3e-11     7.1e-12
-   IEEE      0,100000    10000       8.7e-10     4.8e-11
+IEEE      0,5         10000       6.9e-15     4.5e-16
+IEEE      0,85       250000       2.2e-13     1.7e-14
+IEEE      0,1000      30000       5.3e-12     6.3e-13
+IEEE      0,10000    250000       9.3e-11     7.1e-12
+IEEE      0,100000    10000       8.7e-10     4.8e-11
 Outputs smaller than the IEEE gradual underflow threshold
 were excluded from these statistics.
 
 Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double incompletebeta(const double a, const double b, const double x, const xparams _xparams = alglib::xdefault);
+double incompletebeta(const double a, const double b, const double x,
+                      const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of imcomplete beta integral
 
 Given y, the function finds x such that
 
- incbet( a, b, x ) = y .
+incbet( a, b, x ) = y .
 
 The routine performs interval halving or Newton iterations to find the
 root of incbet(a,b,x) - y = 0.
@@ -1284,26 +1310,27 @@ root of incbet(a,b,x) - y = 0.
 
 ACCURACY:
 
-                     Relative error:
-               x     a,b
+                  Relative error:
+            x     a,b
 arithmetic   domain  domain  # trials    peak       rms
-   IEEE      0,1    .5,10000   50000    5.8e-12   1.3e-13
-   IEEE      0,1   .25,100    100000    1.8e-13   3.9e-15
-   IEEE      0,1     0,5       50000    1.1e-12   5.5e-15
+IEEE      0,1    .5,10000   50000    5.8e-12   1.3e-13
+IEEE      0,1   .25,100    100000    1.8e-13   3.9e-15
+IEEE      0,1     0,5       50000    1.1e-12   5.5e-15
 With a and b constrained to half-integer or integer values:
-   IEEE      0,1    .5,10000   50000    5.8e-12   1.1e-13
-   IEEE      0,1    .5,100    100000    1.7e-14   7.9e-16
+IEEE      0,1    .5,10000   50000    5.8e-12   1.1e-13
+IEEE      0,1    .5,100    100000    1.7e-14   7.9e-16
 With a = .5, b constrained to half-integer or integer values:
-   IEEE      0,1    .5,10000   10000    8.3e-11   1.0e-11
+IEEE      0,1    .5,10000   10000    8.3e-11   1.0e-11
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1996, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invincompletebeta(const double a, const double b, const double y, const xparams _xparams = alglib::xdefault);
+double invincompletebeta(const double a, const double b, const double y,
+                         const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_FDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 F distribution
 
 Returns the area from zero to x under the F density
@@ -1325,19 +1352,20 @@ ACCURACY:
 
 Tested at random points (a,b,x).
 
-               x     a,b                     Relative error:
+            x     a,b                     Relative error:
 arithmetic  domain  domain     # trials      peak         rms
-   IEEE      0,1    0,100       100000      9.8e-15     1.7e-15
-   IEEE      1,5    0,100       100000      6.5e-15     3.5e-16
-   IEEE      0,1    1,10000     100000      2.2e-11     3.3e-12
-   IEEE      1,5    1,10000     100000      1.1e-11     1.7e-13
+IEEE      0,1    0,100       100000      9.8e-15     1.7e-15
+IEEE      1,5    0,100       100000      6.5e-15     3.5e-16
+IEEE      0,1    1,10000     100000      2.2e-11     3.3e-12
+IEEE      1,5    1,10000     100000      1.1e-11     1.7e-13
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double fdistribution(const ae_int_t a, const ae_int_t b, const double x, const xparams _xparams = alglib::xdefault);
+double fdistribution(const ae_int_t a, const ae_int_t b, const double x,
+                     const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complemented F distribution
 
 Returns the area from x to infinity under the F density
@@ -1345,13 +1373,13 @@ function (also known as Snedcor's density or the
 variance ratio density).
 
 
-                     inf.
-                      -
-             1       | |  a-1      b-1
+                  inf.
+                   -
+          1       | |  a-1      b-1
 1-P(x)  =  ------    |   t    (1-t)    dt
-           B(a,b)  | |
-                    -
-                     x
+        B(a,b)  | |
+                 -
+                  x
 
 
 The incomplete beta integral is used, according to the
@@ -1363,19 +1391,20 @@ P(x) = incbet( df2/2, df1/2, (df2/(df2 + df1*x) ).
 ACCURACY:
 
 Tested at random points (a,b,x) in the indicated intervals.
-               x     a,b                     Relative error:
+            x     a,b                     Relative error:
 arithmetic  domain  domain     # trials      peak         rms
-   IEEE      0,1    1,100       100000      3.7e-14     5.9e-16
-   IEEE      1,5    1,100       100000      8.0e-15     1.6e-15
-   IEEE      0,1    1,10000     100000      1.8e-11     3.5e-13
-   IEEE      1,5    1,10000     100000      2.0e-11     3.0e-12
+IEEE      0,1    1,100       100000      3.7e-14     5.9e-16
+IEEE      1,5    1,100       100000      8.0e-15     1.6e-15
+IEEE      0,1    1,10000     100000      1.8e-11     3.5e-13
+IEEE      1,5    1,10000     100000      2.0e-11     3.0e-12
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double fcdistribution(const ae_int_t a, const ae_int_t b, const double x, const xparams _xparams = alglib::xdefault);
+double fcdistribution(const ae_int_t a, const ae_int_t b, const double x,
+                      const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of complemented F distribution
 
 Finds the F density argument x such that the integral
@@ -1385,55 +1414,56 @@ given probability p.
 This is accomplished using the inverse beta integral
 function and the relations
 
-     z = incbi( df2/2, df1/2, p )
-     x = df2 (1-z) / (df1 z).
+  z = incbi( df2/2, df1/2, p )
+  x = df2 (1-z) / (df1 z).
 
 Note: the following relations hold for the inverse of
 the uncomplemented F distribution:
 
-     z = incbi( df1/2, df2/2, p )
-     x = df2 z / (df1 (1-z)).
+  z = incbi( df1/2, df2/2, p )
+  x = df2 z / (df1 (1-z)).
 
 ACCURACY:
 
 Tested at random points (a,b,p).
 
-             a,b                     Relative error:
+          a,b                     Relative error:
 arithmetic  domain     # trials      peak         rms
- For p between .001 and 1:
-   IEEE     1,100       100000      8.3e-15     4.7e-16
-   IEEE     1,10000     100000      2.1e-11     1.4e-13
- For p between 10^-6 and 10^-3:
-   IEEE     1,100        50000      1.3e-12     8.4e-15
-   IEEE     1,10000      50000      3.0e-12     4.8e-14
+For p between .001 and 1:
+IEEE     1,100       100000      8.3e-15     4.7e-16
+IEEE     1,10000     100000      2.1e-11     1.4e-13
+For p between 10^-6 and 10^-3:
+IEEE     1,100        50000      1.3e-12     8.4e-15
+IEEE     1,10000      50000      3.0e-12     4.8e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invfdistribution(const ae_int_t a, const ae_int_t b, const double y, const xparams _xparams = alglib::xdefault);
+double invfdistribution(const ae_int_t a, const ae_int_t b, const double y,
+                        const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_FRESNEL) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Fresnel integral
 
 Evaluates the Fresnel integrals
 
-          x
-          -
-         | |
+       x
+       -
+      | |
 C(x) =   |   cos(pi/2 t**2) dt,
-       | |
-        -
-         0
+    | |
+     -
+      0
 
-          x
-          -
-         | |
+       x
+       -
+      | |
 S(x) =   |   sin(pi/2 t**2) dt.
-       | |
-        -
-         0
+    | |
+     -
+      0
 
 
 The integrals are evaluated by a power series for x < 1.
@@ -1447,20 +1477,21 @@ S(x) = 0.5 - f(x) cos( pi/2 x**2 ) - g(x) sin( pi/2 x**2 )
 
 ACCURACY:
 
- Relative error.
+Relative error.
 
 Arithmetic  function   domain     # trials      peak         rms
-  IEEE       S(x)      0, 10       10000       2.0e-15     3.2e-16
-  IEEE       C(x)      0, 10       10000       1.8e-15     3.3e-16
+IEEE       S(x)      0, 10       10000       2.0e-15     3.2e-16
+IEEE       C(x)      0, 10       10000       1.8e-15     3.3e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   void fresnelintegral(const double x, double &c, double &s, const xparams _xparams = alglib::xdefault);
+void fresnelintegral(const double x, double &c, double &s,
+                     const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_JACOBIANELLIPTIC) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Jacobian Elliptic Functions
 
 Evaluates the Jacobian elliptic functions sn(u|m), cn(u|m),
@@ -1485,14 +1516,14 @@ ACCURACY:
 Tested at random points with u between 0 and 10, m between
 0 and 1.
 
-           Absolute error (* = relative error):
+        Absolute error (* = relative error):
 arithmetic   function   # trials      peak         rms
-   IEEE      phi         10000       9.2e-16*    1.4e-16*
-   IEEE      sn          50000       4.1e-15     4.6e-16
-   IEEE      cn          40000       3.6e-15     4.4e-16
-   IEEE      dn          10000       1.3e-12     1.8e-14
+IEEE      phi         10000       9.2e-16*    1.4e-16*
+IEEE      sn          50000       4.1e-15     4.6e-16
+IEEE      cn          40000       3.6e-15     4.4e-16
+IEEE      dn          10000       1.3e-12     1.8e-14
 
- Peak error observed in consistency check using addition
+Peak error observed in consistency check using addition
 theorem for sn(u+v) was 4e-16 (absolute).  Also tested by
 the above relation to the incomplete elliptic integral.
 Accuracy deteriorates when u is large.
@@ -1500,30 +1531,26 @@ Accuracy deteriorates when u is large.
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   void jacobianellipticfunctions(const double u,
-                                  const double m,
-                                  double &sn,
-                                  double &cn,
-                                  double &dn,
-                                  double &ph,
-                                  const xparams _xparams = alglib::xdefault);
+void jacobianellipticfunctions(const double u, const double m, double &sn,
+                               double &cn, double &dn, double &ph,
+                               const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_PSIF) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Psi (digamma) function
 
-             d      -
-  psi(x)  =  -- ln | (x)
-             dx
+          d      -
+psi(x)  =  -- ln | (x)
+          dx
 
 is the logarithmic derivative of the gamma function.
 For integer x,
-                  n-1
-                   -
+               n-1
+                -
 psi(n) = -EUL  +   >  1/k.
-                   -
-                  k=1
+                -
+               k=1
 
 This formula is used for 0 < n <= 10.  If x is negative, it
 is transformed to a positive argument by the reflection
@@ -1532,37 +1559,37 @@ For general positive x, the argument is made greater than 10
 using the recurrence  psi(x+1) = psi(x) + 1/x.
 Then the following asymptotic expansion is applied:
 
-                          inf.   B
-                           -      2k
+                       inf.   B
+                        -      2k
 psi(x) = log(x) - 1/2x -   >   -------
-                           -        2k
-                          k=1   2k x
+                        -        2k
+                       k=1   2k x
 
 where the B2k are Bernoulli numbers.
 
 ACCURACY:
-   Relative error (except absolute when |psi| < 1):
+Relative error (except absolute when |psi| < 1):
 arithmetic   domain     # trials      peak         rms
-   IEEE      0,30        30000       1.3e-15     1.4e-16
-   IEEE      -30,0       40000       1.5e-15     2.2e-16
+IEEE      0,30        30000       1.3e-15     1.4e-16
+IEEE      -30,0       40000       1.5e-15     2.2e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1992, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double psi(const double x, const xparams _xparams = alglib::xdefault);
+double psi(const double x, const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_EXPINTEGRALS) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Exponential integral Ei(x)
 
-              x
-               -     t
-              | |   e
-   Ei(x) =   -|-   ---  dt .
-            | |     t
-             -
-            -inf
+           x
+            -     t
+           | |   e
+Ei(x) =   -|-   ---  dt .
+         | |     t
+          -
+         -inf
 
 Not defined for x <= 0.
 See also expn.c.
@@ -1571,29 +1598,30 @@ See also expn.c.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE       0,100       50000      8.6e-16     1.3e-16
+IEEE       0,100       50000      8.6e-16     1.3e-16
 
 Cephes Math Library Release 2.8:  May, 1999
 Copyright 1999 by Stephen L. Moshier
 *************************************************************************/
-   double exponentialintegralei(const double x, const xparams _xparams = alglib::xdefault);
+double exponentialintegralei(const double x,
+                             const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Exponential integral En(x)
 
 Evaluates the exponential integral
 
-                inf.
-                  -
-                 | |   -xt
-                 |    e
-     E (x)  =    |    ----  dt.
-      n          |      n
-               | |     t
-                -
-                 1
+             inf.
+               -
+              | |   -xt
+              |    e
+  E (x)  =    |    ----  dt.
+   n          |      n
+            | |     t
+             -
+              1
 
 
 Both n and x must be nonnegative.
@@ -1604,57 +1632,61 @@ relative values of n and x.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE      0, 30       10000       1.7e-15     3.6e-16
+IEEE      0, 30       10000       1.7e-15     3.6e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1985, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double exponentialintegralen(const double x, const ae_int_t n, const xparams _xparams = alglib::xdefault);
+double exponentialintegralen(const double x, const ae_int_t n,
+                             const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_LAGUERRE) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Calculation of the value of the Laguerre polynomial.
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Laguerre polynomial Ln at x
+ the value of the Laguerre polynomial Ln at x
 *************************************************************************/
-   double laguerrecalculate(const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double laguerrecalculate(const ae_int_t n, const double x,
+                         const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Summation of Laguerre polynomials using Clenshaw's recurrence formula.
 
 This routine calculates c[0]*L0(x) + c[1]*L1(x) + ... + c[N]*LN(x)
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Laguerre polynomial at x
+ the value of the Laguerre polynomial at x
 *************************************************************************/
-   double laguerresum(const real_1d_array &c, const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double laguerresum(const real_1d_array &c, const ae_int_t n, const double x,
+                   const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Representation of Ln as C[0] + C[1]*X + ... + C[N]*X^N
 
 Input parameters:
-    N   -   polynomial degree, n>=0
+ N   -   polynomial degree, n>=0
 
 Output parameters:
-    C   -   coefficients
+ C   -   coefficients
 *************************************************************************/
-   void laguerrecoefficients(const ae_int_t n, real_1d_array &c, const xparams _xparams = alglib::xdefault);
+void laguerrecoefficients(const ae_int_t n, real_1d_array &c,
+                          const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_CHISQUAREDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Chi-square distribution
 
 Returns the area under the left hand tail (from 0 to x)
@@ -1662,13 +1694,13 @@ of the Chi square probability density function with
 v degrees of freedom.
 
 
-                                  x
-                                   -
-                       1          | |  v/2-1  -t/2
- P( x | v )   =   -----------     |   t      e     dt
-                   v/2  -       | |
-                  2    | (v/2)   -
-                                  0
+                               x
+                                -
+                    1          | |  v/2-1  -t/2
+P( x | v )   =   -----------     |   t      e     dt
+                v/2  -       | |
+               2    | (v/2)   -
+                               0
 
 where x is the Chi-square variable.
 
@@ -1687,22 +1719,23 @@ See incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double chisquaredistribution(const double v, const double x, const xparams _xparams = alglib::xdefault);
+double chisquaredistribution(const double v, const double x,
+                             const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complemented Chi-square distribution
 
 Returns the area under the right hand tail (from x to
 infinity) of the Chi square probability density function
 with v degrees of freedom:
 
-                                 inf.
-                                   -
-                       1          | |  v/2-1  -t/2
- P( x | v )   =   -----------     |   t      e     dt
-                   v/2  -       | |
-                  2    | (v/2)   -
-                                  x
+                              inf.
+                                -
+                    1          | |  v/2-1  -t/2
+P( x | v )   =   -----------     |   t      e     dt
+                v/2  -       | |
+               2    | (v/2)   -
+                               x
 
 where x is the Chi-square variable.
 
@@ -1720,9 +1753,10 @@ See incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double chisquarecdistribution(const double v, const double x, const xparams _xparams = alglib::xdefault);
+double chisquarecdistribution(const double v, const double x,
+                              const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse of complemented Chi-square distribution
 
 Finds the Chi-square argument x such that the integral
@@ -1732,7 +1766,7 @@ to the given cumulative probability y.
 This is accomplished using the inverse gamma integral
 function and the relation
 
-   x/2 = igami( df/2, y );
+x/2 = igami( df/2, y );
 
 ACCURACY:
 
@@ -1742,170 +1776,169 @@ See inverse incomplete gamma function
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invchisquaredistribution(const double v, const double y, const xparams _xparams = alglib::xdefault);
+double invchisquaredistribution(const double v, const double y,
+                                const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_LEGENDRE) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Calculation of the value of the Legendre polynomial Pn.
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Legendre polynomial Pn at x
+ the value of the Legendre polynomial Pn at x
 *************************************************************************/
-   double legendrecalculate(const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double legendrecalculate(const ae_int_t n, const double x,
+                         const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Summation of Legendre polynomials using Clenshaw's recurrence formula.
 
 This routine calculates
-    c[0]*P0(x) + c[1]*P1(x) + ... + c[N]*PN(x)
+ c[0]*P0(x) + c[1]*P1(x) + ... + c[N]*PN(x)
 
 Parameters:
-    n   -   degree, n>=0
-    x   -   argument
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Legendre polynomial at x
+ the value of the Legendre polynomial at x
 *************************************************************************/
-   double legendresum(const real_1d_array &c, const ae_int_t n, const double x, const xparams _xparams = alglib::xdefault);
+double legendresum(const real_1d_array &c, const ae_int_t n, const double x,
+                   const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Representation of Pn as C[0] + C[1]*X + ... + C[N]*X^N
 
 Input parameters:
-    N   -   polynomial degree, n>=0
+ N   -   polynomial degree, n>=0
 
 Output parameters:
-    C   -   coefficients
+ C   -   coefficients
 *************************************************************************/
-   void legendrecoefficients(const ae_int_t n, real_1d_array &c, const xparams _xparams = alglib::xdefault);
+void legendrecoefficients(const ae_int_t n, real_1d_array &c,
+                          const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_BETAF) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Beta function
 
 
-                  -     -
-                 | (a) | (b)
+               -     -
+              | (a) | (b)
 beta( a, b )  =  -----------.
-                    -
-                   | (a+b)
+                 -
+                | (a+b)
 
 For large arguments the logarithm of the function is
 evaluated using lgam(), then exponentiated.
 
 ACCURACY:
 
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE       0,30       30000       8.1e-14     1.1e-14
+IEEE       0,30       30000       8.1e-14     1.1e-14
 
 Cephes Math Library Release 2.0:  April, 1987
 Copyright 1984, 1987 by Stephen L. Moshier
 *************************************************************************/
-   double beta(const double a, const double b, const xparams _xparams = alglib::xdefault);
+double beta(const double a, const double b,
+            const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_CHEBYSHEV) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Calculation of the value of the Chebyshev polynomials of the
 first and second kinds.
 
 Parameters:
-    r   -   polynomial kind, either 1 or 2.
-    n   -   degree, n>=0
-    x   -   argument, -1 <= x <= 1
+ r   -   polynomial kind, either 1 or 2.
+ n   -   degree, n>=0
+ x   -   argument, -1 <= x <= 1
 
 Result:
-    the value of the Chebyshev polynomial at x
+ the value of the Chebyshev polynomial at x
 *************************************************************************/
-   double chebyshevcalculate(const ae_int_t r,
-                             const ae_int_t n,
-                             const double x,
-                             const xparams _xparams = alglib::xdefault);
+double chebyshevcalculate(const ae_int_t r, const ae_int_t n, const double x,
+                          const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Summation of Chebyshev polynomials using Clenshaw's recurrence formula.
 
 This routine calculates
-    c[0]*T0(x) + c[1]*T1(x) + ... + c[N]*TN(x)
+ c[0]*T0(x) + c[1]*T1(x) + ... + c[N]*TN(x)
 or
-    c[0]*U0(x) + c[1]*U1(x) + ... + c[N]*UN(x)
+ c[0]*U0(x) + c[1]*U1(x) + ... + c[N]*UN(x)
 depending on the R.
 
 Parameters:
-    r   -   polynomial kind, either 1 or 2.
-    n   -   degree, n>=0
-    x   -   argument
+ r   -   polynomial kind, either 1 or 2.
+ n   -   degree, n>=0
+ x   -   argument
 
 Result:
-    the value of the Chebyshev polynomial at x
+ the value of the Chebyshev polynomial at x
 *************************************************************************/
-   double chebyshevsum(const real_1d_array &c,
-                       const ae_int_t r,
-                       const ae_int_t n,
-                       const double x,
-                       const xparams _xparams = alglib::xdefault);
+double chebyshevsum(const real_1d_array &c, const ae_int_t r, const ae_int_t n,
+                    const double x, const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Representation of Tn as C[0] + C[1]*X + ... + C[N]*X^N
 
 Input parameters:
-    N   -   polynomial degree, n>=0
+ N   -   polynomial degree, n>=0
 
 Output parameters:
-    C   -   coefficients
+ C   -   coefficients
 *************************************************************************/
-   void chebyshevcoefficients(const ae_int_t n, real_1d_array &c, const xparams _xparams = alglib::xdefault);
+void chebyshevcoefficients(const ae_int_t n, real_1d_array &c,
+                           const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Conversion of a series of Chebyshev polynomials to a power series.
 
 Represents A[0]*T0(x) + A[1]*T1(x) + ... + A[N]*Tn(x) as
 B[0] + B[1]*X + ... + B[N]*X^N.
 
 Input parameters:
-    A   -   Chebyshev series coefficients
-    N   -   degree, N>=0
+ A   -   Chebyshev series coefficients
+ N   -   degree, N>=0
 
 Output parameters
-    B   -   power series coefficients
+ B   -   power series coefficients
 *************************************************************************/
-   void fromchebyshev(const real_1d_array &a,
-                      const ae_int_t n,
-                      real_1d_array &b,
-                      const xparams _xparams = alglib::xdefault);
+void fromchebyshev(const real_1d_array &a, const ae_int_t n, real_1d_array &b,
+                   const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_STUDENTTDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Student's t distribution
 
 Computes the integral from minus infinity to t of the Student
 t distribution with integer k > 0 degrees of freedom:
 
-                                     t
-                                     -
-                                    | |
-             -                      |         2   -(k+1)/2
-            | ( (k+1)/2 )           |  (     x   )
-      ----------------------        |  ( 1 + --- )        dx
-                    -               |  (      k  )
-      sqrt( k pi ) | ( k/2 )        |
-                                  | |
-                                   -
-                                  -inf.
+                                  t
+                                  -
+                                 | |
+          -                      |         2   -(k+1)/2
+         | ( (k+1)/2 )           |  (     x   )
+   ----------------------        |  ( 1 + --- )        dx
+                 -               |  (      k  )
+   sqrt( k pi ) | ( k/2 )        |
+                               | |
+                                -
+                               -inf.
 
 Relation to incomplete beta integral:
 
-       1 - stdtr(k,t) = 0.5 * incbet( k/2, 1/2, z )
+    1 - stdtr(k,t) = 0.5 * incbet( k/2, 1/2, z )
 where
-       z = k/(k + t**2).
+    z = k/(k + t**2).
 
 For t < -2, this is the method of computation.  For higher t,
 a direct method is derived from integration by parts.
@@ -1916,17 +1949,18 @@ with -t instead of t.
 ACCURACY:
 
 Tested at random 1 <= k <= 25.  The "domain" refers to t.
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE     -100,-2      50000       5.9e-15     1.4e-15
-   IEEE     -2,100      500000       2.7e-15     4.9e-17
+IEEE     -100,-2      50000       5.9e-15     1.4e-15
+IEEE     -2,100      500000       2.7e-15     4.9e-17
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double studenttdistribution(const ae_int_t k, const double t, const xparams _xparams = alglib::xdefault);
+double studenttdistribution(const ae_int_t k, const double t,
+                            const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Functional inverse of Student's t distribution
 
 Given probability p, finds the argument t such that stdtr(k,t)
@@ -1935,29 +1969,30 @@ is equal to p.
 ACCURACY:
 
 Tested at random 1 <= k <= 100.  The "domain" refers to p:
-                     Relative error:
+                  Relative error:
 arithmetic   domain     # trials      peak         rms
-   IEEE    .001,.999     25000       5.7e-15     8.0e-16
-   IEEE    10^-6,.001    25000       2.0e-12     2.9e-14
+IEEE    .001,.999     25000       5.7e-15     8.0e-16
+IEEE    10^-6,.001    25000       2.0e-12     2.9e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invstudenttdistribution(const ae_int_t k, const double p, const xparams _xparams = alglib::xdefault);
+double invstudenttdistribution(const ae_int_t k, const double p,
+                               const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_BINOMIALDISTR) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Binomial distribution
 
 Returns the sum of the terms 0 through k of the Binomial
 probability density:
 
-  k
-  --  ( n )   j      n-j
-  >   (   )  p  (1-p)
-  --  ( j )
- j=0
+k
+--  ( n )   j      n-j
+>   (   )  p  (1-p)
+--  ( j )
+j=0
 
 The terms are not summed directly; instead the incomplete
 beta integral is employed, according to the formula
@@ -1970,30 +2005,28 @@ ACCURACY:
 
 Tested at random points (a,b,p), with p between 0 and 1.
 
-              a,b                     Relative error:
+           a,b                     Relative error:
 arithmetic  domain     # trials      peak         rms
- For p between 0.001 and 1:
-   IEEE     0,100       100000      4.3e-15     2.6e-16
+For p between 0.001 and 1:
+IEEE     0,100       100000      4.3e-15     2.6e-16
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double binomialdistribution(const ae_int_t k,
-                               const ae_int_t n,
-                               const double p,
-                               const xparams _xparams = alglib::xdefault);
+double binomialdistribution(const ae_int_t k, const ae_int_t n, const double p,
+                            const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Complemented binomial distribution
 
 Returns the sum of the terms k+1 through n of the Binomial
 probability density:
 
-  n
-  --  ( n )   j      n-j
-  >   (   )  p  (1-p)
-  --  ( j )
- j=k+1
+n
+--  ( n )   j      n-j
+>   (   )  p  (1-p)
+--  ( j )
+j=k+1
 
 The terms are not summed directly; instead the incomplete
 beta integral is employed, according to the formula
@@ -2006,22 +2039,20 @@ ACCURACY:
 
 Tested at random points (a,b,p).
 
-              a,b                     Relative error:
+           a,b                     Relative error:
 arithmetic  domain     # trials      peak         rms
- For p between 0.001 and 1:
-   IEEE     0,100       100000      6.7e-15     8.2e-16
- For p between 0 and .001:
-   IEEE     0,100       100000      1.5e-13     2.7e-15
+For p between 0.001 and 1:
+IEEE     0,100       100000      6.7e-15     8.2e-16
+For p between 0 and .001:
+IEEE     0,100       100000      1.5e-13     2.7e-15
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double binomialcdistribution(const ae_int_t k,
-                                const ae_int_t n,
-                                const double p,
-                                const xparams _xparams = alglib::xdefault);
+double binomialcdistribution(const ae_int_t k, const ae_int_t n, const double p,
+                             const xparams _xparams = alglib::xdefault);
 
-   /*************************************************************************
+/*************************************************************************
 Inverse binomial distribution
 
 Finds the event probability p such that the sum of the
@@ -2037,26 +2068,25 @@ ACCURACY:
 
 Tested at random points (a,b,p).
 
-              a,b                     Relative error:
+           a,b                     Relative error:
 arithmetic  domain     # trials      peak         rms
- For p between 0.001 and 1:
-   IEEE     0,100       100000      2.3e-14     6.4e-16
-   IEEE     0,10000     100000      6.6e-12     1.2e-13
- For p between 10^-6 and 0.001:
-   IEEE     0,100       100000      2.0e-12     1.3e-14
-   IEEE     0,10000     100000      1.5e-12     3.2e-14
+For p between 0.001 and 1:
+IEEE     0,100       100000      2.3e-14     6.4e-16
+IEEE     0,10000     100000      6.6e-12     1.2e-13
+For p between 10^-6 and 0.001:
+IEEE     0,100       100000      2.0e-12     1.3e-14
+IEEE     0,10000     100000      1.5e-12     3.2e-14
 
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
-   double invbinomialdistribution(const ae_int_t k,
-                                  const ae_int_t n,
-                                  const double y,
-                                  const xparams _xparams = alglib::xdefault);
+double invbinomialdistribution(const ae_int_t k, const ae_int_t n,
+                               const double y,
+                               const xparams _xparams = alglib::xdefault);
 #endif
 
 #if defined(AE_COMPILE_AIRYF) || !defined(AE_PARTIAL_BUILD)
-   /*************************************************************************
+/*************************************************************************
 Airy function
 
 Solution of the differential equation
@@ -2088,7 +2118,8 @@ IEEE        -10, 10    Bi'       30000       4.9e-15     7.3e-16
 Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
-   void airy(const double x, double &ai, double &aip, double &bi, double &bip, const xparams _xparams = alglib::xdefault);
+void airy(const double x, double &ai, double &aip, double &bi, double &bip,
+          const xparams _xparams = alglib::xdefault);
 #endif
 } // namespace alglib
 
@@ -2097,185 +2128,136 @@ Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 // THIS SECTION CONTAINS COMPUTATIONAL CORE DECLARATIONS (FUNCTIONS)
 //
 /////////////////////////////////////////////////////////////////////////
-namespace alglib_impl
-{
+namespace alglib_impl {
 #if defined(AE_COMPILE_GAMMAFUNC) || !defined(AE_PARTIAL_BUILD)
-   double gammafunction(double x, ae_state *_state);
-   double lngamma(double x, double *sgngam, ae_state *_state);
+double gammafunction(double x, ae_state *_state);
+double lngamma(double x, double *sgngam, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_NORMALDISTR) || !defined(AE_PARTIAL_BUILD)
-   double errorfunction(double x, ae_state *_state);
-   double errorfunctionc(double x, ae_state *_state);
-   double normaldistribution(double x, ae_state *_state);
-   double normalpdf(double x, ae_state *_state);
-   double normalcdf(double x, ae_state *_state);
-   double inverf(double e, ae_state *_state);
-   double invnormaldistribution(double y0, ae_state *_state);
-   double invnormalcdf(double y0, ae_state *_state);
-   double bivariatenormalpdf(double x,
-                             double y,
-                             double rho,
-                             ae_state *_state);
-   double bivariatenormalcdf(double x,
-                             double y,
-                             double rho,
-                             ae_state *_state);
+double errorfunction(double x, ae_state *_state);
+double errorfunctionc(double x, ae_state *_state);
+double normaldistribution(double x, ae_state *_state);
+double normalpdf(double x, ae_state *_state);
+double normalcdf(double x, ae_state *_state);
+double inverf(double e, ae_state *_state);
+double invnormaldistribution(double y0, ae_state *_state);
+double invnormalcdf(double y0, ae_state *_state);
+double bivariatenormalpdf(double x, double y, double rho, ae_state *_state);
+double bivariatenormalcdf(double x, double y, double rho, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_IGAMMAF) || !defined(AE_PARTIAL_BUILD)
-   double incompletegamma(double a, double x, ae_state *_state);
-   double incompletegammac(double a, double x, ae_state *_state);
-   double invincompletegammac(double a, double y0, ae_state *_state);
+double incompletegamma(double a, double x, ae_state *_state);
+double incompletegammac(double a, double x, ae_state *_state);
+double invincompletegammac(double a, double y0, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_ELLIPTIC) || !defined(AE_PARTIAL_BUILD)
-   double ellipticintegralk(double m, ae_state *_state);
-   double ellipticintegralkhighprecision(double m1, ae_state *_state);
-   double incompleteellipticintegralk(double phi, double m, ae_state *_state);
-   double ellipticintegrale(double m, ae_state *_state);
-   double incompleteellipticintegrale(double phi, double m, ae_state *_state);
+double ellipticintegralk(double m, ae_state *_state);
+double ellipticintegralkhighprecision(double m1, ae_state *_state);
+double incompleteellipticintegralk(double phi, double m, ae_state *_state);
+double ellipticintegrale(double m, ae_state *_state);
+double incompleteellipticintegrale(double phi, double m, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_HERMITE) || !defined(AE_PARTIAL_BUILD)
-   double hermitecalculate(ae_int_t n, double x, ae_state *_state);
-   double hermitesum(/* Real    */ ae_vector *c,
-                     ae_int_t n,
-                     double x,
-                     ae_state *_state);
-   void hermitecoefficients(ae_int_t n,
-                            /* Real    */ ae_vector *c,
-                            ae_state *_state);
+double hermitecalculate(ae_int_t n, double x, ae_state *_state);
+double hermitesum(/* Real    */ ae_vector *c, ae_int_t n, double x,
+                  ae_state *_state);
+void hermitecoefficients(ae_int_t n,
+                         /* Real    */ ae_vector *c, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_DAWSON) || !defined(AE_PARTIAL_BUILD)
-   double dawsonintegral(double x, ae_state *_state);
+double dawsonintegral(double x, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_TRIGINTEGRALS) || !defined(AE_PARTIAL_BUILD)
-   void sinecosineintegrals(double x,
-                            double *si,
-                            double *ci,
-                            ae_state *_state);
-   void hyperbolicsinecosineintegrals(double x,
-                                      double *shi,
-                                      double *chi,
-                                      ae_state *_state);
+void sinecosineintegrals(double x, double *si, double *ci, ae_state *_state);
+void hyperbolicsinecosineintegrals(double x, double *shi, double *chi,
+                                   ae_state *_state);
 #endif
 #if defined(AE_COMPILE_POISSONDISTR) || !defined(AE_PARTIAL_BUILD)
-   double poissondistribution(ae_int_t k, double m, ae_state *_state);
-   double poissoncdistribution(ae_int_t k, double m, ae_state *_state);
-   double invpoissondistribution(ae_int_t k, double y, ae_state *_state);
+double poissondistribution(ae_int_t k, double m, ae_state *_state);
+double poissoncdistribution(ae_int_t k, double m, ae_state *_state);
+double invpoissondistribution(ae_int_t k, double y, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_BESSEL) || !defined(AE_PARTIAL_BUILD)
-   double besselj0(double x, ae_state *_state);
-   double besselj1(double x, ae_state *_state);
-   double besseljn(ae_int_t n, double x, ae_state *_state);
-   double bessely0(double x, ae_state *_state);
-   double bessely1(double x, ae_state *_state);
-   double besselyn(ae_int_t n, double x, ae_state *_state);
-   double besseli0(double x, ae_state *_state);
-   double besseli1(double x, ae_state *_state);
-   double besselk0(double x, ae_state *_state);
-   double besselk1(double x, ae_state *_state);
-   double besselkn(ae_int_t nn, double x, ae_state *_state);
+double besselj0(double x, ae_state *_state);
+double besselj1(double x, ae_state *_state);
+double besseljn(ae_int_t n, double x, ae_state *_state);
+double bessely0(double x, ae_state *_state);
+double bessely1(double x, ae_state *_state);
+double besselyn(ae_int_t n, double x, ae_state *_state);
+double besseli0(double x, ae_state *_state);
+double besseli1(double x, ae_state *_state);
+double besselk0(double x, ae_state *_state);
+double besselk1(double x, ae_state *_state);
+double besselkn(ae_int_t nn, double x, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_IBETAF) || !defined(AE_PARTIAL_BUILD)
-   double incompletebeta(double a, double b, double x, ae_state *_state);
-   double invincompletebeta(double a, double b, double y, ae_state *_state);
+double incompletebeta(double a, double b, double x, ae_state *_state);
+double invincompletebeta(double a, double b, double y, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_FDISTR) || !defined(AE_PARTIAL_BUILD)
-   double fdistribution(ae_int_t a, ae_int_t b, double x, ae_state *_state);
-   double fcdistribution(ae_int_t a, ae_int_t b, double x, ae_state *_state);
-   double invfdistribution(ae_int_t a,
-                           ae_int_t b,
-                           double y,
-                           ae_state *_state);
+double fdistribution(ae_int_t a, ae_int_t b, double x, ae_state *_state);
+double fcdistribution(ae_int_t a, ae_int_t b, double x, ae_state *_state);
+double invfdistribution(ae_int_t a, ae_int_t b, double y, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_FRESNEL) || !defined(AE_PARTIAL_BUILD)
-   void fresnelintegral(double x, double *c, double *s, ae_state *_state);
+void fresnelintegral(double x, double *c, double *s, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_JACOBIANELLIPTIC) || !defined(AE_PARTIAL_BUILD)
-   void jacobianellipticfunctions(double u,
-                                  double m,
-                                  double *sn,
-                                  double *cn,
-                                  double *dn,
-                                  double *ph,
-                                  ae_state *_state);
+void jacobianellipticfunctions(double u, double m, double *sn, double *cn,
+                               double *dn, double *ph, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_PSIF) || !defined(AE_PARTIAL_BUILD)
-   double psi(double x, ae_state *_state);
+double psi(double x, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_EXPINTEGRALS) || !defined(AE_PARTIAL_BUILD)
-   double exponentialintegralei(double x, ae_state *_state);
-   double exponentialintegralen(double x, ae_int_t n, ae_state *_state);
+double exponentialintegralei(double x, ae_state *_state);
+double exponentialintegralen(double x, ae_int_t n, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_LAGUERRE) || !defined(AE_PARTIAL_BUILD)
-   double laguerrecalculate(ae_int_t n, double x, ae_state *_state);
-   double laguerresum(/* Real    */ ae_vector *c,
-                      ae_int_t n,
-                      double x,
-                      ae_state *_state);
-   void laguerrecoefficients(ae_int_t n,
-                             /* Real    */ ae_vector *c,
-                             ae_state *_state);
+double laguerrecalculate(ae_int_t n, double x, ae_state *_state);
+double laguerresum(/* Real    */ ae_vector *c, ae_int_t n, double x,
+                   ae_state *_state);
+void laguerrecoefficients(ae_int_t n,
+                          /* Real    */ ae_vector *c, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_CHISQUAREDISTR) || !defined(AE_PARTIAL_BUILD)
-   double chisquaredistribution(double v, double x, ae_state *_state);
-   double chisquarecdistribution(double v, double x, ae_state *_state);
-   double invchisquaredistribution(double v, double y, ae_state *_state);
+double chisquaredistribution(double v, double x, ae_state *_state);
+double chisquarecdistribution(double v, double x, ae_state *_state);
+double invchisquaredistribution(double v, double y, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_LEGENDRE) || !defined(AE_PARTIAL_BUILD)
-   double legendrecalculate(ae_int_t n, double x, ae_state *_state);
-   double legendresum(/* Real    */ ae_vector *c,
-                      ae_int_t n,
-                      double x,
-                      ae_state *_state);
-   void legendrecoefficients(ae_int_t n,
-                             /* Real    */ ae_vector *c,
-                             ae_state *_state);
+double legendrecalculate(ae_int_t n, double x, ae_state *_state);
+double legendresum(/* Real    */ ae_vector *c, ae_int_t n, double x,
+                   ae_state *_state);
+void legendrecoefficients(ae_int_t n,
+                          /* Real    */ ae_vector *c, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_BETAF) || !defined(AE_PARTIAL_BUILD)
-   double beta(double a, double b, ae_state *_state);
+double beta(double a, double b, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_CHEBYSHEV) || !defined(AE_PARTIAL_BUILD)
-   double chebyshevcalculate(ae_int_t r,
-                             ae_int_t n,
-                             double x,
-                             ae_state *_state);
-   double chebyshevsum(/* Real    */ ae_vector *c,
-                       ae_int_t r,
-                       ae_int_t n,
-                       double x,
-                       ae_state *_state);
-   void chebyshevcoefficients(ae_int_t n,
-                              /* Real    */ ae_vector *c,
-                              ae_state *_state);
-   void fromchebyshev(/* Real    */ ae_vector *a,
-                      ae_int_t n,
-                      /* Real    */ ae_vector *b,
-                      ae_state *_state);
+double chebyshevcalculate(ae_int_t r, ae_int_t n, double x, ae_state *_state);
+double chebyshevsum(/* Real    */ ae_vector *c, ae_int_t r, ae_int_t n,
+                    double x, ae_state *_state);
+void chebyshevcoefficients(ae_int_t n,
+                           /* Real    */ ae_vector *c, ae_state *_state);
+void fromchebyshev(/* Real    */ ae_vector *a, ae_int_t n,
+                   /* Real    */ ae_vector *b, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_STUDENTTDISTR) || !defined(AE_PARTIAL_BUILD)
-   double studenttdistribution(ae_int_t k, double t, ae_state *_state);
-   double invstudenttdistribution(ae_int_t k, double p, ae_state *_state);
+double studenttdistribution(ae_int_t k, double t, ae_state *_state);
+double invstudenttdistribution(ae_int_t k, double p, ae_state *_state);
 #endif
 #if defined(AE_COMPILE_BINOMIALDISTR) || !defined(AE_PARTIAL_BUILD)
-   double binomialdistribution(ae_int_t k,
-                               ae_int_t n,
-                               double p,
+double binomialdistribution(ae_int_t k, ae_int_t n, double p, ae_state *_state);
+double binomialcdistribution(ae_int_t k, ae_int_t n, double p,
+                             ae_state *_state);
+double invbinomialdistribution(ae_int_t k, ae_int_t n, double y,
                                ae_state *_state);
-   double binomialcdistribution(ae_int_t k,
-                                ae_int_t n,
-                                double p,
-                                ae_state *_state);
-   double invbinomialdistribution(ae_int_t k,
-                                  ae_int_t n,
-                                  double y,
-                                  ae_state *_state);
 #endif
 #if defined(AE_COMPILE_AIRYF) || !defined(AE_PARTIAL_BUILD)
-   void airy(double x,
-             double *ai,
-             double *aip,
-             double *bi,
-             double *bip,
-             ae_state *_state);
+void airy(double x, double *ai, double *aip, double *bi, double *bip,
+          ae_state *_state);
 #endif
 
 } // namespace alglib_impl

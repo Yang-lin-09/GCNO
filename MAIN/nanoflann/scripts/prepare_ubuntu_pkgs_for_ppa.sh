@@ -1,6 +1,6 @@
 #!/bin/bash
-# Creates a set of packages for each different Ubuntu distribution, with the 
-# intention of uploading them to: 
+# Creates a set of packages for each different Ubuntu distribution, with the
+# intention of uploading them to:
 #   https://launchpad.net/~joseluisblancoc/+archive/nanoflann
 #
 # JLBC, 2010-2011
@@ -55,7 +55,7 @@ do
 	cd ${NANOFLANNSRC}
 	bash scripts/prepare_debian.sh  -u -d ${DEBIAN_DIST}   # -s
 
-	echo 
+	echo
 	echo "===== Distribution: ${DEBIAN_DIST}  ========="
 	cd ${NANOFLANN_DEB_DIR}/nanoflann-${NANOFLANN_VER_MMP}${DEBIAN_DIST}/debian
 	cp /tmp/my_changelog changelog
@@ -64,12 +64,12 @@ do
 	echo "Adding a new entry to debian/changelog for distribution ${DEBIAN_DIST}"
 	DEBEMAIL=${EMAIL4DEB} debchange $DEBCHANGE_CMD -b --distribution ${DEBIAN_DIST} --force-distribution New version of upstream sources.
 
-	cp changelog /tmp/my_changelog 
+	cp changelog /tmp/my_changelog
 
 	echo "Now, let's build the source Deb package with 'debuild -S -sa':"
 	cd ..
 	debuild -S -sa
-	
+
 	# Make a copy of all these packages:
 	cd ..
 	mkdir -p $NANOFLANN_UBUNTU_OUT_DIR/$DEBIAN_DIST
@@ -79,4 +79,3 @@ done
 
 
 exit 0
-
